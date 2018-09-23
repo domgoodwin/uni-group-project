@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.10.1/dist/phaser.min.js"></script>
+</head>
+<body>
+
+    <script>
+var config = {
+    type: Phaser.AUTO, // AUTO uses WEBGL and then falls back on Canvas
+    width: 800,
+    height: 600,
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    }
+};
+
+var game = new Phaser.Game(config);
+
+// Load in assets for the game
+function preload ()
+{
+    // Loads image and gives it a key
+    this.load.image('sky', 'img/sky.png');
+    this.load.image('brick', 'img/brick.png');
+    // Loads movement spritesheet
+    this.load.spritesheet('dude', 
+        'img/dude.png',
+        { frameWidth: 32, frameHeight: 48 }
+    );
+}
+
+var platforms;
+
+
+function create ()
+{
+    // Adds a preloaded thing into the canvas
+    // all Game Objects are positioned based on their center by default (400 and 300 means middle)
+    this.add.image(400, 300, 'sky');
+    // Alternate way by setting an origin/anchor
+    // this.add.image(0, 0, 'sky').setOrigin(0, 0)
+
+    // Background first, then foreground images
+
+    // Creates physics static group, static never moves and isn't effected by physics
+    //  Dynamic would be a thing with velocity and collisions
+    //  A physics group means all the physics is grouped
+    platforms = this.physics.add.staticGroup();
+    platforms.create(600, 400, 'brick').setScale(0.25).refreshBody();
+    platforms.create(600, 250, 'brick').setScale(0.25).refreshBody();
+
+    platforms.create(100, 100, 'brick').setScale(0.25).refreshBody();
+     platforms.create(300, 400, 'brick').setScale(0.25).refreshBody();
+    platforms.create(500, 400, 'brick').setScale(0.25).refreshBody();
+    platforms.create(700, 500, 'brick').setScale(0.25).refreshBody();
+
+
+    // Player
+    // Create a sprite from the man resource
+    player = this.physics.add.sprite(600, 0, 'dude');
+    // When it lands on a boundary it will bounce 'slightly'
+    player.setBounce(0.2);
+    // Colids with boundarys of the world, default is the whole canvas/frame
+    player.setCollideWorldBounds(true);
+
+    // Left movement uses the frames 0-3 and repeat: -1 means loop
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+    // Frame 4 is the turn animation
+    this.anims.create({
+        key: 'turn',
+        frames: [ { key: 'dude', frame: 4 } ],
+        frameRate: 20
+    });
+
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+
+    // In Phaser 3 the Animation Manager is a global system. 
+    // Animations created within it are globally available to all Game Objects. 
+    // They share the base animation data while managing their own timelines. 
+    // This allows you to define a single animation once and apply it to as many Game Objects as you require.
+
+    // This makes the player collide with the platforms created earlier
+    this.physics.add.collider(player, platforms);
+
+    cursors = this.input.keyboard.createCursorKeys();
+}
+
+// Update loops the cursor checks
+function update ()
+{
+    // Phaser has a built-in Keyboard manager
+    if (cursors.left.isDown)
+    {
+        player.setVelocityX(-160);
+
+        player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(160);
+
+        player.anims.play('right', true);
+    }
+    else
+    {
+        player.setVelocityX(0);
+
+        player.anims.play('turn');
+    }
+
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+        player.setVelocityY(-330);
+    }
+
+}
+    </script>
+
+</body>
+</html>
