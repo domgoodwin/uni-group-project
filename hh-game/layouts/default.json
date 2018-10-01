@@ -1,0 +1,35 @@
+[
+    {
+        "id": "hall",
+        "name": "Hall",
+        "floor": "#23480f",
+        "doors":{
+            "north": "stairs-0-1",
+            "east": "library",
+            "south": null,
+            "west": null
+        }
+    },
+    {
+        "id": "stairs-0-1",
+        "name": "Stairs",
+        "floor": "#8B4513",
+        "doors":{
+            "north": null,
+            "east": null,
+            "south": "hall",
+            "west": null
+        }
+    },
+    {
+        "id": "library",
+        "name": "Library",
+        "floor": "#800000",
+        "doors":{
+            "north": null,
+            "east": null,
+            "south": null,
+            "west": "hall"
+        }
+    }
+]
