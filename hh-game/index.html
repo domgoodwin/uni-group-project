@@ -5,6 +5,7 @@
 	<title>Phaser Game</title>
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
     <script src="js/libraries/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js" type="module"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -16,11 +17,11 @@
 </head>
 <body>
 <div class="main-game">
-    <script src="js/main.js"></script>
-    <script>
+    <script type="module">
+    import {main} from "/js/main.js";
 $.get('layouts/default.json', function(data) {
     console.log("start")
-   rooms = data;
+   var rooms = data;
    main(rooms);
    console.log(JSON.parse(rooms));
    // build room
