@@ -6,9 +6,9 @@ export function main(in_rooms){
 }
 
 var NORTH_DOOR = [343, 50]
-var EAST_DOOR = [702, 225]
+var EAST_DOOR = [670, 225]
 var SOUTH_DOOR = [343, 522]
-var WEST_DOOR = [130, 225]
+var WEST_DOOR = [100, 225]
 var debug = true;
 var VERSION = "v0.1.1"
 
@@ -22,7 +22,9 @@ function preload() {
     game.load.image('room-0', 'img/room-0.png');
     // spritsheet, 48x48 px
     game.load.spritesheet('player', 'img/player.png', 48, 48);
-    game.load.image('door', 'img/wood.png');
+    game.load.image('door-ns', 'img/wood-ns.png');
+    game.load.image('door-ew', 'img/wood-ew.png');
+
 }
 
 function create() {
@@ -94,7 +96,9 @@ function update() {
     // Debug
     if (debug){
         game.debug.body(this.player.sprite);
-        game.debug.body(doors[0]);
+        for(var i = 0; i < doors.length; i++){
+            game.debug.body(doors[i]);
+        }
     }
 
 
@@ -117,10 +121,11 @@ function createRoom(room){
         console.log(room.doors[door]);
         var x = door == "north" ? NORTH_DOOR[0] : door == "east" ? EAST_DOOR[0] : door == "south" ? SOUTH_DOOR[0] : WEST_DOOR[0];
         var y = door == "north" ? NORTH_DOOR[1] : door == "east" ? EAST_DOOR[1] : door == "south" ? SOUTH_DOOR[1] : WEST_DOOR[1];
-        var newDoor = game.add.sprite(x, y, 'door');
+        var doorImg = door == "north" || door == "south" ? "door-ns" : "door-ew";
+        var newDoor = game.add.sprite(x, y, doorImg);
         newDoor.name = door;
-        var angle = door == "north" ? 0 : door == "east" ? 90 : door == "south" ? 0: 90;
-        newDoor.angle = angle;
+        // var angle = door == "north" ? 0 : door == "east" ? 90 : door == "south" ? 0: 90;
+        // newDoor.angle = angle;
         newDoor.scale.setTo(0.04);
         game.physics.enable(newDoor, Phaser.Physics.ARCADE);
         newDoor.body.immovable = true;
