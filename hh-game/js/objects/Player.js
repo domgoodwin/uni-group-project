@@ -38,6 +38,7 @@ export default class {
     move(playArea, dir){
         var x = 0;
         var y = 0;
+        this.dir = dir;
         switch(dir) {
             case "up":
                 y -= this.speed;
@@ -51,17 +52,22 @@ export default class {
                 break;
             case "left":
                 x -= this.speed;
-                this.sprite.animations.play('lwalk', 30, true);
                 break;
             case "stop":
                 this.sprite.body.velocity.x = 0;
                 this.sprite.body.velocity.y = 0;
-                this.sprite.animations.stop("rwalk");
-                this.sprite.animations.stop("lwalk");
                 break;
             default:
                 break;
         } 
+        if(this.dir == "left"){
+            this.sprite.animations.play('lwalk', 30, true);
+        } else if(this.dir == "right"){
+            this.sprite.animations.play('rwalk', 30, true);
+        } else {
+            this.sprite.animations.stop("rwalk");
+            this.sprite.animations.stop("lwalk");
+        }
         if(playArea.contains(this.sprite.x+x, this.sprite.y+y)){
             this.sprite.x += x;
             this.sprite.y += y;
