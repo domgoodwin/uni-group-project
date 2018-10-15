@@ -17,7 +17,7 @@ class Main extends Phaser.State {
         console.log("Game starting: " + this.in_rooms)
         this.rooms = JSON.parse(this.in_rooms);
         console.log(this.rooms)
-        this.debug = true;
+        this.debug = false;
         this.VERSION = "v0.1.1"
         this.doors = [];
         this.currentRoom = null;
