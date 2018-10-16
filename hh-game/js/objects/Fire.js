@@ -10,6 +10,11 @@ export default class Fire extends Object{
         super.setupObject();
         this.sprite.animations.add('burn', [0, 1, 2], 600, true);
         this.sprite.animations.play('burn', 30, true);
-        this.game.debug.body(this.sprite);
+    }
+
+    action(){
+        console.log("Collision on fire")
+        this.game.add.filter('fire-filter', 800, 600)
+        // fire-filter
     }
 }

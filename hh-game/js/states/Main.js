@@ -6,7 +6,7 @@ const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
 const SOUTH_DOOR = [343, 522]
 const WEST_DOOR = [100, 225]
-const VERSION = "0.11";
+const VERSION = "0.12";
 
 class Main extends Phaser.State {
 
@@ -50,10 +50,18 @@ class Main extends Phaser.State {
     }
     
     update() {
+        // Check door collisions
         for(var i = 0; i < this.doors.length && this.game.time.now > this.lastZoneMove + 3000; i++){
             var door = this.doors[i];
             this.game.physics.arcade.overlap(this.player.sprite, door, this.actionDoor, null, this);
         }
+
+        // Check object collisions
+        for(var i = 0; i < this.objects.length; i++){
+            var object = this.objects[i];
+            this.game.physics.arcade.overlap(this.player.sprite, object, object.action, null, this);
+        }
+        
     
         if(this.player.shooting){
             // Do nothing
@@ -101,13 +109,15 @@ class Main extends Phaser.State {
             var door = this.doors[i];
             door.destroy();
         }
+        for(var i = 0; i < this.objects.length; i++){
+            var object = this.objects[i];
+            object.destroy();
+        }
         this.doors = [];
         for(var door in room.doors){
             // Check if no door destination
             if (! room.doors[door])
                 continue;
-            console.log(door);
-            console.log(room.doors[door]);
             var x = door == "north" ? NORTH_DOOR[0] : door == "east" ? EAST_DOOR[0] : door == "south" ? SOUTH_DOOR[0] : WEST_DOOR[0];
             var y = door == "north" ? NORTH_DOOR[1] : door == "east" ? EAST_DOOR[1] : door == "south" ? SOUTH_DOOR[1] : WEST_DOOR[1];
             var doorImg = door == "north" || door == "south" ? "door-ns" : "door-ew";
@@ -121,7 +131,13 @@ class Main extends Phaser.State {
             this.doors.push(newDoor);
         }
         this.game.stage.backgroundColor = room.floor;
-        this.createObject();
+        if(room.objects){
+            for(var i = 0; i < room.objects.length; i++) {
+                console.log("Trying to create: " + room.objects[i]);
+                this.createObject(room.objects[i].type);
+            }
+        }
+
     }
     
     setupKeyboard(){
@@ -134,8 +150,23 @@ class Main extends Phaser.State {
     
     }
     
-    createObject(){
-        this.objects.push(new Fire(this.game, 'fire', 'fire-middle', 400, 400).sprite);
+    createObject(type){
+        var newObject = null;
+        switch(type) {
+            case "fire":
+                newObject = new Fire(this.game, 'fire', 'fire-middle', 400, 400);
+                break;
+            case "todo":
+                newObject = null;
+                break;
+            default:
+                newObject = null;
+        }
+        if(newObject == null){
+            console.log("Object: "+type + " not found")
+            return;
+        } 
+        this.objects.push(newObject.sprite);
     }
     
     
@@ -157,6 +188,8 @@ class Main extends Phaser.State {
         this.createRoom(this.currentRoom);
     
     }
+
+
 }
 
 export default Main;

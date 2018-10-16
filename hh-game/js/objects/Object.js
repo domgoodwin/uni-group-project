@@ -12,7 +12,6 @@ export default class Object {
     setupObject(){
         this.sprite = this.game.add.sprite(this.x_pos, this.y_pos, this.type);
         // sets anchor to centre for collisions
-        this.sprite.anchor.set(0.5, 1)
         this.game.physics.arcade.enable(this.sprite);
         this.sprite.body.collideWorldBounds = true;
         // Setup sprite animations
@@ -23,6 +22,10 @@ export default class Object {
 
     move(){
 
+    }
+
+    action(){
+        
     }
 
 }
