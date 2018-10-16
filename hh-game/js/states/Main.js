@@ -1,4 +1,6 @@
 import Player from '/js/objects/Player.js';
+import Fire from '/js/objects/Fire.js';
+
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -9,17 +11,16 @@ const VERSION = "0.11";
 class Main extends Phaser.State {
 
     init(in_rooms){
-        console.log("init"+in_rooms)
         this.in_rooms = in_rooms;
     }
     
     create() {
         console.log("Game starting: " + this.in_rooms)
         this.rooms = JSON.parse(this.in_rooms);
-        console.log(this.rooms)
         this.debug = true;
         this.VERSION = "v0.1.1"
         this.doors = [];
+        this.objects = [];
         this.currentRoom = null;
         this.lastZoneMove = 0;
         this.playArea = null;
@@ -84,6 +85,10 @@ class Main extends Phaser.State {
             for(var i = 0; i < this.doors.length; i++){
                 this.game.debug.body(this.doors[i]);
             }
+            for(var i = 0; i < this.objects.length; i++){
+                this.game.debug.body(this.objects[i]);
+            }
+
         }
     
     
@@ -91,13 +96,12 @@ class Main extends Phaser.State {
     
     
     createRoom(room){
-        console.log("Creating room");
+        console.log("Creating room: "+room.id);
         for(var i = 0; i < this.doors.length; i++){
             var door = this.doors[i];
             door.destroy();
         }
         this.doors = [];
-        console.log(room)
         for(var door in room.doors){
             // Check if no door destination
             if (! room.doors[door])
@@ -117,6 +121,7 @@ class Main extends Phaser.State {
             this.doors.push(newDoor);
         }
         this.game.stage.backgroundColor = room.floor;
+        this.createObject();
     }
     
     setupKeyboard(){
@@ -129,6 +134,9 @@ class Main extends Phaser.State {
     
     }
     
+    createObject(){
+        this.objects.push(new Fire(this.game, 'fire', 'fire-middle', 400, 400).sprite);
+    }
     
     
     actionDoor(sprite, door){
