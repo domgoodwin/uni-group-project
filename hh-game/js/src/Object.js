@@ -20,7 +20,7 @@ export default class Object {
 
 
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-        this.sprite.body.immovable = true;
+        // this.sprite.body.immovable = true;
 
     }
 

@@ -21,6 +21,7 @@ export default class Fire extends Object{
 
     destroy(){
         this.sprite.animations.stop("burn");
-        this.sprite.destroy();
+        this.sprite.destroy(true);
+        this.sprite = null;
     }
 }

@@ -29,8 +29,8 @@ export default class {
         var lattack = this.sprite.animations.add('lattack', [48, 32, 33, 34, 35, 36, 48], 5, false);
         var rattack = this.sprite.animations.add('rattack', [56, 40, 41, 42, 43, 44, 56], 5, false);
         var dmg = this.sprite.animations.add('dmg', [63], 5, false);
-        lattack.onComplete.add(this.attackFinished);
-        rattack.onComplete.add(this.attackFinished);
+        lattack.onComplete.add(this.attackFinished, this);
+        rattack.onComplete.add(this.attackFinished, this);
         this.sprite.scale.setTo(2);
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
@@ -95,18 +95,18 @@ export default class {
     }
 
 
-    shoot(dir) {
-        if(this.game.time.now > lastShot){
-            shooting = true;
-            attackAnimation = dir == "left" ? "lattack" : "rattack";
+    shoot() {
+        if(this.game.time.now > this.lastShot){
+            this.shooting = true;
+            var attackAnimation = this.dir == "left" ? "lattack" : "rattack";
             console.log("playing:"+attackAnimation);
-            player.animations.play(attackAnimation, 10, false);
-            lastShot = this.game.time.now + 250;
+            this.sprite.animations.play(attackAnimation, 10, false);
+            this.lastShot = this.game.time.now + 250;
         }
     } 
 
     attackFinished(){
-        shooting = false;
+        this.shooting = false;
     }
 
 }

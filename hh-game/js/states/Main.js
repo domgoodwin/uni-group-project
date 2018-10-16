@@ -84,7 +84,7 @@ class Main extends Phaser.State {
         }
         
         if (this.spaceKey.downDuration(50)){
-            shoot(dir);
+            this.player.shoot();
         }
     
         // Debug
@@ -141,8 +141,6 @@ class Main extends Phaser.State {
         for(var i = 0; i < this.objects.length; i++){
             var object = this.objects[i];
             object.destroy();
-            object.sprite.destroy();
-
         }
         this.objects = [];
         this.doors = [];
