@@ -5,6 +5,7 @@ export default class {
         this.speed = 4;
         this.health = 5;
         this.lastShot = 0;
+        this.lastDamage = 0;
         this.shooting = false;
         this.dir = "left";
         this.setupPlayer();
@@ -27,12 +28,32 @@ export default class {
         this.sprite.animations.add('rwalk', [24, 25, 26, 27, 28, 29, 30, 31], 60, true);
         var lattack = this.sprite.animations.add('lattack', [48, 32, 33, 34, 35, 36, 48], 5, false);
         var rattack = this.sprite.animations.add('rattack', [56, 40, 41, 42, 43, 44, 56], 5, false);
+        var dmg = this.sprite.animations.add('dmg', [63], 5, false);
         lattack.onComplete.add(this.attackFinished);
         rattack.onComplete.add(this.attackFinished);
         this.sprite.scale.setTo(2);
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
     }
+
+    damage(amount){
+        if(this.game.time.now > this.lastDamage){
+            this.health -= amount;
+            this.lastDamage = this.game.time.now + 3000;
+            this.sprite.animations.play('dmg', 300, false);
+        }
+    }
+
+    updateAnimation(animation, start){
+        if(this.game.time.now > this.lastDamage){
+            if(start){
+                this.sprite.animations.play(animation, 30, true);
+            } else {
+                this.sprite.animations.stop(animation);
+            }
+        }
+    }
+
 
     // move player object, by x and y
     move(playArea, dir){
@@ -42,16 +63,19 @@ export default class {
         switch(dir) {
             case "up":
                 y -= this.speed;
+                this.updateAnimation('lwalk', true);
                 break;
             case "right":
                 x += this.speed;
-                this.sprite.animations.play('rwalk', 30, true);
+                this.updateAnimation('rwalk', true);
                 break;
             case "down":
                 y += this.speed;
+                this.updateAnimation('lwalk', true);
                 break;
             case "left":
                 x -= this.speed;
+                this.updateAnimation('lwalk', true);
                 break;
             case "stop":
                 this.sprite.body.velocity.x = 0;
@@ -60,11 +84,7 @@ export default class {
             default:
                 break;
         } 
-        if(this.dir == "left"){
-            this.sprite.animations.play('lwalk', 30, true);
-        } else if(this.dir == "right"){
-            this.sprite.animations.play('rwalk', 30, true);
-        } else {
+        if(this.dir == "stop"){
             this.sprite.animations.stop("rwalk");
             this.sprite.animations.stop("lwalk");
         }

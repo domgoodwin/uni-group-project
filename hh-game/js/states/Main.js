@@ -1,5 +1,5 @@
-import Player from '/js/objects/Player.js';
-import Fire from '/js/objects/Fire.js';
+import Player from '/js/src/Player.js';
+import Fire from '/js/src/objects/Fire.js';
 
 
 const NORTH_DOOR = [343, 50]
@@ -35,13 +35,13 @@ class Main extends Phaser.State {
         this.game.add.sprite(0, 0, 'room-0');
         this.game.add.text(715, 567, VERSION, {font: "20px Arial"});
         this.game.add.text(25, 65, "S: "+this.player.speed, {font: "20px Arial"});
-        this.game.add.text(25, 115, "H: "+this.player.health, {font: "20px Arial"});
+        this.displayText = this.game.add.text(25, 115, "H: "+this.player.health, {font: "20px Arial"});
         this.game.add.text(25, 165, "5/5", {font: "20px Arial"});
         this.currentRoom = this.rooms[0];
         this.roomDisplay = this.game.add.text(720, 30, this.currentRoom.name, {font: "20px Arial"});
         this.createRoom(this.currentRoom);
     
-        this.playArea = new Phaser.Rectangle(130,90, 535, 450);
+        this.playArea = new Phaser.Rectangle(130, 90, 535, 450);
         this.game.physics.arcade.enable(this.playArea);
     
     
@@ -59,7 +59,7 @@ class Main extends Phaser.State {
         // Check object collisions
         for(var i = 0; i < this.objects.length; i++){
             var object = this.objects[i];
-            this.game.physics.arcade.overlap(this.player.sprite, object, object.action, null, this);
+            this.game.physics.arcade.overlap(this.player.sprite, object.sprite, object.action, null, this);
         }
         
     
@@ -94,26 +94,19 @@ class Main extends Phaser.State {
                 this.game.debug.body(this.doors[i]);
             }
             for(var i = 0; i < this.objects.length; i++){
-                this.game.debug.body(this.objects[i]);
+                this.game.debug.body(this.objects[i].sprite);
             }
 
         }
-    
+
+        this.displayText.setText("H: "+this.player.health);
     
     }
     
     
     createRoom(room){
         console.log("Creating room: "+room.id);
-        for(var i = 0; i < this.doors.length; i++){
-            var door = this.doors[i];
-            door.destroy();
-        }
-        for(var i = 0; i < this.objects.length; i++){
-            var object = this.objects[i];
-            object.destroy();
-        }
-        this.doors = [];
+        this.clearState();
         for(var door in room.doors){
             // Check if no door destination
             if (! room.doors[door])
@@ -134,10 +127,25 @@ class Main extends Phaser.State {
         if(room.objects){
             for(var i = 0; i < room.objects.length; i++) {
                 console.log("Trying to create: " + room.objects[i]);
-                this.createObject(room.objects[i].type);
+                this.createObject(room.objects[i]);
             }
         }
 
+    }
+
+    clearState(){
+        for(var i = 0; i < this.doors.length; i++){
+            var door = this.doors[i];
+            door.destroy();
+        }
+        for(var i = 0; i < this.objects.length; i++){
+            var object = this.objects[i];
+            object.destroy();
+            object.sprite.destroy();
+
+        }
+        this.objects = [];
+        this.doors = [];
     }
     
     setupKeyboard(){
@@ -150,11 +158,12 @@ class Main extends Phaser.State {
     
     }
     
-    createObject(type){
+    createObject(object){
+        var type = object.type;
         var newObject = null;
         switch(type) {
             case "fire":
-                newObject = new Fire(this.game, 'fire', 'fire-middle', 400, 400);
+                newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos);
                 break;
             case "todo":
                 newObject = null;
@@ -166,7 +175,8 @@ class Main extends Phaser.State {
             console.log("Object: "+type + " not found")
             return;
         } 
-        this.objects.push(newObject.sprite);
+        this.objects.push(newObject);
+        console.log(this.objects);
     }
     
     
