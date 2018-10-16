@@ -194,6 +194,10 @@ class Main extends Phaser.State {
         this.currentRoom = nextRoom;
         this.roomDisplay.setText(this.currentRoom.name);
         this.createRoom(this.currentRoom);
+        var x = door.name == "north" ? SOUTH_DOOR[0] : door.name == "east" ? WEST_DOOR[0] + 100 : door.name == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
+        var y = door.name == "north" ? SOUTH_DOOR[1] - 10 : door.name == "east" ? WEST_DOOR[1] : door.name == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
+        this.player.sprite.x = x - 25;
+        this.player.sprite.y = y + 25;
     
     }
 
