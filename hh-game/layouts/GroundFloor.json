@@ -1,0 +1,128 @@
+[
+    {
+        "id": "entrance",
+        "name": "Entrance",
+        "floor": "#FFFFFF",
+        "doors":{
+            "north": "hall",
+            "east": null,
+            "south": null,
+            "west": null
+        }
+    },
+    {
+        "id": "hall",
+        "name": "Hallway",
+        "floor": "#23480f",
+        "doors":{
+            "north": "stairs",
+            "east": "livingRoom",
+            "south": "entrance",
+            "west": "diningRoom"
+        },
+        "objects":[
+            {
+                "name":"random_fire",
+                "type":"fire",
+                "x_pos":400,
+                "y_pos":400
+            }
+        ]
+    },
+    {
+        "id": "stairs",
+        "name": "Stairs",
+        "floor": "#8B4513",
+        "doors":{
+            "north": null,
+            "east": null,
+            "south": "hall",
+            "west": null
+        }
+    },
+    {
+        "id": "livingRoom",
+        "name": "Living Room",
+        "floor": "#800000",
+        "doors":{
+            "north": "gamesRoom",
+            "east": null,
+            "south": null,
+            "west": "hall"
+        }
+    },
+    {
+        "id": "diningRoom",
+        "name": "Dining Room",
+        "floor": "#9E3F00",
+        "doors":{
+            "north": "kitchen",
+            "east": "hall",
+            "south": null,
+            "west": null
+        }
+    },
+    {
+        "id": "gamesRoom",
+        "name": "Games Room",
+        "floor": "#00B521",
+        "doors":{
+            "north": "study",
+            "east": null,
+            "south": "livingRoom",
+            "west": null
+        }
+    },
+    {
+        "id": "kitchen",
+        "name": "Kitchen",
+        "floor": "#DDDDDD",
+        "doors":{
+            "north": "conservatory",
+            "east": null,
+            "south": "diningRoom",
+            "west": null
+        },
+        "objects":[
+            {
+                "name":"kitchen_fire",
+                "type":"fire",
+                "x_pos":200,
+                "y_pos":500
+            }
+        ]
+    },
+    {
+        "id": "study",
+        "name": "Study",
+        "floor": "#CC5F7C",
+        "doors":{
+            "north": null,
+            "east": null,
+            "south": "gamesRoom",
+            "west": "garden"
+        }
+    },
+    {
+        "id": "conservatory",
+        "name": "Conservatory",
+        "floor": "#95E2E2",
+        "doors":{
+            "north": null,
+            "east": "garden",
+            "south": "kitchen",
+            "west": null
+        }
+    },
+    {
+        "id": "garden",
+        "name": "Garden",
+        "floor": "#7FEF00",
+        "doors":{
+            "north": null,
+            "east": "study",
+            "south": null,
+            "west": "conservatory"
+        }
+    }
+]
