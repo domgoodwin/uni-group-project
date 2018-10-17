@@ -1,5 +1,6 @@
 import Player from '/js/objects/Player.js';
 
+
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
 const SOUTH_DOOR = [343, 522]
@@ -12,8 +13,10 @@ class Main extends Phaser.State {
         console.log("init"+in_rooms)
         this.in_rooms = in_rooms;
     }
-    
+
     create() {
+
+        // this.game.add.plugin(PhaserInput.Plugin);
         console.log("Game starting: " + this.in_rooms)
         this.rooms = JSON.parse(this.in_rooms);
         console.log(this.rooms)
@@ -46,6 +49,7 @@ class Main extends Phaser.State {
     
         // Debug
         // game.debug.geom(playArea,'#0fffff');
+        
     }
     
     update() {
@@ -132,6 +136,24 @@ class Main extends Phaser.State {
     
     
     actionDoor(sprite, door){
+
+        // if (text_entry){
+        var text_entry = null;
+        // }
+
+        var text_entry = this.game.add.text(100, 565, "some text shit here...", {
+                font: '18px Arial',
+                fill: '#ffffff',
+                fontWeight: 'bold',
+                width: 500,
+                padding: 8,
+                backgroundColor: '#ffffff',
+                borderWidth: 10,
+                borderColor: '#000000',
+                borderRadius: 6,
+                placeHolder: ' '
+        });
+
         this.lastZoneMove = this.game.time.now;
         var nextRoomId = this.currentRoom.doors[door.name];
         var nextRoom;
@@ -144,6 +166,7 @@ class Main extends Phaser.State {
             this.roomDisplay.setText("Error")
             return;
         }
+
         this.currentRoom = nextRoom;
         this.roomDisplay.setText(this.currentRoom.name);
         this.createRoom(this.currentRoom);
@@ -153,7 +176,20 @@ class Main extends Phaser.State {
    
         // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
         this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+
+
+        if(this.currentRoom.name === 'Library'){
+            var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
+            text.anchor.set(0.15);
+
+            // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
+            this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
+        }
+
+        
+        
     }
+
 }
 
 export default Main;
