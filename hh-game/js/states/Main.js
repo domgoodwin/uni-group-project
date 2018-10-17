@@ -49,7 +49,7 @@ class Main extends Phaser.State {
     
         // Debug
         // game.debug.geom(playArea,'#0fffff');
-        
+
     }
     
     update() {
@@ -141,7 +141,7 @@ class Main extends Phaser.State {
         var text_entry = null;
         // }
 
-        var text_entry = this.game.add.text(100, 565, "some text shit here...", {
+        var text_entry = this.game.add.text(100, 565, "I dare you find the exit...", {
                 font: '18px Arial',
                 fill: '#ffffff',
                 fontWeight: 'bold',
