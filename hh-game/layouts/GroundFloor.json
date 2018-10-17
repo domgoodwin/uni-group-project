@@ -19,7 +19,15 @@
             "east": "livingRoom",
             "south": "entrance",
             "west": "diningRoom"
-        }
+        },
+        "objects":[
+            {
+                "name":"random_fire",
+                "type":"fire",
+                "x_pos":400,
+                "y_pos":400
+            }
+        ]
     },
     {
         "id": "stairs",
@@ -74,7 +82,15 @@
             "east": null,
             "south": "diningRoom",
             "west": null
-        }
+        },
+        "objects":[
+            {
+                "name":"kitchen_fire",
+                "type":"fire",
+                "x_pos":200,
+                "y_pos":500
+            }
+        ]
     },
     {
         "id": "study",
