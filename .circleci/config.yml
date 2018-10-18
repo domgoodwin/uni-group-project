@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/circle-tmp-folder
+    steps:
+       - run:
+          name: Deploy
+          command: 'aws s3 sync ${source}/ s3://${bucket} --region eu-west-2'
