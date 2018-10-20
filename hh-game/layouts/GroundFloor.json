@@ -3,6 +3,7 @@
         "id": "entrance",
         "name": "Entrance",
         "floor": "#FFFFFF",
+        "locked": false,
         "doors":{
             "north": "hall",
             "east": null,
@@ -14,6 +15,7 @@
         "id": "hall",
         "name": "Hallway",
         "floor": "#23480f",
+        "locked": false,
         "doors":{
             "north": "stairs",
             "east": "livingRoom",
@@ -25,6 +27,7 @@
         "id": "stairs",
         "name": "Stairs",
         "floor": "#8B4513",
+        "locked": false,
         "doors":{
             "north": null,
             "east": null,
@@ -36,6 +39,7 @@
         "id": "livingRoom",
         "name": "Living Room",
         "floor": "#800000",
+        "locked": false,
         "doors":{
             "north": "gamesRoom",
             "east": null,
@@ -47,6 +51,7 @@
         "id": "diningRoom",
         "name": "Dining Room",
         "floor": "#9E3F00",
+        "locked": false,
         "doors":{
             "north": "kitchen",
             "east": "hall",
@@ -58,6 +63,7 @@
         "id": "gamesRoom",
         "name": "Games Room",
         "floor": "#00B521",
+        "locked": false,
         "doors":{
             "north": "study",
             "east": null,
@@ -69,6 +75,7 @@
         "id": "kitchen",
         "name": "Kitchen",
         "floor": "#DDDDDD",
+        "locked": false,
         "doors":{
             "north": "conservatory",
             "east": null,
@@ -80,6 +87,7 @@
         "id": "study",
         "name": "Study",
         "floor": "#CC5F7C",
+        "locked": true,
         "doors":{
             "north": null,
             "east": null,
@@ -91,6 +99,7 @@
         "id": "conservatory",
         "name": "Conservatory",
         "floor": "#95E2E2",
+        "locked": false,
         "doors":{
             "north": null,
             "east": "garden",
@@ -102,6 +111,7 @@
         "id": "garden",
         "name": "Garden",
         "floor": "#7FEF00",
+        "locked": false,
         "doors":{
             "north": null,
             "east": "study",
