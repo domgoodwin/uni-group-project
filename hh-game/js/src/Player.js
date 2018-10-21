@@ -1,4 +1,4 @@
-export default class {
+export default class{
     constructor(game){
         this.game = game;
         this.sprite = null;
@@ -33,7 +33,6 @@ export default class {
         rattack.onComplete.add(this.attackFinished, this);
         this.sprite.scale.setTo(2);
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-
     }
 
     damage(amount){

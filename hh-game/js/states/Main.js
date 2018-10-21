@@ -1,6 +1,6 @@
 import Player from '/js/src/Player.js';
 import Fire from '/js/src/objects/Fire.js';
-
+import Npc from '/js/src/objects/Npc.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -152,8 +152,7 @@ class Main extends Phaser.State {
         this.upKey = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
         this.downKey = this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
         this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT, Phaser.Keyboard.UP, Phaser.Keyboard.DOWN, Phaser.Keyboard.SPACEBAR]);
-    
+        this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT, Phaser.Keyboard.UP, Phaser.Keyboard.DOWN, Phaser.Keyboard.SPACEBAR]);    
     }
     
     createObject(object){
@@ -163,8 +162,11 @@ class Main extends Phaser.State {
             case "fire":
                 newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos);
                 break;
-            case "todo":
-                newObject = null;
+            case "clone":
+                newObject = new Npc(this.game, this.player, 'clone', 'clone-middle', object.x_pos, object.y_pos);
+                break;
+            case "mummy":
+                newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos);
                 break;
             default:
                 newObject = null;
@@ -192,13 +194,14 @@ class Main extends Phaser.State {
             return;
         }
         this.currentRoom = nextRoom;
+        // TODO: Add a funciton to delete objects (fire + NPCs) when entering into a new room
+        // mummy.destroy();
         this.roomDisplay.setText(this.currentRoom.name);
         this.createRoom(this.currentRoom);
         var x = door.name == "north" ? SOUTH_DOOR[0] : door.name == "east" ? WEST_DOOR[0] + 100 : door.name == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
         var y = door.name == "north" ? SOUTH_DOOR[1] - 10 : door.name == "east" ? WEST_DOOR[1] : door.name == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
         this.player.sprite.x = x - 25;
-        this.player.sprite.y = y + 25;
-    
+        this.player.sprite.y = y + 25;    
     }
 
 
