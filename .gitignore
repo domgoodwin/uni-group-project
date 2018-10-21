@@ -1,0 +1,5 @@
+node_modules
+.DS_Store
+/.vs/config/applicationhost.config
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
