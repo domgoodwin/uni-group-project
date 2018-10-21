@@ -2,6 +2,11 @@
 
 Haunted House: The Game is a browser based adventure horror game that places the player inside a creepy haunted house. Their main goal is to stay alive and find the way out. As they move from room to room they will encounter enemies, items and mini-games.
 
+## Links
+
+[Dev Branch](http://relaxed-group-project-dev.s3-website.eu-west-2.amazonaws.com/)
+[Master Branch](http://relaxed-group-project.s3-website.eu-west-2.amazonaws.com/)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
