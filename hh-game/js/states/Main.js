@@ -8,7 +8,7 @@ const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
 const SOUTH_DOOR = [343, 522]
 const WEST_DOOR = [100, 225]
-const VERSION = "0.12";
+const VERSION = "0.20";
 
 export default class Main extends Phaser.State {
 
