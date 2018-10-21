@@ -14,8 +14,12 @@ class Preload extends Phaser.State {
         this.game.load.image('candle-1', 'img/candle1.png');
         this.game.load.image('candle-2', 'img/candle2.png');
         this.game.load.spritesheet('fire', 'img/fire-sprite.png', 34, 40);
-        this.game.load.image('door-ew', 'img/wood-ew.png');
+        this.game.load.image('door-ew', 'img/wood-ew.png');        
         this.game.load.script('fire-filter', 'https://cdn.rawgit.com/photonstorm/phaser-ce/master/filters/Fire.js');
+
+        // NPCs
+        this.game.load.spritesheet('clone', 'img/player.png', 48, 48);
+        this.game.load.spritesheet('mummy', 'img/npc_mummy.png', 37, 45, 18);
     
     }
 
