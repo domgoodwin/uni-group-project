@@ -2,6 +2,7 @@ import Player from '/js/src/Player.js';
 import Fire from '/js/src/objects/Fire.js';
 import Npc from '/js/src/objects/Npc.js';
 
+
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
 const SOUTH_DOOR = [343, 522]
@@ -13,8 +14,10 @@ class Main extends Phaser.State {
     init(in_rooms){
         this.in_rooms = in_rooms;
     }
-    
+
     create() {
+
+        // this.game.add.plugin(PhaserInput.Plugin);
         console.log("Game starting: " + this.in_rooms)
         this.rooms = JSON.parse(this.in_rooms);
         this.debug = false;
@@ -47,6 +50,7 @@ class Main extends Phaser.State {
     
         // Debug
         // game.debug.geom(playArea,'#0fffff');
+
     }
     
     update() {
@@ -181,6 +185,24 @@ class Main extends Phaser.State {
     
     
     actionDoor(sprite, door){
+
+        // if (text_entry){
+        var text_entry = null;
+        // }
+
+        var text_entry = this.game.add.text(100, 565, "I dare you find the exit...", {
+                font: '18px Arial',
+                fill: '#ffffff',
+                fontWeight: 'bold',
+                width: 500,
+                padding: 8,
+                backgroundColor: '#ffffff',
+                borderWidth: 10,
+                borderColor: '#000000',
+                borderRadius: 6,
+                placeHolder: ' '
+        });
+
         this.lastZoneMove = this.game.time.now;
         var nextRoomId = this.currentRoom.doors[door.name];
         var nextRoom;
@@ -193,17 +215,37 @@ class Main extends Phaser.State {
             this.roomDisplay.setText("Error")
             return;
         }
+
         this.currentRoom = nextRoom;
         // TODO: Add a funciton to delete objects (fire + NPCs) when entering into a new room
         // mummy.destroy();
         this.roomDisplay.setText(this.currentRoom.name);
         this.createRoom(this.currentRoom);
+        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, this.currentRoom.name, { font: "25px Arial", fill: "#ffffff", align: "center" });
+        text.anchor.set(0.5);
+   
+        // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
+        this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+
+
+        if(this.currentRoom.name === 'Library'){
+            var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
+            text.anchor.set(0.15);
+
+            // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
+            this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
+        }
+
+        
+        
+    }
+
+
         var x = door.name == "north" ? SOUTH_DOOR[0] : door.name == "east" ? WEST_DOOR[0] + 100 : door.name == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
         var y = door.name == "north" ? SOUTH_DOOR[1] - 10 : door.name == "east" ? WEST_DOOR[1] : door.name == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
         this.player.sprite.x = x - 25;
         this.player.sprite.y = y + 25;    
     }
-
 
 }
 
