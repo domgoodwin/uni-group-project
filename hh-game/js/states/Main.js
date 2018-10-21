@@ -1,6 +1,6 @@
 import Player from '/js/src/Player.js';
 import Fire from '/js/src/objects/Fire.js';
-import NpcClone from '/js/src/objects/Npc.js';
+import Npc from '/js/src/objects/Npc.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -163,10 +163,10 @@ class Main extends Phaser.State {
                 newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos);
                 break;
             case "clone":
-                newObject = new NpcClone(this.game, this.player, 'clone', 'clone-middle', object.x_pos, object.y_pos);
+                newObject = new Npc(this.game, this.player, 'clone', 'clone-middle', object.x_pos, object.y_pos);
                 break;
             case "mummy":
-                newObject = new NpcClone(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos);
+                newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos);
                 break;
             default:
                 newObject = null;

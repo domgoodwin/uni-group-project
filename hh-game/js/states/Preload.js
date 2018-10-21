@@ -1,6 +1,6 @@
 class Preload extends Phaser.State {
 
-    init(in_rooms){
+    init(in_rooms) {
         console.log("plinit:"+in_rooms);
         this.in_rooms = in_rooms;
     }

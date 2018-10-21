@@ -1,38 +1,41 @@
 import Object from '/js/src/Object.js'
 
-export default class NpcClone extends Object {
-    constructor(game, player, type, name, x_pos, y_pos){
-        console.log("Creating NPC Clone")
+export default class Npc extends Object {
+    constructor(game, player, type, name, x_pos, y_pos) {        
         super(game, player, type, name, x_pos, y_pos);
-        this.addAnimations();
+
+        console.log("NPC: Creating an NPC");
+
+        this.walkAnimations();
+        this.walk();
     }
 
-    addAnimations() {
+    walkAnimations() {
         super.setupObject();
         this.sprite.animations.add('walk');
-        this.sprite.animations.play('walk', 50, true);
-        //TODO: Look alive animations (moving around / resting)
+        this.sprite.animations.play('walk', 20, true);
+        console.log("NPC: Commencing walk animations");
     }
 
-    walk() {        
-
-        if (sprite.x >= 300) {
-            sprite.scale.x += 0.01;
-            sprite.scale.y += 0.01;
-        }
+    walk() {
+        var walkSpeedInSeconds = 6000;
+        var endPostionX = 600;
+        this.game.add.tween(this.sprite).to({ x: endPostionX }, walkSpeedInSeconds, Phaser.Easing.Linear.None, true);
+        console.log("NPC: Commencing walk across screen");
+        // TODO: Add functionality to make NPC turn around when reaches position x=600
     }
 
     action() {
-        console.log("Collision on NPC");
         this.player.damage(1);
+        console.log("NPC: Collision on NPC");
     }
 
     attack() {
-        //TODO: Attack method for NPCs
+        //TODO: Attack method for NPCs to add attack animaitons when collision with Player
     }
 
     destroy() {
-        this.sprite.animations.stop("burn");
+        this.sprite.animations.stop("walk");
         this.sprite.destroy(true);
         this.sprite = null;
     }
