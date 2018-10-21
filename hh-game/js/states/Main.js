@@ -93,7 +93,7 @@ export default class Main extends Phaser.State {
         }
     
         // Debug
-        if (this.debug){
+        if (this.game.global.debug){
             this.game.debug.body(this.player.sprite);
             for(var i = 0; i < this.doors.length; i++){
                 this.game.debug.body(this.doors[i]);

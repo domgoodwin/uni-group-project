@@ -19,7 +19,11 @@
 
 <div class="main-game">
     <script type="module">
-    import start from '/js/index.js';
+    import {start} from '/js/index.js';
+    import {setDebug} from '/js/index.js';
+    document.getElementById("btnDebug").onclick = function () {setDebug();};
+
+
 $.get('layouts/GroundFloor.json', function(data) {
     console.log("start")
    var rooms = data;
@@ -33,6 +37,6 @@ $.get('layouts/GroundFloor.json', function(data) {
     </script>
 </div>
 
-<input id="create" type="button" value="create" onclick="create();" />
+<input id="btnDebug" type="button" value="debug" />
 </body>
 </html>

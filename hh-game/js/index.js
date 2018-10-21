@@ -1,6 +1,8 @@
 import Preload from '/js/states/Preload.js';
 import Main from '/js/states/Main.js';
 
+var game = null;
+
 class Game extends Phaser.Game {
 
 	constructor(in_rooms) {
@@ -12,9 +14,18 @@ class Game extends Phaser.Game {
 		this.state.add('Main', Main, false);
 
 		this.state.start('Preload', true, false, in_rooms);
+		this.global = { debug: false };
+	}
+
+	setDebug(){
+		this.global.debug = this.global.debug ? false : true;
 	}
 }
 
-export default function start(in_rooms){
-	new Game(in_rooms);
+export function start(in_rooms){
+	game = new Game(in_rooms);
+}
+
+export function setDebug(){
+	game.setDebug();
 }
