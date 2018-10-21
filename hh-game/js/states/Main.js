@@ -178,17 +178,20 @@ class Main extends Phaser.State {
     }
     
     
-    actionDoor(sprite, door){
+    actionDoor(sprite, door) {
         this.lastZoneMove = this.game.time.now;
         var nextRoomId = this.currentRoom.doors[door.name];
         var nextRoom;
-        for(var i = 0; i < this.rooms.length; i++){
-            if(this.rooms[i].id == nextRoomId){
+        for (var i = 0; i < this.rooms.length; i++) {
+            if (this.rooms[i].id == nextRoomId) {
                 nextRoom = this.rooms[i];
             }
         }
-        if(!nextRoom){
+        if (!nextRoom) {
             this.roomDisplay.setText("Error")
+            return;
+        } else if (nextRoom.locked == true){
+            this.roomDisplay.setText("Door is Locked")
             return;
         }
         this.currentRoom = nextRoom;
