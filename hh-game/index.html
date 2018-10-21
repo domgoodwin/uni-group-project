@@ -1,0 +1,38 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Phaser Game</title>
+    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <script src="js/libraries/jquery-3.3.1.min.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+        .main-game {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-game">
+    <script type="module">
+    import start from '/js/index.js';
+$.get('layouts/GroundFloor.json', function(data) {
+    console.log("start")
+   var rooms = data;
+   start(rooms);
+//    var main = new Main(rooms);
+//    console.log(JSON.parse(rooms));
+   // build room
+}, 'text');
+
+
+    </script>
+</div>
+
+<input id="create" type="button" value="create" onclick="create();" />
+</body>
+</html>
