@@ -9,7 +9,15 @@
             "east": null,
             "south": null,
             "west": null
-        }
+        },
+        "objects":[
+            {
+                "name":"key-old",
+                "type":"key",
+                "x_pos":300,
+                "y_pos":300
+            }
+        ]
     },
     {
         "id": "hall",

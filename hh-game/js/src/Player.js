@@ -9,7 +9,7 @@ export default class {
         this.shooting = false;
         this.dir = "left";
         this.setupPlayer();
-
+        this.inventory = [];
     }
 
     spawn(){

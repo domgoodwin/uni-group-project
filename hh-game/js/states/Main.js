@@ -1,5 +1,6 @@
 import Player from '/js/src/Player.js';
 import Fire from '/js/src/objects/Fire.js';
+import Key from '/js/src/objects/Key.js';
 
 
 const NORTH_DOOR = [343, 50]
@@ -166,6 +167,9 @@ class Main extends Phaser.State {
             case "todo":
                 newObject = null;
                 break;
+            case "key":
+                newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos);
+                break;
             default:
                 newObject = null;
         }
@@ -190,10 +194,10 @@ class Main extends Phaser.State {
         if (!nextRoom) {
             this.roomDisplay.setText("Error")
             return;
-        } else if (nextRoom.locked == true){
+        } else if (nextRoom.locked == true && !this.inventory.includes("Key")){
             this.roomDisplay.setText("Door is Locked")
             return;
-        }
+
         this.currentRoom = nextRoom;
         this.roomDisplay.setText(this.currentRoom.name);
         this.createRoom(this.currentRoom);
@@ -204,7 +208,7 @@ class Main extends Phaser.State {
     
     }
 
-
+    export default Main;
 }
 
-export default Main;
+
