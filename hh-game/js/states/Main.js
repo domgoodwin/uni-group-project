@@ -226,10 +226,6 @@ export default class Main extends Phaser.State {
             this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
         }
 
-        
-        
-    }
-
 
         var x = door.name == "north" ? SOUTH_DOOR[0] : door.name == "east" ? WEST_DOOR[0] + 100 : door.name == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
         var y = door.name == "north" ? SOUTH_DOOR[1] - 10 : door.name == "east" ? WEST_DOOR[1] : door.name == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
