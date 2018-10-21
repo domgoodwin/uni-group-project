@@ -3,9 +3,13 @@ jobs:
   deploy:
     machine:
       enabled: true
-    working_directory: ~/circle-tmp-folder
-    steps:
-       - run:
+    working_directory: ~/group-project
+    steps:      
+      - checkout
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
           name: Deploy
           command: 'aws s3 sync ${source}/ s3://${bucket} --region eu-west-2'
 workflows:
