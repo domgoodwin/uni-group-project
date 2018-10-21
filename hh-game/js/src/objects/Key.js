@@ -6,15 +6,16 @@ export default class Key extends Object{
         super(game, player, type, name, x_pos, y_pos);
     }
 
-    action(){
-        console.log("Collecting Key OOOOHHHHHHH");
-        this.player.inventory.push(this);
-        destroy();
-        // Key added to inventory to unlock door
-    }
-
     destroy(){
         this.sprite.destroy(true);
         this.sprite = null;
+    }
+
+    action(){
+        console.log("Collecting Key OOOOHHHHHHH");
+        this.player.inventory.push(this);
+        // TODO Destroy key on pickup.
+        // this.sprite.destroy(true);
+        // Key added to inventory to unlock door
     }
 }

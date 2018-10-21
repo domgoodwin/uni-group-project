@@ -9,7 +9,7 @@ const SOUTH_DOOR = [343, 522]
 const WEST_DOOR = [100, 225]
 const VERSION = "0.12";
 
-class Main extends Phaser.State {
+export default class Main extends Phaser.State {
 
     init(in_rooms){
         this.in_rooms = in_rooms;
@@ -30,7 +30,7 @@ class Main extends Phaser.State {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.setupKeyboard();
-    
+
         this.player = new Player(this.game);
         this.player.spawn();
         this.game.add.sprite(0, 0, 'room-0');
@@ -191,13 +191,14 @@ class Main extends Phaser.State {
                 nextRoom = this.rooms[i];
             }
         }
+        console.log(this.player.inventory);
         if (!nextRoom) {
             this.roomDisplay.setText("Error")
             return;
-        } else if (nextRoom.locked == true && !this.inventory.includes("Key")){
+        } else if (nextRoom.locked == true && this.player.inventory.includes(Key) === true ) {
             this.roomDisplay.setText("Door is Locked")
             return;
-
+        }
         this.currentRoom = nextRoom;
         this.roomDisplay.setText(this.currentRoom.name);
         this.createRoom(this.currentRoom);
@@ -208,7 +209,7 @@ class Main extends Phaser.State {
     
     }
 
-    export default Main;
 }
+
 
 
