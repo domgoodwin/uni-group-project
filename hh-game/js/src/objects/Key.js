@@ -13,7 +13,7 @@ export default class Key extends Object{
 
     action(){
         console.log("Collecting Key OOOOHHHHHHH");
-        this.player.inventory.push(this);
+        this.player.inventory.push("key");
         // TODO Destroy key on pickup.
         // this.sprite.destroy(true);
         // Key added to inventory to unlock door
