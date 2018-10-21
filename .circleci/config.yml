@@ -29,12 +29,12 @@ workflows:
   deploy-only-dev:
     jobs:
       - deploy-dev:
-        filters:
-          branches:
-            only: dev
+            filters:
+                branches:
+                    only: dev
   deploy-only:
     jobs:
       - deploy:
-        filters:
-          branches:
-            only: master
+            filters:
+                branches:
+                    only: master
