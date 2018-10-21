@@ -1,5 +1,6 @@
 import Player from '/js/src/Player.js';
 import Fire from '/js/src/objects/Fire.js';
+import Key from '/js/src/objects/Key.js';
 import Npc from '/js/src/objects/Npc.js';
 
 
@@ -9,7 +10,7 @@ const SOUTH_DOOR = [343, 522]
 const WEST_DOOR = [100, 225]
 const VERSION = "0.12";
 
-class Main extends Phaser.State {
+export default class Main extends Phaser.State {
 
     init(in_rooms){
         this.in_rooms = in_rooms;
@@ -32,7 +33,7 @@ class Main extends Phaser.State {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.setupKeyboard();
-    
+
         this.player = new Player(this.game);
         this.player.spawn();
         this.game.add.sprite(0, 0, 'room-0');
@@ -172,6 +173,9 @@ class Main extends Phaser.State {
             case "mummy":
                 newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos);
                 break;
+            case "key":
+                newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos);
+                break;
             default:
                 newObject = null;
         }
@@ -184,35 +188,21 @@ class Main extends Phaser.State {
     }
     
     
-    actionDoor(sprite, door){
-
-        // if (text_entry){
-        var text_entry = null;
-        // }
-
-        var text_entry = this.game.add.text(100, 565, "I dare you find the exit...", {
-                font: '18px Arial',
-                fill: '#ffffff',
-                fontWeight: 'bold',
-                width: 500,
-                padding: 8,
-                backgroundColor: '#ffffff',
-                borderWidth: 10,
-                borderColor: '#000000',
-                borderRadius: 6,
-                placeHolder: ' '
-        });
-
+    actionDoor(sprite, door) {
         this.lastZoneMove = this.game.time.now;
         var nextRoomId = this.currentRoom.doors[door.name];
         var nextRoom;
-        for(var i = 0; i < this.rooms.length; i++){
-            if(this.rooms[i].id == nextRoomId){
+        for (var i = 0; i < this.rooms.length; i++) {
+            if (this.rooms[i].id == nextRoomId) {
                 nextRoom = this.rooms[i];
             }
         }
-        if(!nextRoom){
+        console.log(this.player.inventory);
+        if (!nextRoom) {
             this.roomDisplay.setText("Error")
+            return;
+        } else if (nextRoom.locked == true && this.player.inventory.includes(Key) === true ) {
+            this.roomDisplay.setText("Door is Locked")
             return;
         }
 
@@ -249,4 +239,5 @@ class Main extends Phaser.State {
 
 }
 
-export default Main;
+
+
