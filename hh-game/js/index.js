@@ -1,4 +1,3 @@
-
 import Preload from '/js/states/Preload.js';
 import Main from '/js/states/Main.js';
 
@@ -14,7 +13,6 @@ class Game extends Phaser.Game {
 
 		this.state.start('Preload', true, false, in_rooms);
 	}
-
 }
 
 export default function start(in_rooms){

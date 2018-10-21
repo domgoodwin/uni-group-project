@@ -30,13 +30,13 @@
             "south": "entrance",
             "west": "diningRoom"
         },
-        "objects":[
-            {
-                "name":"random_fire",
-                "type":"fire",
-                "x_pos":400,
-                "y_pos":400
-            }
+        "objects": [
+          {
+            "name": "npc",
+            "type": "mummy",
+            "x_pos": 200,
+            "y_pos": 200
+          }
         ]
     },
     {
@@ -49,7 +49,15 @@
             "east": null,
             "south": "hall",
             "west": null
+      },
+      "objects": [
+        {
+          "name": "random_fire",
+          "type": "fire",
+          "x_pos": 250,
+          "y_pos": 250
         }
+      ]
     },
     {
         "id": "livingRoom",

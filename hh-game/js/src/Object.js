@@ -18,13 +18,11 @@ export default class Object {
         this.sprite.body.collideWorldBounds = true;
         // Setup sprite animations
 
-
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         // this.sprite.body.immovable = true;
-
     }
 
-    move(){
+    move() {
 
     }
 
