@@ -201,7 +201,7 @@ export default class Main extends Phaser.State {
         if (!nextRoom) {
             this.roomDisplay.setText("Error")
             return;
-        } else if (nextRoom.locked == true && this.player.inventory.includes(Key) === true ) {
+        } else if (nextRoom.locked == true && this.player.inventory.includes(Key) == false ) {
             this.roomDisplay.setText("Door is Locked")
             return;
         }
