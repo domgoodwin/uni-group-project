@@ -1,9 +1,9 @@
 import Object from '/js/src/Object.js'
 
 export default class Fire extends Object{
-    constructor(game, player, type, name, x_pos, y_pos){
+    constructor(game, player, type, name, x_pos, y_pos, group){
         console.log("Creating Fire")
-        super(game, player, type, name, x_pos, y_pos);
+        super(game, player, type, name, x_pos, y_pos, group);
         this.addAnimations();
     }
 
@@ -13,15 +13,22 @@ export default class Fire extends Object{
         this.sprite.animations.play('burn', 30, true);
     }
 
-    action(){
+    destroy(){
         console.log("Collision on fire");
         this.player.damage(1);
         // fire-filter
     }
 
-    destroy(){
-        this.sprite.animations.stop("burn");
+    remove(){
+        super.remove();
+        console.log("Destroying fire");
+        this.sprite.animations.destroy();
         this.sprite.destroy(true);
         this.sprite = null;
+        console.log(this.sprite);
+    }
+
+    action(){
+        this.player.damage(1);
     }
 }

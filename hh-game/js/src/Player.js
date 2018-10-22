@@ -6,10 +6,12 @@ export default class{
         this.health = 5;
         this.lastShot = 0;
         this.lastDamage = 0;
+        this.lastPickup = 0;
         this.shooting = false;
         this.dir = "left";
         this.setupPlayer();
         this.inventory = [];
+        this.inventoryDisplay = "[ ]";
     }
 
     spawn(){
@@ -106,6 +108,18 @@ export default class{
 
     attackFinished(){
         this.shooting = false;
+    }
+
+    pickupItem(item){
+        if(this.game.time.now > this.lastPickup){
+            this.lastPickup = this.game.time.now + 500;
+            this.inventory.push(item);
+            var invStr = "";
+            for (var i = 0; i < this.inventory.length; i++) {
+                invStr += this.inventory[i].charAt(0) + ",";
+            }
+            this.inventoryDisplay = "[ " + invStr.slice(0, -1) + " ]";
+        }
     }
 
 }

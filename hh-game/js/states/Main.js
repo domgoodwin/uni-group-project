@@ -1,3 +1,5 @@
+"use strict";
+
 import Player from '/js/src/Player.js';
 import Fire from '/js/src/objects/Fire.js';
 import Key from '/js/src/objects/Key.js';
@@ -24,6 +26,9 @@ export default class Main extends Phaser.State {
         this.debug = false;
         this.VERSION = "v0.1.1"
         this.doors = [];
+        this.items = this.game.add.group();
+        this.npcs = this.game.add.group();
+        this.things = this.game.add.group();
         this.objects = [];
         this.currentRoom = null;
         this.lastZoneMove = 0;
@@ -40,7 +45,7 @@ export default class Main extends Phaser.State {
         this.game.add.text(715, 567, VERSION, {font: "20px Arial"});
         this.game.add.text(25, 65, "S: "+this.player.speed, {font: "20px Arial"});
         this.displayText = this.game.add.text(25, 115, "H: "+this.player.health, {font: "20px Arial"});
-        this.game.add.text(25, 165, "5/5", {font: "20px Arial"});
+        this.invText = this.game.add.text(25, 165, this.player.inventoryDisplay, {font: "20px Arial"});
         this.currentRoom = this.rooms[0];
         this.roomDisplay = this.game.add.text(720, 30, this.currentRoom.name, {font: "20px Arial"});
         this.createRoom(this.currentRoom);
@@ -93,19 +98,32 @@ export default class Main extends Phaser.State {
         }
     
         // Debug
-        if (this.debug){
+        if (this.game.global.debug){
             this.game.debug.body(this.player.sprite);
             for(var i = 0; i < this.doors.length; i++){
                 this.game.debug.body(this.doors[i]);
             }
             for(var i = 0; i < this.objects.length; i++){
                 this.game.debug.body(this.objects[i].sprite);
+                this.game.debug.spriteInfo(sprite, 32, 32);
             }
 
         }
 
+
         this.displayText.setText("H: "+this.player.health);
+        this.invText.setText(this.player.inventoryDisplay);
+
     
+    }
+
+    render(){
+        if (this.game.global.debug){
+            for(var i = 0; i < this.objects.length; i++){
+                this.game.debug.spriteInfo(sprite, 32, 32);
+            }
+
+        }
     }
     
     
@@ -143,12 +161,15 @@ export default class Main extends Phaser.State {
             var door = this.doors[i];
             door.destroy();
         }
-        for(var i = 0; i < this.objects.length; i++){
-            var object = this.objects[i];
-            object.destroy();
-        }
-        this.objects = [];
-        this.doors = [];
+        this.things.destroy(true);
+        this.items.destroy(true);
+        this.npcs.destroy(true);
+        this.things = this.game.add.group();
+        this.items = this.game.add.group();
+        this.npcs = this.game.add.group();
+        this.objects=[];
+        console.log(this.sprites);
+
     }
     
     setupKeyboard(){
@@ -165,16 +186,16 @@ export default class Main extends Phaser.State {
         var newObject = null;
         switch(type) {
             case "fire":
-                newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos);
+                newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos, this.things);
                 break;
             case "clone":
-                newObject = new Npc(this.game, this.player, 'clone', 'clone-middle', object.x_pos, object.y_pos);
+                newObject = new Npc(this.game, this.player, 'clone', 'clone-middle', object.x_pos, object.y_pos, this.npcs);
                 break;
             case "mummy":
-                newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos);
+                newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos, this.npcs);
                 break;
             case "key":
-                newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos);
+                newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos, this.items);
                 break;
             default:
                 newObject = null;
@@ -183,8 +204,8 @@ export default class Main extends Phaser.State {
             console.log("Object: "+type + " not found")
             return;
         } 
-        this.objects.push(newObject);
         console.log(this.objects);
+        this.objects.push(newObject);
     }
     
     
