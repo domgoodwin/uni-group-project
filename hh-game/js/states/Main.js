@@ -92,6 +92,7 @@ export default class Main extends Phaser.State {
                 nextRoom = this.rooms[i];
             }
         }
+        // TODO: move key check into somewhere like room
         if (!nextRoom) {
             this.roomDisplay.setText("Error")
             return;
@@ -101,12 +102,16 @@ export default class Main extends Phaser.State {
         }
 
         this.currentRoomJson = nextRoom;
-        // TODO: Add a funciton to delete objects (fire + NPCs) when entering into a new room
-        // mummy.destroy();
         this.roomDisplay.setText(this.currentRoomJson.name);
         this.roomObjects[this.room.id] = this.room;
         this.room.clearState();
-        this.room = new Room(this.game, this.currentRoomJson, this.player, door.name);
+        if(this.roomObjects[this.currentRoomJson.id]){
+            console.log("Rendering already loaded room");
+            this.room = this.roomObjects[this.currentRoomJson.id];
+            this.room.render(door.name);
+        } else {
+            this.room = new Room(this.game, this.currentRoomJson, this.player, door.name);
+        }
         var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, this.currentRoomJson.name, { font: "25px Arial", fill: "#ffffff", align: "center" });
         text.anchor.set(0.5);
    

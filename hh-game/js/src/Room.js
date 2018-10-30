@@ -17,24 +17,26 @@ export default class Room {
         this.things = this.game.add.group();
         this.objects = [];
         this.id = room.id;
+        this.room = room;
 
         this.createRoom = this.createRoom.bind(this);
         this.checkUpdate = this.checkUpdate.bind(this);
         this.clearState = this.clearState.bind(this);
         this.createObject = this.createObject.bind(this);
+        this.render = this.render.bind(this);
 
-        this.createRoom(room, door);
+
+        this.createRoom(door);
     }
 
 
 
 
-    createRoom(room, usedDoor){
-        // Todo if room exists in dict then just load
-        console.log("Creating room: "+room.id+"/"+door);
-        for(var door in room.doors){
+    createRoom(usedDoor){
+        console.log("Creating room: "+this.room.id+"/"+door);
+        for(var door in this.room.doors){
             // Check if no door destination
-            if (! room.doors[door])
+            if (! this.room.doors[door])
                 continue;
             var x = door == "north" ? NORTH_DOOR[0] : door == "east" ? EAST_DOOR[0] : door == "south" ? SOUTH_DOOR[0] : WEST_DOOR[0];
             var y = door == "north" ? NORTH_DOOR[1] : door == "east" ? EAST_DOOR[1] : door == "south" ? SOUTH_DOOR[1] : WEST_DOOR[1];
@@ -48,21 +50,14 @@ export default class Room {
             newDoor.body.immovable = true;
             this.doors.push(newDoor);
         }
-        this.game.stage.backgroundColor = room.floor;
-        if(room.objects){
-            for(var i = 0; i < room.objects.length; i++) {
-                console.log("Trying to create: " + room.objects[i]);
-                this.createObject(room.objects[i]);
+        if(this.room.objects){
+            for(var i = 0; i < this.room.objects.length; i++) {
+                console.log("Trying to create: " + this.room.objects[i]);
+                this.createObject(this.room.objects[i]);
             }
         }
 
-        if(usedDoor){
-            console.log("Moving character: "+usedDoor)
-            var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
-            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
-            this.player.sprite.x = x - 25;
-            this.player.sprite.y = y + 25; 
-        }
+        this.render(usedDoor);
 
     }
 
@@ -90,7 +85,25 @@ export default class Room {
         this.items.alpha = 0;
         this.npcs.alpha = 0;
         // this.objects=[];
-        console.log(this.sprites);
+    }
+
+    render(usedDoor){
+        this.game.stage.backgroundColor = this.room.floor;
+
+        this.things.alpha = 1;
+        this.items.alpha = 1;
+        this.npcs.alpha = 1;
+        for(var i = 0; i < this.doors.length; i++){
+            var door = this.doors[i];
+            door.alpha = 1;
+        }
+        if(usedDoor){
+            console.log("Moving character: "+usedDoor)
+            var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
+            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
+            this.player.sprite.x = x - 25;
+            this.player.sprite.y = y + 25; 
+        }
     }
 
     createObject(object){
