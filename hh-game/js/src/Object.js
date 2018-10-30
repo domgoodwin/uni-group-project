@@ -1,5 +1,3 @@
-"use strict";
-
 export default class Object {
     constructor(game, player, type, name, x_pos, y_pos, group){
         this.game = game;

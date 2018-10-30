@@ -1,5 +1,3 @@
- "use strict";
-
 import Object from '/js/src/Object.js'
 
 export default class Key extends Object{

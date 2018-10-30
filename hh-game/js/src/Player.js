@@ -112,7 +112,7 @@ export default class{
 
     pickupItem(item){
         if(this.game.time.now > this.lastPickup){
-            this.lastPickup = this.game.time.now + 500;
+            this.lastPickup = this.game.time.now + 1000;
             this.inventory.push(item);
             var invStr = "";
             for (var i = 0; i < this.inventory.length; i++) {

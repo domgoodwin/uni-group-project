@@ -24,7 +24,6 @@ export default class Main extends Phaser.State {
         console.log("Game starting: " + this.in_rooms)
         this.rooms = JSON.parse(this.in_rooms);
         this.debug = false;
-        this.VERSION = "v0.1.1"
         this.doors = [];
         this.items = this.game.add.group();
         this.npcs = this.game.add.group();
