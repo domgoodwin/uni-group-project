@@ -124,4 +124,13 @@ export default class{
         }
     }
 
+    removeItem(item){
+        this.inventory.splice( this.inventory.indexOf(item), 1 );
+        var invStr = "";
+        for (var i = 0; i < this.inventory.length; i++) {
+            invStr += this.inventory[i].charAt(0) + ",";
+        }
+        this.inventoryDisplay = "[ " + invStr.slice(0, -1) + " ]";
+    }
+
 }

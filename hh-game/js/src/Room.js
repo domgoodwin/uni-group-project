@@ -25,7 +25,6 @@ export default class Room {
         this.createObject = this.createObject.bind(this);
         this.render = this.render.bind(this);
 
-
         this.createRoom(door);
     }
 
@@ -103,6 +102,9 @@ export default class Room {
             var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
             this.player.sprite.x = x - 25;
             this.player.sprite.y = y + 25; 
+        } else {
+            this.player.sprite.x = this.game.world.centerX;
+            this.player.sprite.y = this.game.world.centerY;
         }
     }
 

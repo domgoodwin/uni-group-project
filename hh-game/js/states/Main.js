@@ -24,6 +24,7 @@ export default class Main extends Phaser.State {
         this.playArea = null;
         this.roomDisplay = null;
         this.attack = null;
+        this.displayedText = 0;
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.setupKeyboard();
@@ -92,13 +93,18 @@ export default class Main extends Phaser.State {
                 nextRoom = this.rooms[i];
             }
         }
-        // TODO: move key check into somewhere like room
         if (!nextRoom) {
             this.roomDisplay.setText("Error")
             return;
-        } else if (nextRoom.locked == true && this.player.inventory.includes("key") == false ) {
-            this.roomDisplay.setText("Door is Locked")
+        } 
+
+        // TODO: move key check into somewhere like room
+        if (nextRoom.locked == true && this.player.inventory.includes("key-old") == false ) {
+            this.showText("Door is locked");
             return;
+        } else if (nextRoom.locked == true) {
+            this.showText("Unlocked room");
+            this.player.removeItem("key-old");
         }
 
         this.currentRoomJson = nextRoom;
@@ -112,12 +118,7 @@ export default class Main extends Phaser.State {
         } else {
             this.room = new Room(this.game, this.currentRoomJson, this.player, door.name);
         }
-        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, this.currentRoomJson.name, { font: "25px Arial", fill: "#ffffff", align: "center" });
-        text.anchor.set(0.5);
-   
-        // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
-        this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
-
+        this.showText(this.currentRoomJson.name);
 
         if(this.currentRoomJson.name === 'Library'){
             var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
@@ -129,6 +130,18 @@ export default class Main extends Phaser.State {
 
 
   
+    }
+
+    showText(textToDisplay){
+        var mod = 0;
+        if(this.displayedText >= this.game.time.now){
+            mod = 50;
+        }
+        var text = this.game.add.text(this.game.world.centerX+mod, this.game.world.centerY+mod, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
+        text.anchor.set(0.5);
+        // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
+        this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        this.displayedText = this.game.time.now + 1000;
     }
 
     checkKeyboard(){
