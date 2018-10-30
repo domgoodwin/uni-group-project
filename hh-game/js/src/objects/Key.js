@@ -6,15 +6,12 @@ export default class Key extends Object{
         super(game, player, type, name, x_pos, y_pos, group);
         
         // NOTE: As we're using ES6 javascript this is needed to bind the this context in the method
-        this.action = this.action.bind(this)
+        this.action = this.action.bind(this);
     }
 
     action(){
-        console.log("Collecting Key OOOOHHHHHHH");
-        this.player.pickupItem("key");
+        this.player.pickupItem(this);
         // this.player.inventory.push("key");
         this.group.remove(this.sprite);
-        // TODO Destroy key on pickup.
-        // Key added to inventory to unlock door
     }
 }
