@@ -111,15 +111,26 @@ export default class{
     }
 
     pickupItem(item){
-        if(this.game.time.now > this.lastPickup){
-            this.lastPickup = this.game.time.now + 500;
-            this.inventory.push(item);
+        if(this.game.time.now > this.lastPickup && item.available){
+            console.log("Picking up item: "+item.name)
+            item.available = false;
+            this.lastPickup = this.game.time.now + 1000;
+            this.inventory.push(item.name);
             var invStr = "";
             for (var i = 0; i < this.inventory.length; i++) {
                 invStr += this.inventory[i].charAt(0) + ",";
             }
             this.inventoryDisplay = "[ " + invStr.slice(0, -1) + " ]";
         }
+    }
+
+    removeItem(item){
+        this.inventory.splice( this.inventory.indexOf(item), 1 );
+        var invStr = "";
+        for (var i = 0; i < this.inventory.length; i++) {
+            invStr += this.inventory[i].charAt(0) + ",";
+        }
+        this.inventoryDisplay = "[ " + invStr.slice(0, -1) + " ]";
     }
 
 }
