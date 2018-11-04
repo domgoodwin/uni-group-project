@@ -1,6 +1,7 @@
 import Fire from '/js/src/objects/Fire.js';
 import Key from '/js/src/objects/Key.js';
 import Npc from '/js/src/objects/Npc.js';
+import Chest from '/js/src/objects/Chest.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -18,11 +19,14 @@ export default class Room {
         this.objects = [];
         this.id = room.id;
         this.room = room;
+        this.lastInteraction = 0;
+        this.displayedText = 0;
 
         this.createRoom = this.createRoom.bind(this);
         this.checkUpdate = this.checkUpdate.bind(this);
         this.clearState = this.clearState.bind(this);
         this.createObject = this.createObject.bind(this);
+        this.interact = this.interact.bind(this);
         this.render = this.render.bind(this);
 
         this.createRoom(door);
@@ -65,6 +69,7 @@ export default class Room {
         for(var i = 0; i < this.objects.length; i++){
             var object = this.objects[i];
             this.game.physics.arcade.overlap(this.player.sprite, object.sprite, object.action, null, this);
+            object.tick();
         }
     }
 
@@ -121,6 +126,9 @@ export default class Room {
             case "mummy":
                 newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos, this.npcs);
                 break;
+            case "chest":
+                newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true);
+                break;
             case "key":
                 newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos, this.items);
                 break;
@@ -133,6 +141,33 @@ export default class Room {
         } 
         console.log(this.objects);
         this.objects.push(newObject);
+    }
+
+
+    showText(textToDisplay){
+        var mod = 0;
+        if(this.displayedText >= this.game.time.now){
+            mod = 50;
+        }
+        var text = this.game.add.text(this.game.world.centerX+mod, this.game.world.centerY+mod, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
+        text.anchor.set(0.5);
+        text.stroke = "#000000";
+        text.strokeThickness = 8;
+        // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
+        this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        this.displayedText = this.game.time.now + 1000;
+    }
+
+    interact(key){
+        for(var i = 0; i < this.objects.length; i++){
+            var object = this.objects[i];
+            object.interact(key, this);
+        }
+        // TODO: make this more generic, having the object part of the player?
+        if(this.player.state != null && key == "space" && this.lastInteraction < this.game.time.now){
+            console.log("trying to release: " + this.player.state)
+            this.player.state.release(this);
+        }
     }
 
 }

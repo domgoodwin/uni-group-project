@@ -11,6 +11,7 @@ export default class Object {
         this.y_pos = y_pos;
         this.available = true;
         this.setupObject();
+        this.interact = this.interact.bind(this);
     }
 
     setupObject(){
@@ -29,6 +30,14 @@ export default class Object {
     move() {
 
     }
+
+    tick(){
+        
+    }
+
+    interact(key, room){
+    }
+
 
 
 }

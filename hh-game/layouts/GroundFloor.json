@@ -4,18 +4,18 @@
         "name": "Entrance",
         "floor": "#FFFFFF",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": "hall",
             "east": null,
             "south": null,
             "west": null
         },
-        "objects":[
+        "objects": [
             {
-                "name":"key-old",
-                "type":"key",
-                "x_pos":300,
-                "y_pos":300
+                "name": "key-old",
+                "type": "key",
+                "x_pos": 300,
+                "y_pos": 300
             }
         ]
     },
@@ -24,19 +24,19 @@
         "name": "Hallway",
         "floor": "#23480f",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": "stairs",
             "east": "livingRoom",
             "south": "entrance",
             "west": "diningRoom"
         },
         "objects": [
-          {
-            "name": "npc",
-            "type": "mummy",
-            "x_pos": 200,
-            "y_pos": 200
-          }
+            {
+                "name": "npc",
+                "type": "mummy",
+                "x_pos": 200,
+                "y_pos": 200
+            }
         ]
     },
     {
@@ -44,39 +44,47 @@
         "name": "Stairs",
         "floor": "#8B4513",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": null,
             "east": null,
             "south": "hall",
             "west": null
-      },
-      "objects": [
-        {
-          "name": "random_fire",
-          "type": "fire",
-          "x_pos": 250,
-          "y_pos": 250
-        }
-      ]
+        },
+        "objects": [
+            {
+                "name": "random_fire",
+                "type": "fire",
+                "x_pos": 250,
+                "y_pos": 250
+            }
+        ]
     },
     {
         "id": "livingRoom",
         "name": "Living Room",
         "floor": "#800000",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": "gamesRoom",
             "east": null,
             "south": null,
             "west": "hall"
-        }
+        },
+        "objects": [
+            {
+                "name": "random_fire",
+                "type": "fire",
+                "x_pos": 250,
+                "y_pos": 250
+            }
+        ]
     },
     {
         "id": "diningRoom",
         "name": "Dining Room",
         "floor": "#9E3F00",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": "kitchen",
             "east": "hall",
             "south": null,
@@ -88,7 +96,7 @@
         "name": "Games Room",
         "floor": "#00B521",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": "study",
             "east": null,
             "south": "livingRoom",
@@ -100,18 +108,18 @@
         "name": "Kitchen",
         "floor": "#DDDDDD",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": "conservatory",
             "east": null,
             "south": "diningRoom",
             "west": null
         },
-        "objects":[
+        "objects": [
             {
-                "name":"kitchen_fire",
-                "type":"fire",
-                "x_pos":200,
-                "y_pos":500
+                "name": "normal_chest",
+                "type": "chest",
+                "x_pos": 200,
+                "y_pos": 500
             }
         ]
     },
@@ -120,7 +128,7 @@
         "name": "Study",
         "floor": "#CC5F7C",
         "locked": true,
-        "doors":{
+        "doors": {
             "north": null,
             "east": null,
             "south": "gamesRoom",
@@ -132,7 +140,7 @@
         "name": "Conservatory",
         "floor": "#95E2E2",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": null,
             "east": "garden",
             "south": "kitchen",
@@ -144,7 +152,7 @@
         "name": "Garden",
         "floor": "#7FEF00",
         "locked": false,
-        "doors":{
+        "doors": {
             "north": null,
             "east": "study",
             "south": null,
