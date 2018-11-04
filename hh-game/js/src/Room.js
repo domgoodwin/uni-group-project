@@ -104,9 +104,9 @@ export default class Room {
         if(usedDoor){
             console.log("Moving character: "+usedDoor)
             var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
-            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 10 : EAST_DOOR[1];
-            this.player.sprite.x = x - 25;
-            this.player.sprite.y = y + 25; 
+            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 90 : EAST_DOOR[1];
+            this.player.sprite.x = x;
+            this.player.sprite.y = y; 
         } else {
             this.player.sprite.x = this.game.world.centerX;
             this.player.sprite.y = this.game.world.centerY;

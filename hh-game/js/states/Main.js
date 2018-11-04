@@ -40,7 +40,7 @@ export default class Main extends Phaser.State {
         this.roomDisplay = this.game.add.text(720, 30, this.currentRoomJson.name, {font: "20px Arial"});
 
     
-        this.playArea = new Phaser.Rectangle(130, 90, 535, 450);
+        this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
         this.game.physics.arcade.enable(this.playArea);
     }
     
@@ -61,15 +61,6 @@ export default class Main extends Phaser.State {
         this.invText.setText(this.player.inventoryDisplay);
 
     
-    }
-
-    render(){
-        if (this.game.global.debug){
-            for(var i = 0; i < this.objects.length; i++){
-                this.game.debug.spriteInfo(sprite, 32, 32);
-            }
-
-        }
     }
     
     setupKeyboard(){
@@ -162,14 +153,17 @@ export default class Main extends Phaser.State {
         // Debug
         if (this.game.global.debug){
             this.game.debug.body(this.player.sprite);
-            this.game.debug.geom(playArea,'#0fffff');
+            this.game.debug.spriteInfo(this.player.sprite, 32, 32);
+            this.game.debug.geom(this.playArea,'#ff0000', false);
             for(var i = 0; i < this.room.doors.length; i++){
                 this.game.debug.body(this.room.doors[i]);
             }
-            for(var i = 0; i < this.objects.length; i++){
-                this.game.debug.body(this.objects[i].sprite);
-                this.game.debug.spriteInfo(sprite, 32, 32);
+            for(var i = 0; i < this.room.objects.length; i++){
+                this.game.debug.body(this.room.objects[i].sprite);
             }
+        }
+        else {
+            this.game.debug.reset();
         }
     }
 
