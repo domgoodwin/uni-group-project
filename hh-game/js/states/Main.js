@@ -24,7 +24,6 @@ export default class Main extends Phaser.State {
         this.playArea = null;
         this.roomDisplay = null;
         this.attack = null;
-        this.displayedText = 0;
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.setupKeyboard();
@@ -41,7 +40,7 @@ export default class Main extends Phaser.State {
         this.roomDisplay = this.game.add.text(720, 30, this.currentRoomJson.name, {font: "20px Arial"});
 
     
-        this.playArea = new Phaser.Rectangle(130, 90, 535, 450);
+        this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
         this.game.physics.arcade.enable(this.playArea);
     }
     
@@ -62,15 +61,6 @@ export default class Main extends Phaser.State {
         this.invText.setText(this.player.inventoryDisplay);
 
     
-    }
-
-    render(){
-        if (this.game.global.debug){
-            for(var i = 0; i < this.objects.length; i++){
-                this.game.debug.spriteInfo(sprite, 32, 32);
-            }
-
-        }
     }
     
     setupKeyboard(){
@@ -100,10 +90,10 @@ export default class Main extends Phaser.State {
 
         // TODO: move key check into somewhere like room
         if (nextRoom.locked == true && this.player.inventory.includes("key-old") == false ) {
-            this.showText("Door is locked");
+            this.room.showText("Door is locked");
             return;
         } else if (nextRoom.locked == true) {
-            this.showText("Unlocked room");
+            this.room.showText("Unlocked room");
             this.player.removeItem("key-old");
         }
 
@@ -118,7 +108,7 @@ export default class Main extends Phaser.State {
         } else {
             this.room = new Room(this.game, this.currentRoomJson, this.player, door.name);
         }
-        this.showText(this.currentRoomJson.name);
+        this.room.showText(this.currentRoomJson.name);
 
         if(this.currentRoomJson.name === 'Library'){
             var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
@@ -130,18 +120,6 @@ export default class Main extends Phaser.State {
 
 
   
-    }
-
-    showText(textToDisplay){
-        var mod = 0;
-        if(this.displayedText >= this.game.time.now){
-            mod = 50;
-        }
-        var text = this.game.add.text(this.game.world.centerX+mod, this.game.world.centerY+mod, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
-        text.anchor.set(0.5);
-        // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
-        this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
-        this.displayedText = this.game.time.now + 1000;
     }
 
     checkKeyboard(){
@@ -166,6 +144,7 @@ export default class Main extends Phaser.State {
         }
         
         if (this.spaceKey.downDuration(50)){
+            this.room.interact("space");
             this.player.shoot();
         }
     }
@@ -174,14 +153,17 @@ export default class Main extends Phaser.State {
         // Debug
         if (this.game.global.debug){
             this.game.debug.body(this.player.sprite);
-            this.game.debug.geom(playArea,'#0fffff');
+            this.game.debug.spriteInfo(this.player.sprite, 32, 32);
+            this.game.debug.geom(this.playArea,'#ff0000', false);
             for(var i = 0; i < this.room.doors.length; i++){
                 this.game.debug.body(this.room.doors[i]);
             }
-            for(var i = 0; i < this.objects.length; i++){
-                this.game.debug.body(this.objects[i].sprite);
-                this.game.debug.spriteInfo(sprite, 32, 32);
+            for(var i = 0; i < this.room.objects.length; i++){
+                this.game.debug.body(this.room.objects[i].sprite);
             }
+        }
+        else {
+            this.game.debug.reset();
         }
     }
 

@@ -8,6 +8,7 @@ export default class{
         this.lastDamage = 0;
         this.lastPickup = 0;
         this.shooting = false;
+        this.state = null;
         this.dir = "left";
         this.setupPlayer();
         this.inventory = [];
