@@ -49,6 +49,7 @@ export default class Main extends Phaser.State {
 
         this.checkKeyboard();
         this.checkDebug();
+        this.player.tick();
 
         // Check if moving room
         for(var i = 0; i < this.room.doors.length && this.game.time.now > this.lastZoneMove + 1000; i++){

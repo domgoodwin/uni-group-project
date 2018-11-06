@@ -2,6 +2,8 @@ import Fire from '/js/src/objects/Fire.js';
 import Key from '/js/src/objects/Key.js';
 import Npc from '/js/src/objects/Npc.js';
 import Chest from '/js/src/objects/Chest.js';
+import Rock from '/js/src/objects/Rock.js';
+import Circle from '/js/src/objects/Circle.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -132,6 +134,12 @@ export default class Room {
             case "key":
                 newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos, this.items);
                 break;
+            case "buff":
+                newObject = new Circle(this.game, this.player, 'circle', 'str-buff', object.x_pos, object.y_pos, this.things);
+                break;
+            case "rock":
+                newObject = new Rock(this.game, this.player, 'rock', 'basement-rock', object.x_pos, object.y_pos, this.things, this);
+                break;
             default:
                 newObject = null;
         }
@@ -145,17 +153,16 @@ export default class Room {
 
 
     showText(textToDisplay){
-        var mod = 0;
         if(this.displayedText >= this.game.time.now){
-            mod = 50;
+            return;
         }
-        var text = this.game.add.text(this.game.world.centerX+mod, this.game.world.centerY+mod, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
+        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
         text.anchor.set(0.5);
         text.stroke = "#000000";
         text.strokeThickness = 8;
         // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
         this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
-        this.displayedText = this.game.time.now + 1000;
+        this.displayedText = this.game.time.now + 2000;
     }
 
     interact(key){

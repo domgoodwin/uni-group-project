@@ -7,12 +7,15 @@ export default class{
         this.lastShot = 0;
         this.lastDamage = 0;
         this.lastPickup = 0;
+        this.effect = null;
         this.shooting = false;
         this.state = null;
         this.dir = "left";
         this.setupPlayer();
         this.inventory = [];
         this.inventoryDisplay = "[ ]";
+        this.tick = this.tick.bind(this);
+
     }
 
     spawn(){
@@ -53,6 +56,16 @@ export default class{
             } else {
                 this.sprite.animations.stop(animation);
             }
+        }
+    }
+
+    tick(){
+        if(this.effect == "strength"){
+            this.sprite.tint = 0xFF0000;
+        } else if(this.effect == "poison"){
+            this.sprite.tint = 0x00FF00;
+        } else{
+            this.sprite.tint = 0xFFFFFF;
         }
     }
 

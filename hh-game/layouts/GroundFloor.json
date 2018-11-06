@@ -89,7 +89,21 @@
             "east": "hall",
             "south": null,
             "west": null
-        }
+        },
+        "objects": [
+            {
+                "name": "str_buff",
+                "type": "buff",
+                "x_pos": 250,
+                "y_pos": 250
+            },
+            {
+                "name": "rock_basement",
+                "type": "rock",
+                "x_pos": 500,
+                "y_pos": 500
+            }
+        ]
     },
     {
         "id": "gamesRoom",
