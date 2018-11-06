@@ -1,8 +1,9 @@
 import Object from '/js/src/Object.js'
 
-export default class Chest extends Object{
+export default class Rock extends Object{
     constructor(game, player, type, name, x_pos, y_pos, group, room){
-        console.log("Creating Chest")
+        console.log("Creating Rock")
+        console.log(room)
         super(game, player, type, name, x_pos, y_pos, group);
         // this.sprite.scale.setTo(0.5);
         this.room = room;
@@ -29,12 +30,15 @@ export default class Chest extends Object{
     }
 
     action(){
-        if(this.player.effect == "strength"){
+        if(this.player.inventory.includes("pickaxe")){
+            console.log("Destroy rock");
             this.player.effect = null;
+            console.log(this.room);
+            this.room.showText("\"Souls scream from below you\"", "top");
             this.destroy();
-            this.room.showText("\"Souls scream from below you\"");
+            this.player.sprite.removeChildAt(0);
         } else {
-            this.room.showText("You don't have the strength");
+            this.room.showText("You don't have the right tools", "top");
         }
     }
 

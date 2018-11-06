@@ -13,7 +13,7 @@ const WEST_DOOR = [100, 225]
 export default class Room {
     constructor(game, room, player, door){
         this.game = game;
-        this.name = name;
+        this.name = room.name;
         this.doors = [];
         this.player = player;
         this.items = this.game.add.group();
@@ -24,6 +24,7 @@ export default class Room {
         this.room = room;
         this.lastInteraction = 0;
         this.displayedText = 0;
+        this.textToShow = "";
 
         this.createRoom = this.createRoom.bind(this);
         this.checkUpdate = this.checkUpdate.bind(this);
@@ -31,6 +32,8 @@ export default class Room {
         this.createObject = this.createObject.bind(this);
         this.interact = this.interact.bind(this);
         this.render = this.render.bind(this);
+        this.showText = this.showText.bind(this);
+
 
         this.createRoom(door);
     }
@@ -138,16 +141,16 @@ export default class Room {
                 newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos, this.items);
                 break;
             case "buff":
-                newObject = new Circle(this.game, this.player, 'circle', 'str-buff', object.x_pos, object.y_pos, this.things);
+                newObject = new Circle(this.game, this.player, 'circle', object.effect+'-buff', object.x_pos, object.y_pos, this.things, object.effect);
                 break;
             case "rock":
                 newObject = new Rock(this.game, this.player, 'rock', 'basement-rock', object.x_pos, object.y_pos, this.things, this);
                 break;
             case "pickaxe":
-                newObject = new Axe(this.game, this.player, 'axe', 'pickaxe', object.x_pos, object.y_pos, this.items, true);
+                newObject = new Axe(this.game, this.player, 'axe', 'pickaxe', object.x_pos, object.y_pos, this.items, this, true);
                 break;
             case "axe":
-                newObject = new Axe(this.game, this.player, 'axe', 'axe', object.x_pos, object.y_pos, this.items, false);
+                newObject = new Axe(this.game, this.player, 'axe', 'axe', object.x_pos, object.y_pos, this.items, this, false);
                 break;
             default:
                 newObject = null;
@@ -161,17 +164,26 @@ export default class Room {
     }
 
 
-    showText(textToDisplay){
-        if(this.displayedText >= this.game.time.now){
-            return;
+    showText(textToDisplay, pos){
+        var top = 0;
+        if(pos == "top"){
+            top = -200;
         }
-        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
+        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY+top, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
         text.anchor.set(0.5);
         text.stroke = "#000000";
         text.strokeThickness = 8;
-        // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
-        this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        if(pos == "centre"){
+            this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        } else if (pos == "top"){
+            this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        } else {
+            this.game.add.tween(text).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+        }
         this.displayedText = this.game.time.now + 2000;
+        if(this.textToShow == textToDisplay){
+            this.textToShow = "";
+        }
     }
 
     interact(key){

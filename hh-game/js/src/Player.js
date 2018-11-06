@@ -64,8 +64,14 @@ export default class{
             this.sprite.tint = 0xFF0000;
         } else if(this.effect == "poison"){
             this.sprite.tint = 0x00FF00;
-        } else{
+        } else if (this.effect == "speed"){
+            this.speed += 2;
+            this.effect = "";
+        } else {
             this.sprite.tint = 0xFFFFFF;
+        }
+        if(this.health <= 0){
+            this.game.state.start("Gameover", true, false, this.in_rooms);
         }
     }
 

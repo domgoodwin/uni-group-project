@@ -23,6 +23,13 @@
                 "type": "pickaxe",
                 "x_pos": 600,
                 "y_pos": 300
+            },
+            {
+                "name": "speed_buff",
+                "type": "buff",
+                "x_pos": 400,
+                "y_pos": 200,
+                "effect": "speed"
             }
         ]
     },
@@ -106,7 +113,8 @@
                 "name": "str_buff",
                 "type": "buff",
                 "x_pos": 250,
-                "y_pos": 250
+                "y_pos": 250,
+                "effect": "strength"
             },
             {
                 "name": "rock_basement",
