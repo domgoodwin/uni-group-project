@@ -3,6 +3,7 @@
         "id": "entrance",
         "name": "Entrance",
         "floor": "#FFFFFF",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": "hall",
@@ -23,6 +24,7 @@
         "id": "hall",
         "name": "Hallway",
         "floor": "#23480f",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": "stairs",
@@ -43,6 +45,7 @@
         "id": "stairs",
         "name": "Stairs",
         "floor": "#8B4513",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": null,
@@ -63,6 +66,7 @@
         "id": "livingRoom",
         "name": "Living Room",
         "floor": "#800000",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": "gamesRoom",
@@ -83,6 +87,7 @@
         "id": "diningRoom",
         "name": "Dining Room",
         "floor": "#9E3F00",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": "kitchen",
@@ -95,6 +100,7 @@
         "id": "gamesRoom",
         "name": "Games Room",
         "floor": "#00B521",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": "study",
@@ -107,6 +113,7 @@
         "id": "kitchen",
         "name": "Kitchen",
         "floor": "#DDDDDD",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": "conservatory",
@@ -127,6 +134,7 @@
         "id": "study",
         "name": "Study",
         "floor": "#CC5F7C",
+        "music": "ambient-spooky-2",
         "locked": true,
         "doors": {
             "north": null,
@@ -139,6 +147,7 @@
         "id": "conservatory",
         "name": "Conservatory",
         "floor": "#95E2E2",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": null,
@@ -151,6 +160,7 @@
         "id": "garden",
         "name": "Garden",
         "floor": "#7FEF00",
+        "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
             "north": null,

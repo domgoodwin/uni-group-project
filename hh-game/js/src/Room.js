@@ -111,6 +111,8 @@ export default class Room {
             this.player.sprite.x = this.game.world.centerX;
             this.player.sprite.y = this.game.world.centerY;
         }
+
+        this.game.musicPlayer.playMusicForRoom(this.room);
     }
 
     createObject(object){
