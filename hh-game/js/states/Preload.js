@@ -13,6 +13,11 @@ class Preload extends Phaser.State {
         // Player
         this.game.load.spritesheet('player', 'img/player.png', 48, 48);
 
+        // Audio
+        this.game.load.audio('ambient-spooky-1', ['audio/bg-audio/PorchCat_-_Moon_Shadow_Grin.mp3', 'audio/bg-audio/PorchCat_-_Moon_Shadow_Grin.ogg']);
+        this.game.load.audio('ambient-spooky-2', ["audio/bg-audio/Citizen_X0_-_Ghosts_in_the_wind.mp3", "audio/bg-audio/Citizen_X0_-_Ghosts_in_the_wind.ogg"]);
+
+
         // Objects        
         this.game.load.image('door-ns', 'img/wood-ns.png');
         this.game.load.image('door-ew', 'img/wood-ew.png');

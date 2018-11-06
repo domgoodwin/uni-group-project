@@ -2,6 +2,7 @@
 
 import Player from '/js/src/Player.js';
 import Room from '/js/src/Room.js';
+import MusicPlayer from '/js/src/MusicPlayer.js';
 
 const VERSION = "0.20";
 
@@ -25,6 +26,7 @@ export default class Main extends Phaser.State {
         this.roomDisplay = null;
         this.attack = null;
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        this.game.musicPlayer = new MusicPlayer(this.game);
 
         this.setupKeyboard();
 
@@ -38,7 +40,6 @@ export default class Main extends Phaser.State {
         this.currentRoomJson = this.rooms[0];
         this.room = new Room(this.game, this.currentRoomJson, this.player, null);
         this.roomDisplay = this.game.add.text(720, 30, this.currentRoomJson.name, {font: "20px Arial"});
-
     
         this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
         this.game.physics.arcade.enable(this.playArea);
@@ -72,9 +73,7 @@ export default class Main extends Phaser.State {
         this.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT, Phaser.Keyboard.UP, Phaser.Keyboard.DOWN, Phaser.Keyboard.SPACEBAR]);    
     }
-    
-    
-    
+
     actionDoor(sprite, door) {
         this.lastZoneMove = this.game.time.now;
         var nextRoomId = this.currentRoomJson.doors[door.name];
@@ -118,8 +117,6 @@ export default class Main extends Phaser.State {
             // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
             this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
         }
-
-
   
     }
 
