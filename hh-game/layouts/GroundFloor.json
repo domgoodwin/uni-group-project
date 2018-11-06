@@ -16,6 +16,12 @@
                 "type": "key",
                 "x_pos": 300,
                 "y_pos": 300
+            },
+            {
+                "name": "pickaxe",
+                "type": "pickaxe",
+                "x_pos": 600,
+                "y_pos": 300
             }
         ]
     },

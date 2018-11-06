@@ -4,6 +4,7 @@ import Npc from '/js/src/objects/Npc.js';
 import Chest from '/js/src/objects/Chest.js';
 import Rock from '/js/src/objects/Rock.js';
 import Circle from '/js/src/objects/Circle.js';
+import Axe from '/js/src/objects/Axe.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -139,6 +140,12 @@ export default class Room {
                 break;
             case "rock":
                 newObject = new Rock(this.game, this.player, 'rock', 'basement-rock', object.x_pos, object.y_pos, this.things, this);
+                break;
+            case "pickaxe":
+                newObject = new Axe(this.game, this.player, 'axe', 'pickaxe', object.x_pos, object.y_pos, this.items, true);
+                break;
+            case "axe":
+                newObject = new Axe(this.game, this.player, 'axe', 'axe', object.x_pos, object.y_pos, this.items, false);
                 break;
             default:
                 newObject = null;
