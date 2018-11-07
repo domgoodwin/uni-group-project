@@ -8,7 +8,7 @@ class Preload extends Phaser.State {
     preload() {
 
         // Room
-        this.game.load.image('room-0', 'img/room-0.png');
+        this.game.load.image('room-0', 'img/room-1.png');
 
         // Player
         this.game.load.spritesheet('player', 'img/player.png', 48, 48);
