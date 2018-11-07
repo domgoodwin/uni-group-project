@@ -6,9 +6,9 @@ var MONSTER_PATROL = 2;
 
 export default class Monster extends Object
 {
-    constructor(game, player, type, name, x_pos, y_pos, speed)
+    constructor(game, player, type, name, x_pos, y_pos, group, speed)
     {
-        super(game, player, type, name, x_pos, y_pos);
+        super(game, player, type, name, x_pos, y_pos, group);
 
         this.speed = speed;
 

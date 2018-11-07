@@ -38,10 +38,10 @@ export default class Main extends Phaser.State {
         this.displayText = this.game.add.text(25, 115, "H: "+this.player.health, {font: "20px Arial"});
         this.invText = this.game.add.text(25, 165, this.player.inventoryDisplay, {font: "20px Arial"});
         this.currentRoomJson = this.rooms[0];
-        this.room = new Room(this.game, this.currentRoomJson, this.player, null);
+        this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
+        this.room = new Room(this.game, this.currentRoomJson, this.player, null, this.playArea);
         this.roomDisplay = this.game.add.text(720, 30, this.currentRoomJson.name, {font: "20px Arial"});
     
-        this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
         this.game.physics.arcade.enable(this.playArea);
     }
     
@@ -105,7 +105,7 @@ export default class Main extends Phaser.State {
             this.room = this.roomObjects[this.currentRoomJson.id];
             this.room.render(door.name);
         } else {
-            this.room = new Room(this.game, this.currentRoomJson, this.player, door.name);
+            this.room = new Room(this.game, this.currentRoomJson, this.player, door.name, this.playArea);
         }
         if(this.currentRoomJson.locked == true){
             this.room.showText("Unlocked room", "top");

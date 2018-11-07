@@ -5,15 +5,17 @@ import Chest from '/js/src/objects/Chest.js';
 import Rock from '/js/src/objects/Rock.js';
 import Circle from '/js/src/objects/Circle.js';
 import Axe from '/js/src/objects/Axe.js';
+import Monster from '/js/src/objects/Monster.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
 const SOUTH_DOOR = [343, 522]
 const WEST_DOOR = [100, 225]
 export default class Room {
-    constructor(game, room, player, door){
+    constructor(game, room, player, door, playArea){
         this.game = game;
         this.name = room.name;
+        this.playArea = playArea;
         this.doors = [];
         this.player = player;
         this.items = this.game.add.group();
@@ -76,6 +78,10 @@ export default class Room {
             var object = this.objects[i];
             this.game.physics.arcade.overlap(this.player.sprite, object.sprite, object.action, null, this);
             object.tick();
+        }
+        for(var i = 0; i < this.npcs.length; i++){
+            var npc = this.npcs[i];
+            object.update(this.playArea);
         }
     }
 
@@ -151,6 +157,9 @@ export default class Room {
                 break;
             case "axe":
                 newObject = new Axe(this.game, this.player, 'axe', 'axe', object.x_pos, object.y_pos, this.items, this, false);
+                break;
+            case "monster":
+                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370);
                 break;
             default:
                 newObject = null;
