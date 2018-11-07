@@ -20,12 +20,19 @@
             "south": "entrance",
             "west": "diningRoom"
         },
-        "objects":[
+        "objects":
+        [
             {
                 "name":"random_fire",
                 "type":"fire",
                 "x_pos":400,
                 "y_pos":400
+            },
+            {
+                "name":"monster_0",
+                "type":"monster",
+                "x_pos":450,
+                "y_pos":300
             }
         ]
     },

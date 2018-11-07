@@ -1,4 +1,5 @@
 import Player from '/js/src/Player.js';
+import Monster from '/js/src/Monster.js';
 import Fire from '/js/src/objects/Fire.js';
 
 
@@ -36,6 +37,7 @@ class Main extends Phaser.State {
         this.game.add.text(715, 567, VERSION, {font: "20px Arial"});
         this.game.add.text(25, 65, "S: "+this.player.speed, {font: "20px Arial"});
         this.displayText = this.game.add.text(25, 115, "H: "+this.player.health, {font: "20px Arial"});
+		
         this.game.add.text(25, 165, "5/5", {font: "20px Arial"});
         this.currentRoom = this.rooms[0];
         this.roomDisplay = this.game.add.text(720, 30, this.currentRoom.name, {font: "20px Arial"});
@@ -60,6 +62,15 @@ class Main extends Phaser.State {
         for(var i = 0; i < this.objects.length; i++){
             var object = this.objects[i];
             this.game.physics.arcade.overlap(this.player.sprite, object.sprite, object.action, null, this);
+        }
+
+        for(var i = 0; i < this.objects.length; i++)
+        {
+            var object = this.objects[i];
+            if(object.update != undefined)
+            {
+                object.update(this.playArea);
+            }
         }
         
     
@@ -140,7 +151,10 @@ class Main extends Phaser.State {
         }
         for(var i = 0; i < this.objects.length; i++){
             var object = this.objects[i];
-            object.destroy();
+            if(object.destroy != undefined)
+            {
+                object.destroy();
+            }
         }
         this.objects = [];
         this.doors = [];
@@ -162,6 +176,9 @@ class Main extends Phaser.State {
         switch(type) {
             case "fire":
                 newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos);
+                break;
+            case "monster":
+                newObject = new Monster(this.game, this.player, 'monster', 'monster_', object.x_pos, object.y_pos, 370);
                 break;
             case "todo":
                 newObject = null;
