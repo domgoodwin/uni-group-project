@@ -1,0 +1,40 @@
+version: 2
+jobs:
+  deploy-dev:
+    machine:
+      enabled: true
+    working_directory: ~/group-project
+    steps:      
+      - checkout
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy
+          command: 'aws s3 sync ${source}/ s3://${bucket}-dev --region eu-west-2 --acl public-read'
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/group-project
+    steps:      
+      - checkout
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy
+          command: 'aws s3 sync ${source}/ s3://${bucket} --region eu-west-2 --acl public-read'
+workflows:
+  version: 2
+  deploy-only-dev:
+    jobs:
+      - deploy-dev:
+            filters:
+                branches:
+                    only: dev
+  deploy-only:
+    jobs:
+      - deploy:
+            filters:
+                branches:
+                    only: master

@@ -3,18 +3,43 @@
         "id": "entrance",
         "name": "Entrance",
         "floor": "#FFFFFF",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": "hall",
             "east": null,
             "south": null,
             "west": null
-        }
+        },
+        "objects": [
+            {
+                "name": "key-old",
+                "type": "key",
+                "x_pos": 300,
+                "y_pos": 300
+            },
+            {
+                "name": "pickaxe",
+                "type": "pickaxe",
+                "x_pos": 600,
+                "y_pos": 300
+            },
+            {
+                "name": "speed_buff",
+                "type": "buff",
+                "x_pos": 400,
+                "y_pos": 200,
+                "effect": "speed"
+            }
+        ]
     },
     {
         "id": "hall",
         "name": "Hallway",
         "floor": "#23480f",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": "stairs",
             "east": "livingRoom",
             "south": "entrance",
@@ -40,40 +65,79 @@
         "id": "stairs",
         "name": "Stairs",
         "floor": "#8B4513",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": null,
             "east": null,
             "south": "hall",
             "west": null
-        }
+        },
+        "objects": [
+            {
+                "name": "random_fire",
+                "type": "fire",
+                "x_pos": 250,
+                "y_pos": 250
+            }
+        ]
     },
     {
         "id": "livingRoom",
         "name": "Living Room",
         "floor": "#800000",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": "gamesRoom",
             "east": null,
             "south": null,
             "west": "hall"
-        }
+        },
+        "objects": [
+            {
+                "name": "random_fire",
+                "type": "fire",
+                "x_pos": 250,
+                "y_pos": 250
+            }
+        ]
     },
     {
         "id": "diningRoom",
         "name": "Dining Room",
         "floor": "#9E3F00",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": "kitchen",
             "east": "hall",
             "south": null,
             "west": null
-        }
+        },
+        "objects": [
+            {
+                "name": "str_buff",
+                "type": "buff",
+                "x_pos": 250,
+                "y_pos": 250,
+                "effect": "strength"
+            },
+            {
+                "name": "rock_basement",
+                "type": "rock",
+                "x_pos": 500,
+                "y_pos": 500
+            }
+        ]
     },
     {
         "id": "gamesRoom",
         "name": "Games Room",
         "floor": "#00B521",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": "study",
             "east": null,
             "south": "livingRoom",
@@ -84,18 +148,20 @@
         "id": "kitchen",
         "name": "Kitchen",
         "floor": "#DDDDDD",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": "conservatory",
             "east": null,
             "south": "diningRoom",
             "west": null
         },
-        "objects":[
+        "objects": [
             {
-                "name":"kitchen_fire",
-                "type":"fire",
-                "x_pos":200,
-                "y_pos":500
+                "name": "normal_chest",
+                "type": "chest",
+                "x_pos": 200,
+                "y_pos": 500
             }
         ]
     },
@@ -103,7 +169,9 @@
         "id": "study",
         "name": "Study",
         "floor": "#CC5F7C",
-        "doors":{
+        "music": "ambient-spooky-2",
+        "locked": true,
+        "doors": {
             "north": null,
             "east": null,
             "south": "gamesRoom",
@@ -114,7 +182,9 @@
         "id": "conservatory",
         "name": "Conservatory",
         "floor": "#95E2E2",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": null,
             "east": "garden",
             "south": "kitchen",
@@ -125,7 +195,9 @@
         "id": "garden",
         "name": "Garden",
         "floor": "#7FEF00",
-        "doors":{
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
             "north": null,
             "east": "study",
             "south": null,
