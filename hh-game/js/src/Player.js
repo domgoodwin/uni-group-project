@@ -41,6 +41,7 @@ export default class{
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     }
 
+    // Damages the player the amount provided
     damage(amount){
         if(this.game.time.now > this.lastDamage){
             this.health -= amount;
@@ -49,6 +50,7 @@ export default class{
         }
     }
 
+    // Updates animation, checks if dmg cooldown still on
     updateAnimation(animation, start){
         if(this.game.time.now > this.lastDamage){
             if(start){
@@ -59,6 +61,7 @@ export default class{
         }
     }
 
+    // Called every Update loop to update information about player
     tick(){
         if(this.effect.includes("strength")){
             this.sprite.tint = 0xFF0000;

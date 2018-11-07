@@ -19,16 +19,18 @@ export default class Rock extends Object{
         this.sprite.alpha = 1;
         this.sprite.destroy();
     }
-
+    
     remove(){
         super.remove();
-        console.log("Destroying fire");
+        console.log("Destroying Rock");
         this.sprite.animations.destroy();
         this.sprite.destroy(true);
         this.sprite = null;
         console.log(this.sprite);
     }
 
+    // On collision with Rock Action is called
+    // Checks if player can destroy
     action(){
         if(this.player.inventory.includes("pickaxe")){
             console.log("Destroy rock");
