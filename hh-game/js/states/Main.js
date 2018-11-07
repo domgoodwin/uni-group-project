@@ -15,8 +15,10 @@ export default class Main extends Phaser.State {
     create() {
 
         // this.game.add.plugin(PhaserInput.Plugin);
-        console.log("Game starting: " + this.in_rooms)
+        console.log("Game starting:")
+        // console.log(this.in_rooms);
         this.rooms = JSON.parse(this.in_rooms);
+        this.game.in_rooms = this.in_rooms;
         this.roomObjects = {};
         this.debug = false;
         this.currentRoomJson = null;

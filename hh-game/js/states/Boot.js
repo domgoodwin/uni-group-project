@@ -1,7 +1,10 @@
 export default class Boot extends Phaser.State {
     init(in_rooms) {
-        console.log("boot init:"+in_rooms);
-        this.in_rooms = in_rooms;
+        if(this.game.in_rooms){
+            this.in_rooms = this.game.in_rooms;
+        } else {
+            this.in_rooms = in_rooms;
+        }
     }
 
     preload() {

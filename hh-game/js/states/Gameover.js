@@ -1,7 +1,6 @@
 class Gameover extends Phaser.State {
 
     create(in_rooms) {
-        console.log("GAMEOVER");
         this.in_rooms = in_rooms;
         this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Game Over!", {font: "20px Arial"});
         this.finishedLoadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Press Space to restart", { font: "25px Arial", fill: "#ffffff", align: "center" });
