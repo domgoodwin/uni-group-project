@@ -34,7 +34,7 @@ export default class Main extends Phaser.State {
         this.player.spawn();
         this.game.add.sprite(0, 0, 'room-0');
         this.game.add.text(715, 567, VERSION, {font: "20px Arial"});
-        this.game.add.text(25, 65, "S: "+this.player.speed, {font: "20px Arial"});
+        this.speedText = this.game.add.text(25, 65, "S: "+this.player.speed, {font: "20px Arial"});
         this.displayText = this.game.add.text(25, 115, "H: "+this.player.health, {font: "20px Arial"});
         this.invText = this.game.add.text(25, 165, this.player.inventoryDisplay, {font: "20px Arial"});
         this.currentRoomJson = this.rooms[0];
@@ -50,6 +50,7 @@ export default class Main extends Phaser.State {
 
         this.checkKeyboard();
         this.checkDebug();
+        this.player.tick();
 
         // Check if moving room
         for(var i = 0; i < this.room.doors.length && this.game.time.now > this.lastZoneMove + 1000; i++){
@@ -60,6 +61,8 @@ export default class Main extends Phaser.State {
 
         this.displayText.setText("H: "+this.player.health);
         this.invText.setText(this.player.inventoryDisplay);
+        this.speedText.setText("S: "+this.player.speed);
+
 
     
     }
@@ -91,9 +94,6 @@ export default class Main extends Phaser.State {
         if (nextRoom.locked == true && this.player.inventory.includes("key-old") == false ) {
             this.room.showText("Door is locked");
             return;
-        } else if (nextRoom.locked == true) {
-            this.room.showText("Unlocked room");
-            this.player.removeItem("key-old");
         }
 
         this.currentRoomJson = nextRoom;
@@ -106,6 +106,9 @@ export default class Main extends Phaser.State {
             this.room.render(door.name);
         } else {
             this.room = new Room(this.game, this.currentRoomJson, this.player, door.name);
+        }
+        if(this.currentRoomJson.locked == true){
+            this.room.showText("Unlocked room", "top");
         }
         this.room.showText(this.currentRoomJson.name);
 

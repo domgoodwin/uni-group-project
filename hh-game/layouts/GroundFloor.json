@@ -17,6 +17,19 @@
                 "type": "key",
                 "x_pos": 300,
                 "y_pos": 300
+            },
+            {
+                "name": "pickaxe",
+                "type": "pickaxe",
+                "x_pos": 600,
+                "y_pos": 300
+            },
+            {
+                "name": "speed_buff",
+                "type": "buff",
+                "x_pos": 400,
+                "y_pos": 200,
+                "effect": "speed"
             }
         ]
     },
@@ -94,7 +107,22 @@
             "east": "hall",
             "south": null,
             "west": null
-        }
+        },
+        "objects": [
+            {
+                "name": "str_buff",
+                "type": "buff",
+                "x_pos": 250,
+                "y_pos": 250,
+                "effect": "strength"
+            },
+            {
+                "name": "rock_basement",
+                "type": "rock",
+                "x_pos": 500,
+                "y_pos": 500
+            }
+        ]
     },
     {
         "id": "gamesRoom",
