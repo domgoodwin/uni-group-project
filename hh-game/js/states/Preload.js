@@ -9,7 +9,7 @@ class Preload extends Phaser.State {
         // Render loading screen
         this.loadingScreenImage = this.game.add.sprite(this.game.world.centreX, this.game.world.centreY, "title-screen-800-600");
         this.loadingScreenImage.anchor.setTo(0);
-        this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Loading...", { font: "25px Arial", fill: "#ffffff", align: "center" });
+        this.loadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Loading...", { font: "25px Arial", fill: "#ffffff", align: "center" });
 
         // Room
         this.game.load.image('room-0', 'img/room-0.png');
@@ -42,7 +42,16 @@ class Preload extends Phaser.State {
     }
 
     create() {
-        this.game.state.start("Main", true, false, this.in_rooms);
+        this.loadingText.destroy();
+        this.finishedLoadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Press Space to play", { font: "25px Arial", fill: "#ffffff", align: "center" });
+        this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
+    }
+
+    update() {
+        if(this.startButton.isDown){
+            this.game.state.start("Main", true, false, this.in_rooms);
+        }
     }
 }
 
