@@ -32,7 +32,7 @@ export default class Rock extends Object{
     action(){
         if(this.player.inventory.includes("pickaxe")){
             console.log("Destroy rock");
-            this.player.effect = null;
+            this.player.effect.splice(this.player.effect.indexOf('strength'), 1);
             console.log(this.room);
             this.room.showText("\"Souls scream from below you\"", "top");
             this.destroy();
