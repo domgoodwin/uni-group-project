@@ -68,7 +68,7 @@ export default class Monster extends Object
         }
         else if(this.state == MONSTER_PURSUIT)
         {
-            Console.log("NPC: State is Pursuit");
+            console.log("NPC: State is Pursuit");
             var playerPos = this.player.sprite.position;
             this.followPoint(playerPos, playArea);
         }
