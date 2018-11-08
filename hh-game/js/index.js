@@ -1,6 +1,8 @@
-
 import Preload from '/js/states/Preload.js';
 import Main from '/js/states/Main.js';
+import Gameover from '/js/states/Gameover.js';
+
+var game = null;
 
 class Game extends Phaser.Game {
 
@@ -11,6 +13,7 @@ class Game extends Phaser.Game {
 		this.in_rooms = in_rooms;
 		this.state.add('Preload', Preload, false);
 		this.state.add('Main', Main, false);
+		this.state.add('Gameover', Gameover, false);
 
 		this.getRandomInt = function(min, max) 
 		{
@@ -18,10 +21,18 @@ class Game extends Phaser.Game {
 		}
 
 		this.state.start('Preload', true, false, in_rooms);
+		this.global = { debug: false };
 	}
 
+	setDebug(){
+		this.global.debug = this.global.debug ? false : true;
+	}
 }
 
-export default function start(in_rooms){
-	new Game(in_rooms);
+export function start(in_rooms){
+	game = new Game(in_rooms);
+}
+
+export function setDebug(){
+	game.setDebug();
 }
