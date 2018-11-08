@@ -10,17 +10,15 @@ export default class Monster extends Object
     {
         super(game, player, type, name, x_pos, y_pos, group);
 
-        this.speed = speed;
-
-        // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
-        this.state = game.getRandomInt(0, 2);
-
+        console.log("NPC: Creating NPC");
+        this.speed = speed;        
+        this.state = game.getRandomInt(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
+        console.log("NPC: Random int for State Control is ", this.state);
     }
 
     followPoint(p, playArea)
     {
         var myPos = this.sprite.position;
-
         var dir = Phaser.Point.subtract(p, myPos);
 
         dir.normalize();
@@ -39,6 +37,7 @@ export default class Monster extends Object
     {
         if(this.state == MONSTER_PATROL)
         {
+            console.log("NPC: State is Patrol");
             if(this.createdPath == undefined)
             {
                 this.createdPath = [];
@@ -69,6 +68,7 @@ export default class Monster extends Object
         }
         else if(this.state == MONSTER_PURSUIT)
         {
+            Console.log("NPC: State is Pursuit");
             var playerPos = this.player.sprite.position;
             this.followPoint(playerPos, playArea);
         }

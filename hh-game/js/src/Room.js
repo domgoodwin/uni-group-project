@@ -1,6 +1,6 @@
 import Fire from '/js/src/objects/Fire.js';
 import Key from '/js/src/objects/Key.js';
-import Npc from '/js/src/objects/Npc.js';
+//import Npc from '/js/src/objects/Npc.js';
 import Chest from '/js/src/objects/Chest.js';
 import Rock from '/js/src/objects/Rock.js';
 import Circle from '/js/src/objects/Circle.js';
@@ -133,9 +133,6 @@ export default class Room {
         switch(type) {
             case "fire":
                 newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos, this.things);
-                break;
-            case "clone":
-                newObject = new Npc(this.game, this.player, 'clone', 'clone-middle', object.x_pos, object.y_pos, this.npcs);
                 break;
             case "mummy":
                 newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos, this.npcs);

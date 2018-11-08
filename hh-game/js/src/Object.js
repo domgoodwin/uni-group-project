@@ -38,7 +38,4 @@ export default class Object {
 
     interact(key, room){
     }
-
-
-
 }

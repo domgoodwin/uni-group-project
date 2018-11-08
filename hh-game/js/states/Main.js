@@ -47,7 +47,6 @@ export default class Main extends Phaser.State {
     
     update() {
         this.room.checkUpdate();
-
         this.checkKeyboard();
         this.checkDebug();
         this.player.tick();
@@ -58,13 +57,9 @@ export default class Main extends Phaser.State {
             this.game.physics.arcade.overlap(this.player.sprite, door, this.actionDoor, null, this);
         }
 
-
         this.displayText.setText("H: "+this.player.health);
         this.invText.setText(this.player.inventoryDisplay);
-        this.speedText.setText("S: "+this.player.speed);
-
-
-    
+        this.speedText.setText("S: "+this.player.speed);    
     }
     
     setupKeyboard(){
@@ -166,8 +161,4 @@ export default class Main extends Phaser.State {
             this.game.debug.reset();
         }
     }
-
 }
-
-
-
