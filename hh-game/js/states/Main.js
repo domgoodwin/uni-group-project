@@ -61,7 +61,6 @@ export default class Main extends Phaser.State {
             var door = this.room.doors[i];
             this.game.physics.arcade.overlap(this.player.sprite, door, this.actionDoor, null, this);
         }
-
     }
     
     // Setups up the keyboard for what buttons to monitor
@@ -107,7 +106,7 @@ export default class Main extends Phaser.State {
             this.room = this.roomObjects[this.currentRoomJson.id];
             this.room.render(door.name);
         } else {
-            this.room = new Room(this.game, this.currentRoomJson, this.player, door.name);
+            this.room = new Room(this.game, this.currentRoomJson, this.player, door.name, this.playArea);
         }
         if(this.currentRoomJson.locked == true){
             this.room.showText("Unlocked room", "top");
@@ -181,6 +180,3 @@ export default class Main extends Phaser.State {
         }
     }
 }
-
-
-

@@ -21,7 +21,6 @@ class Preload extends Phaser.State {
         this.game.load.audio('ambient-spooky-1', ['audio/bg-audio/PorchCat_-_Moon_Shadow_Grin.mp3', 'audio/bg-audio/PorchCat_-_Moon_Shadow_Grin.ogg']);
         this.game.load.audio('ambient-spooky-2', ["audio/bg-audio/Citizen_X0_-_Ghosts_in_the_wind.mp3", "audio/bg-audio/Citizen_X0_-_Ghosts_in_the_wind.ogg"]);
 
-
         // Objects        
         this.game.load.image('door-ns', 'img/wood-ns.png');
         this.game.load.image('door-ew', 'img/wood-ew.png');
@@ -29,6 +28,7 @@ class Preload extends Phaser.State {
         this.game.load.image('candle-2', 'img/candle2.png');
         this.game.load.image('rock', 'img/rock.png');
         this.game.load.spritesheet('fire', 'img/fire-sprite.png', 34, 40);
+        this.game.load.spritesheet('clone', 'img/player.png', 48, 48);
         this.game.load.spritesheet('chest', 'img/chest.png', 32, 32);
         this.game.load.image('door-ew', 'img/wood-ew.png');        
         this.game.load.script('fire-filter', 'https://cdn.rawgit.com/photonstorm/phaser-ce/master/filters/Fire.js');
@@ -38,7 +38,8 @@ class Preload extends Phaser.State {
 
         // NPCs
         this.game.load.spritesheet('clone', 'img/player.png', 48, 48);
-        this.game.load.spritesheet('mummy', 'img/npc_mummy.png', 37, 45, 18);    
+        this.game.load.spritesheet('mummy', 'img/npc_mummy.png', 37, 45, 18);
+        this.game.load.image('monster', 'img/monster.png');
     }
 
     create() {
