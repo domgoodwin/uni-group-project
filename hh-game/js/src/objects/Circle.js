@@ -54,7 +54,7 @@ export default class Fire extends Object{
     }
 
     action(){
-        this.player.effect = this.effect;
+        this.player.effect.push(this.effect);
         this.destroy();
     }
 }

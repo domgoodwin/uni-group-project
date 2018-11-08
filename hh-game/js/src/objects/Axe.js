@@ -11,7 +11,7 @@ export default class Axe extends Object{
     }
 
     action(){
-        if(this.player.effect == "strength"){
+        if(this.player.effect.includes("strength")){
             this.player.pickupItem(this);
             this.player.sprite.addChild(this.sprite);
             this.sprite.x = 20;

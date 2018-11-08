@@ -4,7 +4,7 @@ import Player from '/js/src/Player.js';
 import Room from '/js/src/Room.js';
 import MusicPlayer from '/js/src/MusicPlayer.js';
 
-const VERSION = "0.20";
+const VERSION = "0.31";
 
 export default class Main extends Phaser.State {
 
@@ -39,17 +39,19 @@ export default class Main extends Phaser.State {
         this.invText = this.game.add.text(25, 165, this.player.inventoryDisplay, {font: "20px Arial"});
         this.currentRoomJson = this.rooms[0];
         this.room = new Room(this.game, this.currentRoomJson, this.player, null);
-        this.roomDisplay = this.game.add.text(720, 30, this.currentRoomJson.name, {font: "20px Arial"});
-    
+        this.roomDisplay = this.game.add.text(560, 15, this.currentRoomJson.name, {font: "20px Arial"});
+        this.setRoomText(this.currentRoomJson.name);
         this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
         this.game.physics.arcade.enable(this.playArea);
     }
     
+    // Called 100times a second
     update() {
+        // Check if any updates are needed
         this.room.checkUpdate();
-
         this.checkKeyboard();
         this.checkDebug();
+        this.setRoomText();
         this.player.tick();
 
         // Check if moving room
@@ -58,15 +60,9 @@ export default class Main extends Phaser.State {
             this.game.physics.arcade.overlap(this.player.sprite, door, this.actionDoor, null, this);
         }
 
-
-        this.displayText.setText("H: "+this.player.health);
-        this.invText.setText(this.player.inventoryDisplay);
-        this.speedText.setText("S: "+this.player.speed);
-
-
-    
     }
     
+    // Setups up the keyboard for what buttons to monitor
     setupKeyboard(){
         this.leftKey = this.game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         this.rightKey = this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
@@ -76,10 +72,13 @@ export default class Main extends Phaser.State {
         this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT, Phaser.Keyboard.UP, Phaser.Keyboard.DOWN, Phaser.Keyboard.SPACEBAR]);    
     }
 
+    // Used when door collision is detected
+    // Creates or uses room based on door link
     actionDoor(sprite, door) {
         this.lastZoneMove = this.game.time.now;
         var nextRoomId = this.currentRoomJson.doors[door.name];
         var nextRoom;
+        // Gets the next room based on the given door
         for (var i = 0; i < this.rooms.length; i++) {
             if (this.rooms[i].id == nextRoomId) {
                 nextRoom = this.rooms[i];
@@ -97,9 +96,10 @@ export default class Main extends Phaser.State {
         }
 
         this.currentRoomJson = nextRoom;
-        this.roomDisplay.setText(this.currentRoomJson.name);
+        this.setRoomText(this.currentRoomJson.name);
         this.roomObjects[this.room.id] = this.room;
         this.room.clearState();
+        // Checks if room has already been loaded and just renders
         if(this.roomObjects[this.currentRoomJson.id]){
             console.log("Rendering already loaded room");
             this.room = this.roomObjects[this.currentRoomJson.id];
@@ -119,9 +119,20 @@ export default class Main extends Phaser.State {
             // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
             this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
         }
-  
     }
 
+    // Sets the text in the room
+    setRoomText(){
+        this.roomDisplay.setText(this.currentRoomJson.name);
+        this.roomDisplay.fontSize = 25;
+        this.roomDisplay.font = "Arial"
+
+        this.displayText.setText("H: "+this.player.health);
+        this.invText.setText(this.player.inventoryDisplay);
+        this.speedText.setText("S: "+this.player.speed);
+    }
+
+    // Checks for any keyboard presses and actions them as such
     checkKeyboard(){
         if(this.player.shooting){
             // Do nothing
@@ -149,6 +160,7 @@ export default class Main extends Phaser.State {
         }
     }
 
+    // Shows debug information if flag is set
     checkDebug(){
         // Debug
         if (this.game.global.debug){
@@ -166,7 +178,6 @@ export default class Main extends Phaser.State {
             this.game.debug.reset();
         }
     }
-
 }
 
 
