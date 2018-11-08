@@ -7,7 +7,7 @@ export default class{
         this.lastShot = 0;
         this.lastDamage = 0;
         this.lastPickup = 0;
-        this.effect = null;
+        this.effect = [];
         this.shooting = false;
         this.state = null;
         this.dir = "left";
@@ -41,6 +41,7 @@ export default class{
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     }
 
+    // Damages the player the amount provided
     damage(amount){
         if(this.game.time.now > this.lastDamage){
             this.health -= amount;
@@ -49,6 +50,7 @@ export default class{
         }
     }
 
+    // Updates animation, checks if dmg cooldown still on
     updateAnimation(animation, start){
         if(this.game.time.now > this.lastDamage){
             if(start){
@@ -59,19 +61,22 @@ export default class{
         }
     }
 
+    // Called every Update loop to update information about player
     tick(){
-        if(this.effect == "strength"){
+        if(this.effect.includes("strength")){
             this.sprite.tint = 0xFF0000;
-        } else if(this.effect == "poison"){
+        } else if(this.effect.includes("poison")){
             this.sprite.tint = 0x00FF00;
-        } else if (this.effect == "speed"){
-            this.speed += 2;
-            this.effect = "";
         } else {
             this.sprite.tint = 0xFFFFFF;
         }
+        if (this.effect.includes("speed")){
+            this.speed += 2;
+            this.effect.splice(this.effect.indexOf('speed'), 1);
+        }
         if(this.health <= 0){
-            this.game.state.start("Gameover", true, false, this.in_rooms);
+            console.log("Player dead")
+            this.game.state.start("Gameover", true, false, this.game.in_rooms);
         }
     }
 

@@ -40,9 +40,7 @@ export default class Room {
         this.createRoom(door);
     }
 
-
-
-
+    // Creates room object for first time, setting up doors
     createRoom(usedDoor){
         console.log("Creating room: "+this.room.id+"/"+door);
         for(var door in this.room.doors){
@@ -72,6 +70,7 @@ export default class Room {
 
     }
 
+    // Used in the Update loop, checks for any object collisions within room
     checkUpdate(){
         // Check object collisions
         for(var i = 0; i < this.objects.length; i++){
@@ -85,24 +84,19 @@ export default class Room {
         }
     }
 
+    // Used when changing room to hide a Room object. 
+    // Hides because state is saved and more efficient
     clearState(){
         for(var i = 0; i < this.doors.length; i++){
             var door = this.doors[i];
-            // door.destroy();
             door.alpha = 0;
         }
-        // this.things.destroy(true);
-        // this.items.destroy(true);
-        // this.npcs.destroy(true);
-        // this.things = this.game.add.group();
-        // this.items = this.game.add.group();
-        // this.npcs = this.game.add.group();
         this.things.alpha = 0;
         this.items.alpha = 0;
         this.npcs.alpha = 0;
-        // this.objects=[];
     }
 
+    // Used to show a room object on screen, even if previously hidden
     render(usedDoor){
         this.game.stage.backgroundColor = this.room.floor;
 
@@ -127,6 +121,7 @@ export default class Room {
         this.game.musicPlayer.playMusicForRoom(this.room);
     }
 
+    // Creates an object in the room, switch between the object types
     createObject(object){
         var type = object.type;
         var newObject = null;
@@ -169,7 +164,7 @@ export default class Room {
         this.objects.push(newObject);
     }
 
-
+    // Shows text in the screen somwewhere and then fades
     showText(textToDisplay, pos){
         var top = 0;
         if(pos == "top"){
@@ -192,6 +187,7 @@ export default class Room {
         }
     }
 
+    // Used to check user interaction, key=keyboard button
     interact(key){
         for(var i = 0; i < this.objects.length; i++){
             var object = this.objects[i];
