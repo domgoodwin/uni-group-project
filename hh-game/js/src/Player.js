@@ -75,7 +75,8 @@ export default class{
             this.effect.splice(this.effect.indexOf('speed'), 1);
         }
         if(this.health <= 0){
-            this.game.state.start("Gameover", true, false, this.in_rooms);
+            console.log("Player dead")
+            this.game.state.start("Gameover", true, false, this.game.in_rooms);
         }
     }
 
