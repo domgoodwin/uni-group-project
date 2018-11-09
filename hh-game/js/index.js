@@ -16,12 +16,6 @@ class Game extends Phaser.Game {
 		this.state.add('Preload', Preload, false);
 		this.state.add('Main', Main, false);
 		this.state.add('Gameover', Gameover, false);
-
-		this.getRandomInt = function(min, max) 
-		{
-			return Math.floor(Math.random() * (max - min + 1)) + min;
-		}
-
 		this.state.start('Boot', true, false, in_rooms);
 		this.global = { debug: false };
 	}

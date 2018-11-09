@@ -12,7 +12,7 @@ export default class Monster extends Object
 
         console.log("NPC: Creating NPC");
         this.speed = speed;        
-        this.state = game.getRandomInt(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
+        this.state = game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
         console.log("NPC: Random int for State Control is ", this.state);
     }
 
@@ -37,15 +37,14 @@ export default class Monster extends Object
     {
         if(this.state == MONSTER_PATROL)
         {
-            console.log("NPC: State is Patrol");
             if(this.createdPath == undefined)
             {
                 this.createdPath = [];
-                var numPoints = this.game.getRandomInt(3, 8);
+                var numPoints = this.game.rnd.integerInRange(3, 8);
                 for(var i = 0; i < numPoints; i++)
                 {
-                    var point = new Phaser.Point(this.game.getRandomInt(playArea.x, playArea.x + playArea.width),
-                                                this.game.getRandomInt(playArea.y, playArea.y + playArea.height));
+                    var point = new Phaser.Point(this.game.rnd.integerInRange(playArea.x, playArea.x + playArea.width),
+                                                this.game.rnd.integerInRange(playArea.y, playArea.y + playArea.height));
 
                     this.createdPath.push(point);
                 }
@@ -68,11 +67,16 @@ export default class Monster extends Object
         }
         else if(this.state == MONSTER_PURSUIT)
         {
-            console.log("NPC: State is Pursuit");
             var playerPos = this.player.sprite.position;
             this.followPoint(playerPos, playArea);
         }
-    }    
+    }
+
+    action()
+    {
+        console.log("NPC: Player collision with Monster");
+        this.player.damage(1);
+    }
 
     destroy()
     {
