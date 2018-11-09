@@ -8,7 +8,8 @@
             "north": "hall",
             "east": null,
             "south": null,
-            "west": null
+            "west": null,
+            "extra": "garden"
         },
         "objects": [
             {
@@ -16,6 +17,12 @@
                 "type": "key",
                 "x_pos": 300,
                 "y_pos": 300
+            },
+            {
+                "name": "chute_normal",
+                "type": "chute",
+                "x_pos": 250,
+                "y_pos": 200
             }
         ]
     },
@@ -68,7 +75,8 @@
             "north": "gamesRoom",
             "east": null,
             "south": null,
-            "west": "hall"
+            "west": "hall",
+            "extra": "conservatory"
         },
         "objects": [
             {
@@ -76,6 +84,12 @@
                 "type": "fire",
                 "x_pos": 250,
                 "y_pos": 250
+            },
+            {
+                "name": "chimney_normal",
+                "type": "chimney",
+                "x_pos": 400,
+                "y_pos": 150
             }
         ]
     },
@@ -144,8 +158,17 @@
             "north": null,
             "east": "garden",
             "south": "kitchen",
-            "west": null
-        }
+            "west": null,
+            "extra": "livingRoom"
+        },
+        "objects": [
+            {
+                "name": "chimney_normal",
+                "type": "chimney",
+                "x_pos": 400,
+                "y_pos": 150
+            }
+        ]
     },
     {
         "id": "garden",
@@ -156,7 +179,16 @@
             "north": null,
             "east": "study",
             "south": null,
-            "west": "conservatory"
-        }
+            "west": "conservatory",
+            "extra": "entrance"
+        },
+        "objects":[
+            {
+                "name": "chute_normal",
+                "type": "chute",
+                "x_pos": 450,
+                "y_pos": 300
+            }
+        ]
     }
 ]

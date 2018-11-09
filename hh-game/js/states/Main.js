@@ -25,6 +25,7 @@ export default class Main extends Phaser.State {
         this.roomDisplay = null;
         this.attack = null;
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        window.actionDoor = this.actionDoor.bind(this);
 
         this.setupKeyboard();
 
@@ -93,7 +94,9 @@ export default class Main extends Phaser.State {
             this.room.showText("Door is locked");
             return;
         } else if (nextRoom.locked == true) {
-            this.room.showText("Unlocked room");
+            var text = this.game.add.text(175, 500, "Room Unlocked", { font: "17px Arial", fill: "#ffffff", align: "center" });
+            this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
+            // this.room.showText("Unlocked room");
             this.player.removeItem("key-old");
         }
 
@@ -110,13 +113,13 @@ export default class Main extends Phaser.State {
         }
         this.room.showText(this.currentRoomJson.name);
 
-        if(this.currentRoomJson.name === 'Library'){
-            var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
-            text.anchor.set(0.15);
+        // if(this.currentRoomJson.name === 'Library'){
+            // var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
+            // text.anchor.set(0.15);
 
             // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
-            this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
-        }
+            // this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
+        // }
 
 
   
