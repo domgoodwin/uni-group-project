@@ -3,3 +3,5 @@ node_modules
 /.vs/config/applicationhost.config
 /.vs/ProjectSettings.json
 /.vs/slnx.sqlite
+/.vs/slnx.sqlite-journal
+/.vs/VSWorkspaceState.json
