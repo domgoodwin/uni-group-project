@@ -79,6 +79,12 @@
                 "type": "fire",
                 "x_pos": 250,
                 "y_pos": 250
+            },
+            {
+                "name": "coffin",
+                "type": "coffin",
+                "x_pos": 500,
+                "y_pos": 200
             }
         ]
     },

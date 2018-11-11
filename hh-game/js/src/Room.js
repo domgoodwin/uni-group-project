@@ -6,6 +6,7 @@ import Rock from '/js/src/objects/Rock.js';
 import Circle from '/js/src/objects/Circle.js';
 import Axe from '/js/src/objects/Axe.js';
 import Monster from '/js/src/objects/Monster.js';
+import Coffin from '/js/src/objects/Coffin.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -152,6 +153,12 @@ export default class Room {
                 break;
             case "monster":
                 newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370);
+                break;
+            case "coffin":
+                newObject = new Coffin(this.game, this.player, 'coffin', 'coffin', object.x_pos, object.y_pos, this.things, this);
+                break;
+            case "ghost":
+                newObject = new Monster(this.game, this.player, 'ghost', object.name, object.x_pos, object.y_pos, this.npcs, 370);
                 break;
             default:
                 newObject = null;
