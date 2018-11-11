@@ -23,7 +23,6 @@ export default class Coffin extends Object{
             this.sprite.animations.play('open', 1.2, false);
 
             this.isOpen = true;
-            this.sleep(1500);
             this.spawnGhost();
         }
     }
