@@ -25,7 +25,7 @@
     document.getElementById("btnDebug").onclick = function () {setDebug();};
 
 
-$.get('layouts/GroundFloor.json', function(data) {
+$.get('layouts/FloorPlan.json', function(data) {
     console.log("start")
    var rooms = data;
    start(rooms);
