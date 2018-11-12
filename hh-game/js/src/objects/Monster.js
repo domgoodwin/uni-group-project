@@ -12,8 +12,16 @@ export default class Monster extends Object
 
         console.log("NPC: Creating NPC");
         this.speed = speed;        
+        this.health = 5;
+        this.lastHit = 0;
+        this.dead = false;
         this.state = game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
         console.log("NPC: Random int for State Control is ", this.state);
+
+        this.damage = this.damage.bind(this);
+        this.remove = this.remove.bind(this);
+
+
     }
 
     followPoint(p, playArea)
@@ -33,8 +41,17 @@ export default class Monster extends Object
         }
     }
 
-    update(playArea)
+    tick(playArea)
     {
+        // Remove if dead
+        if(this.health <= 0){
+            this.remove();
+            return;
+        }
+        // Reset tint after damage
+        if(this.game.time.now > this.lastHit){
+            this.sprite.tint = 0xFFFFFF;
+        }
         if(this.state == MONSTER_PATROL)
         {
             if(this.createdPath == undefined)
@@ -78,9 +95,23 @@ export default class Monster extends Object
         this.player.damage(1);
     }
 
-    destroy()
+    remove()
     {
-        this.sprite.destroy(true);
-        this.sprite = null;
+        if(this.sprite){
+            this.sprite.alpha = 0;
+            this.sprite.destroy(true);
+            this.sprite = null;
+        }
+
+    }
+
+    damage(){
+        if(this.game.time.now > this.lastHit){
+            console.log("DAMAGE HIT")
+            this.lastHit = this.game.time.now + 1000;
+            this.health -= 1;
+            this.sprite.tint = 0x000000;
+            console.log(this.health);
+        }
     }
 }

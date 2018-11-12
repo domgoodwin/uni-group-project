@@ -37,7 +37,6 @@ export default class Room {
         this.render = this.render.bind(this);
         this.showText = this.showText.bind(this);
 
-
         this.createRoom(door);
     }
 
@@ -77,11 +76,11 @@ export default class Room {
         for(var i = 0; i < this.objects.length; i++){
             var object = this.objects[i];
             this.game.physics.arcade.overlap(this.player.sprite, object.sprite, object.action, null, this);
-            object.tick();
-        }
-        for(var i = 0; i < this.npcs.length; i++){
-            var npc = this.npcs[i];
-            object.update(this.playArea);
+            object.tick(this.playArea);
+            // Check object collisions with projectiles and effect if needed
+            for(var j = 0; j < this.player.projectiles.length; j++){
+                this.game.physics.arcade.overlap(object.sprite, this.player.projectiles[j].sprite, object.damage, null, this);
+            }
         }
     }
 
