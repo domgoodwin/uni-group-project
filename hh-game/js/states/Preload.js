@@ -24,7 +24,8 @@ class Preload extends Phaser.State {
         this.game.load.spritesheet('key', 'img/key.png', 40, 12);
         // NPCs
         this.game.load.spritesheet('clone', 'img/player.png', 48, 48);
-        this.game.load.spritesheet('mummy', 'img/npc_mummy.png', 37, 45, 18);    
+        this.game.load.spritesheet('mummy', 'img/npc_mummy.png', 37, 45, 18);  
+        this.game.load.spritesheet('ghost', 'img/ghost_npc.png', 37, 45, 18)  
     }
 
     create() {

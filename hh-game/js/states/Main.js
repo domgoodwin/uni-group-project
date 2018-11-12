@@ -176,6 +176,8 @@ export default class Main extends Phaser.State {
             case "key":
                 newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos);
                 break;
+            case "ghost":
+                newObject - new Npc(this.game, this.player, 'ghost', 'ghost-middle', object.x_pos, object.y_pos);
             default:
                 newObject = null;
         }

@@ -17,6 +17,12 @@
                 "x_pos":300,
                 "y_pos":300
             }
+            {
+                "name":"ghost",
+                "type":"ghost",
+                "x_pos":300,
+                "y_pos":300
+            }
         ]
     },
     {
