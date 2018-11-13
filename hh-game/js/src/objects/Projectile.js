@@ -13,8 +13,10 @@ export default class Projectile extends Object{
         this.sprite.frame = 49;
         this.sprite.body.setSize(50, 50, 0, -25);
         this.tick = this.tick.bind(this);
+        this.destroy = this.destroy.bind(this);
         this.spawned = this.game.time.now;
     }
+    
 
     tick(){
         // console.log("tick"+this.dir)

@@ -2,6 +2,8 @@ import Boot from '/js/states/Boot.js';
 import Preload from '/js/states/Preload.js';
 import Main from '/js/states/Main.js';
 import Gameover from '/js/states/Gameover.js';
+import Win from '/js/states/Win.js';
+
 
 var game = null;
 
@@ -16,6 +18,7 @@ class Game extends Phaser.Game {
 		this.state.add('Preload', Preload, false);
 		this.state.add('Main', Main, false);
 		this.state.add('Gameover', Gameover, false);
+		this.state.add('Win', Win, false);
 		this.state.start('Boot', true, false, in_rooms);
 		this.global = { debug: false };
 	}

@@ -13,7 +13,7 @@ export default class Main extends Phaser.State {
     }
 
     create() {
-
+        this.game.global.startTime = this.game.time.now;
         // this.game.add.plugin(PhaserInput.Plugin);
         console.log("Game starting:")
         // console.log(this.in_rooms);

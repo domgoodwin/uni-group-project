@@ -6,12 +6,13 @@ var MONSTER_PATROL = 2;
 
 export default class Monster extends Object
 {
-    constructor(game, player, type, name, x_pos, y_pos, group, speed)
+    constructor(game, player, type, name, x_pos, y_pos, group, speed, boss)
     {
         super(game, player, type, name, x_pos, y_pos, group);
 
         console.log("NPC: Creating NPC");
         this.speed = speed;        
+        this.isBoss = boss;
         this.health = 5;
         this.lastHit = 0;
         this.dead = false;
@@ -45,6 +46,11 @@ export default class Monster extends Object
     {
         // Remove if dead
         if(this.health <= 0){
+            console.log("Dead")
+            console.log(this)
+            if(this.isBoss){
+                this.game.state.start("Win", true, false, this.game.in_rooms);
+            }
             this.remove();
             return;
         }

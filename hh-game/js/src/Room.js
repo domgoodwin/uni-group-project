@@ -94,6 +94,9 @@ export default class Room {
         this.things.alpha = 0;
         this.items.alpha = 0;
         this.npcs.alpha = 0;
+        for(var i = 0; i < this.player.projectiles.length; i++){
+            this.player.projectiles[i].destroy();
+        }
     }
 
     // Used to show a room object on screen, even if previously hidden
@@ -151,7 +154,10 @@ export default class Room {
                 newObject = new Axe(this.game, this.player, 'axe', 'axe', object.x_pos, object.y_pos, this.items, this, false);
                 break;
             case "monster":
-                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370);
+                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                break;
+            case "boss":
+                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
                 break;
             case "coffin":
                 newObject = new Coffin(this.game, this.player, 'coffin', 'coffin', object.x_pos, object.y_pos, this.things, this);

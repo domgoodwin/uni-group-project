@@ -84,6 +84,10 @@ export default class{
             this.game.state.start("Gameover", true, false, this.game.in_rooms);
         }
 
+        if(this.game.time.now > this.lastShot){
+            this.shooting = false;
+        }
+
         // Tick projectiles and remove destroyed ones
         for(var i = 0; i < this.projectiles.length; i++) {
             var projectile = this.projectiles[i]
@@ -136,13 +140,12 @@ export default class{
 
 
     shoot() {
-        if(this.game.time.now > this.lastShot){
+        if(this.game.time.now > this.lastShot && this.state == null){
             this.projectiles.push(new Projectile(this.game, this, 'circle', 'bullet', this.sprite.x, this.sprite.y, this.sprites, this.dir, this.playArea));
             this.shooting = true;
             var attackAnimation = this.dir == "left" ? "lattack" : "rattack";
-            console.log("playing:"+attackAnimation);
             this.sprite.animations.play(attackAnimation, 10, false);
-            this.lastShot = this.game.time.now + 250;
+            this.lastShot = this.game.time.now + 1000;
         }
     } 
 
