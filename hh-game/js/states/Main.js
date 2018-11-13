@@ -13,7 +13,7 @@ export default class Main extends Phaser.State {
     }
 
     create() {
-
+        this.game.global.startTime = this.game.time.now;
         // this.game.add.plugin(PhaserInput.Plugin);
         console.log("Game starting:")
         // console.log(this.in_rooms);
@@ -31,8 +31,8 @@ export default class Main extends Phaser.State {
         this.game.musicPlayer = new MusicPlayer(this.game);
 
         this.setupKeyboard();
-
-        this.player = new Player(this.game);
+        this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
+        this.player = new Player(this.game, this.playArea);
         this.player.spawn();
         this.game.add.sprite(0, 0, 'room-0');
         this.game.add.text(715, 567, VERSION, {font: "20px Arial"});
@@ -43,7 +43,6 @@ export default class Main extends Phaser.State {
         this.room = new Room(this.game, this.currentRoomJson, this.player, null);
         this.roomDisplay = this.game.add.text(560, 15, this.currentRoomJson.name, {font: "20px Arial"});
         this.setRoomText(this.currentRoomJson.name);
-        this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
         this.game.physics.arcade.enable(this.playArea);
     }
     
@@ -172,7 +171,12 @@ export default class Main extends Phaser.State {
                 this.game.debug.body(this.room.doors[i]);
             }
             for(var i = 0; i < this.room.objects.length; i++){
-                this.game.debug.body(this.room.objects[i].sprite);
+                if(this.room.objects[i].sprite){
+                    this.game.debug.body(this.room.objects[i].sprite);
+                }
+            }
+            for(var i = 0; i < this.player.projectiles.length; i++){
+                this.game.debug.body(this.player.projectiles[i].sprite);
             }
         }
         else {
