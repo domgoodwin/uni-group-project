@@ -46,7 +46,7 @@ export default class Chest extends Object{
     }
 
     interact(key, room){
-        if(room.lastInteraction > this.game.time.now || this.player.state != null){
+        if(room.lastInteraction > this.game.time.now || this.player.state != null || this.opened < this.game.time.now){
             return;
         }
         console.log("checking chest"+key)
