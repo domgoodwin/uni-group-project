@@ -10,22 +10,16 @@
             "east": null,
             "south": null,
             "west": null,
-            "extra": "garden"
+            "extra": "kitchen"
         },
         "objects": [
-            {
-                "name": "key-old",
-                "type": "key",
-                "x_pos": 300,
-                "y_pos": 300
-            },
             {
                 "name": "chute_normal",
                 "type": "chute",
                 "x_pos": 250,
                 "y_pos": 200
-	    },
-	    {
+	        },
+	        {
                 "name": "pickaxe",
                 "type": "pickaxe",
                 "x_pos": 600,
@@ -37,6 +31,13 @@
                 "x_pos": 400,
                 "y_pos": 200,
                 "effect": "speed"
+            },
+            {
+                "name": "blackhole_normal",
+                "type": "blackhole",
+                "x_pos": 350,
+                "y_pos": 250,
+                "effect": "teleport"
             }
         ]
     },
@@ -108,12 +109,6 @@
                 "type": "fire",
                 "x_pos": 250,
                 "y_pos": 250
-            },
-            {
-                "name": "chimney_normal",
-                "type": "chimney",
-                "x_pos": 400,
-                "y_pos": 150
             }
         ]
     },
@@ -168,7 +163,9 @@
             "north": "conservatory",
             "east": null,
             "south": "diningRoom",
-            "west": null
+            "west": null,
+            "extra": "livingRoom", 
+            "return": "entrance"
         },
         "objects": [
             {
@@ -176,6 +173,20 @@
                 "type": "chest",
                 "x_pos": 200,
                 "y_pos": 500
+            },
+            {
+                "name": "blackhole_normal",
+                "type": "blackhole",
+                "x_pos": 350,
+                "y_pos": 250,
+                "effect": "teleport"
+            },
+            {
+                "name": "blackhole_return",
+                "type": "blackhole_return",
+                "x_pos": 200,
+                "y_pos": 450,
+                "effect": "teleport"
             }
         ]
     },
@@ -204,15 +215,7 @@
             "south": "kitchen",
             "west": null,
             "extra": "livingRoom"
-        },
-        "objects": [
-            {
-                "name": "chimney_normal",
-                "type": "chimney",
-                "x_pos": 400,
-                "y_pos": 150
-            }
-        ]
+        }
     },
     {
         "id": "garden",
@@ -228,6 +231,12 @@
             "extra": "entrance"
         },
         "objects":[
+            {
+                "name": "key-old",
+                "type": "key",
+                "x_pos": 300,
+                "y_pos": 300
+            },
             {
                 "name": "chute_normal",
                 "type": "chute",

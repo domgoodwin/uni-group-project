@@ -115,13 +115,14 @@ export default class Main extends Phaser.State {
         this.room.showText(this.currentRoomJson.name);
 
         if(this.currentRoomJson.name === 'Library'){
-             var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
-             text.anchor.set(0.15);
+            var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "13px Arial", fill: "#ffffff", align: "center" });
+            text.anchor.set(0.15);
 
             // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
-             this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
-         }
-
+            this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
+        }
+    }
+    
     // Sets the text in the room
     setRoomText(){
         this.roomDisplay.setText(this.currentRoomJson.name);

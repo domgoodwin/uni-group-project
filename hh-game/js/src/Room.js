@@ -3,11 +3,13 @@ import Key from '/js/src/objects/Key.js';
 //import Npc from '/js/src/objects/Npc.js';
 import Chest from '/js/src/objects/Chest.js';
 import Chute from '/js/src/objects/Chute.js';
-import Chimney from '/js/src/objects/Chimney.js';
+import Blackhole from '/js/src/objects/Blackhole.js';
+import BlackholeReturn from  '/js/src/objects/BlackholeReturn.js';
 import Rock from '/js/src/objects/Rock.js';
 import Circle from '/js/src/objects/Circle.js';
 import Axe from '/js/src/objects/Axe.js';
 import Monster from '/js/src/objects/Monster.js';
+// import Chimney from '/js/src/objects/Chimney.js';
 
 const NORTH_DOOR = [343, 50]
 const EAST_DOOR = [670, 225]
@@ -46,7 +48,7 @@ export default class Room {
     createRoom(usedDoor){
         console.log("Creating room: "+this.room.id+"/"+door);
         for(var door in this.room.doors){
-            if (door != "extra"){
+            if (door != "extra" && door != "return"){
                 // Check if no door destination
                 if (! this.room.doors[door])
                     continue;
@@ -142,6 +144,12 @@ export default class Room {
                 break;
             case "chute":
                 newObject = new Chute(this.game, this.player, 'chute', 'chute-normal', object.x_pos, object.y_pos, this.things, true);
+                break;
+            case "blackhole":
+                newObject = new Blackhole(this.game, this.player, 'blackhole', 'blackhole_normal', object.x_pos, object.y_pos, this.things, true, object.effect);
+                break;
+            case "blackhole_return":
+                newObject = new BlackholeReturn(this.game, this.player, 'blackhole', 'blackhole_return', object.x_pos, object.y_pos, this.things, true, object.effect);
                 break;
             case "chinmey":
                 newObject = new Chimney(this.game, this.player, 'chimney', 'chimney-normal', object.x_pos, object.y_pos, this.things, true);
