@@ -1,8 +1,11 @@
+import Projectile from '/js/src/objects/Projectile.js'
+
 export default class{
-    constructor(game){
+    constructor(game, playArea){
         this.game = game;
         this.sprite = null;
         this.speed = 4;
+        this.playArea = playArea;
         this.health = 5;
         this.lastShot = 0;
         this.lastDamage = 0;
@@ -13,9 +16,10 @@ export default class{
         this.dir = "left";
         this.setupPlayer();
         this.inventory = [];
+        this.projectiles = [];
+        this.sprites = this.game.add.group();
         this.inventoryDisplay = "[ ]";
         this.tick = this.tick.bind(this);
-
     }
 
     spawn(){
@@ -39,6 +43,7 @@ export default class{
         rattack.onComplete.add(this.attackFinished, this);
         this.sprite.scale.setTo(2);
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+        this.sprite.body.setSize(25, 45, 0, 0);
     }
 
     // Damages the player the amount provided
@@ -78,6 +83,19 @@ export default class{
             console.log("Player dead")
             this.game.state.start("Gameover", true, false, this.game.in_rooms);
         }
+
+        if(this.game.time.now > this.lastShot){
+            this.shooting = false;
+        }
+
+        // Tick projectiles and remove destroyed ones
+        for(var i = 0; i < this.projectiles.length; i++) {
+            var projectile = this.projectiles[i]
+            projectile.tick();
+            if(projectile.destroyed == true){
+                this.projectiles.splice(this.projectiles.indexOf(projectile), 1);
+            }
+        }
     }
 
 
@@ -85,7 +103,6 @@ export default class{
     move(playArea, dir){
         var x = 0;
         var y = 0;
-        this.dir = dir;
         switch(dir) {
             case "up":
                 y -= this.speed;
@@ -110,7 +127,8 @@ export default class{
             default:
                 break;
         } 
-        if(this.dir == "stop"){
+        this.dir = dir == "stop" ? this.dir : dir;
+        if(dir == "stop"){
             this.sprite.animations.stop("rwalk");
             this.sprite.animations.stop("lwalk");
         }
@@ -122,12 +140,12 @@ export default class{
 
 
     shoot() {
-        if(this.game.time.now > this.lastShot){
+        if(this.game.time.now > this.lastShot && this.state == null){
+            this.projectiles.push(new Projectile(this.game, this, 'circle', 'bullet', this.sprite.x, this.sprite.y, this.sprites, this.dir, this.playArea));
             this.shooting = true;
             var attackAnimation = this.dir == "left" ? "lattack" : "rattack";
-            console.log("playing:"+attackAnimation);
             this.sprite.animations.play(attackAnimation, 10, false);
-            this.lastShot = this.game.time.now + 250;
+            this.lastShot = this.game.time.now + 1000;
         }
     } 
 

@@ -25,7 +25,7 @@
     document.getElementById("btnDebug").onclick = function () {setDebug();};
 
 
-$.get('layouts/GroundFloor.json', function(data) {
+$.get('layouts/FloorPlan.json', function(data) {
     console.log("start")
    var rooms = data;
    start(rooms);
@@ -44,7 +44,7 @@ $.get('layouts/GroundFloor.json', function(data) {
 <h1>Relax, it's just a house</h1>
 <h2>A snakes and ladders inspired, horror house escape game</h2>
 <h3>Controls:</h3>
-<p>WASD for movement, space for ACTION</p>
+<p>Arrow keys for movement, space for ACTION</p>
 <h3>Credits:</h3>
 <p>Produced for Aston University Group Project module by:
 <br>Alistair, Amy, Colm, Chloe, Dom, Henry, Tyler and Vishal<p>
