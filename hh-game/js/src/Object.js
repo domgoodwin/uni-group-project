@@ -10,7 +10,9 @@ export default class Object {
         this.x_pos = x_pos;
         this.y_pos = y_pos;
         this.available = true;
+        this.setupObject = this.setupObject.bind(this);
         this.setupObject();
+        this.interact = this.interact.bind(this);
     }
 
     setupObject(){
@@ -30,5 +32,10 @@ export default class Object {
 
     }
 
+    tick(){
+        
+    }
 
+    interact(key, room){
+    }
 }

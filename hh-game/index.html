@@ -1,6 +1,7 @@
 <!doctype html> 
 <html lang="en"> 
-<head> 
+<head>
+    <link rel="shortcut icon" href="img/favicon.ico">
 	<meta charset="UTF-8" />
 	<title>Phaser Game</title>
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
@@ -24,7 +25,7 @@
     document.getElementById("btnDebug").onclick = function () {setDebug();};
 
 
-$.get('layouts/GroundFloor.json', function(data) {
+$.get('layouts/FloorPlan.json', function(data) {
     console.log("start")
    var rooms = data;
    start(rooms);
@@ -38,5 +39,18 @@ $.get('layouts/GroundFloor.json', function(data) {
 </div>
 
 <input id="btnDebug" type="button" value="debug" />
+<input id="btnReload" value="Reload" onClick="window.location.reload()">
+<div style="float: right; word-wrap: break-word; width: 300px">
+<h1>Relax, it's just a house</h1>
+<h2>A snakes and ladders inspired, horror house escape game</h2>
+<h3>Controls:</h3>
+<p>Arrow keys for movement, space for ACTION</p>
+<h3>Credits:</h3>
+<p>Produced for Aston University Group Project module by:
+<br>Alistair, Amy, Colm, Chloe, Dom, Henry, Tyler and Vishal<p>
+<h3>Music Credits:</h3>
+<p>Moon Shadow Grin by PorchCat
+<br>Ghosts in the wind by Citizen_X0</p>
+</div>
 </body>
 </html>
