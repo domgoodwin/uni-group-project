@@ -13,7 +13,7 @@ import Monster from '/js/src/objects/Monster.js';
 import Coffin from '/js/src/objects/Coffin.js';
 
 const NORTH_DOOR = [343, 50]
-const EAST_DOOR = [670, 225]
+const EAST_DOOR = [660, 225]
 const SOUTH_DOOR = [343, 522]
 const WEST_DOOR = [100, 225]
 export default class Room {
