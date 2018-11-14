@@ -16,7 +16,7 @@ export default class Monster extends Object
         this.health = 5;
         this.lastHit = 0;
         this.dead = false;
-        this.state = game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
+        this.state = boss ? 0 : game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
         console.log("NPC: Random int for State Control is ", this.state);
 
         this.damage = this.damage.bind(this);
@@ -46,8 +46,6 @@ export default class Monster extends Object
     {
         // Remove if dead
         if(this.health <= 0){
-            console.log("Dead")
-            console.log(this)
             if(this.isBoss){
                 this.game.state.start("Win", true, false, this.game.in_rooms);
             }
@@ -113,11 +111,10 @@ export default class Monster extends Object
 
     damage(){
         if(this.game.time.now > this.lastHit){
-            console.log("DAMAGE HIT")
             this.lastHit = this.game.time.now + 1000;
             this.health -= 1;
             this.sprite.tint = 0x000000;
-            console.log(this.health);
+            console.log("DAMAGE HIT: " + this.health)       
         }
     }
 }

@@ -27,6 +27,7 @@ export default class Rock extends Object{
         this.sprite.destroy(true);
         this.sprite = null;
         console.log(this.sprite);
+
     }
 
     // On collision with Rock Action is called
@@ -36,6 +37,13 @@ export default class Rock extends Object{
             console.log("Destroy rock");
             this.player.effect.splice(this.player.effect.indexOf('strength'), 1);
             console.log(this.room);
+            this.room.createObject({
+                "name": "blackhole_normal",
+                "type": "blackhole",
+                "x_pos": this.sprite.x,
+                "y_pos": this.sprite.y,
+                "effect": "teleport"
+            });
             this.room.showText("\"Souls scream from below you\"", "top");
             this.destroy();
             this.player.sprite.removeChildAt(0);
