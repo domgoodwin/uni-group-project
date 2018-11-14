@@ -32,19 +32,18 @@
             "south": "entrance",
             "west": "diningRoom"
         },
-        "objects":
-        [
+        "objects": [
             {
-                "name":"random_fire",
-                "type":"fire",
-                "x_pos":400,
-                "y_pos":400
+                "name": "random_fire",
+                "type": "fire",
+                "x_pos": 400,
+                "y_pos": 400
             },
             {
-                "name":"monster_0",
-                "type":"monster",
-                "x_pos":450,
-                "y_pos":300
+                "name": "monster_0",
+                "type": "monster",
+                "x_pos": 450,
+                "y_pos": 300
             }
         ]
     },
@@ -100,7 +99,8 @@
             "north": "kitchen",
             "east": "hall",
             "south": null,
-            "west": null
+            "west": null,
+            "extra": "b6"
         },
         "objects": [
             {
@@ -129,17 +129,11 @@
             "east": null,
             "south": "livingRoom",
             "west": null,
-	    "extra": "b6"
+            "extra": "b6"
         },
-	"objects":[
-	{
-                "name": "blackhole_normal",
-                "type": "blackhole",
-                "x_pos": 350,
-                "y_pos": 250,
-                "effect": "teleport"
-            }
-	]
+        "objects": [
+
+        ]
     },
     {
         "id": "kitchen",
@@ -174,14 +168,7 @@
             "south": "gamesRoom",
             "west": "garden"
         },
-      "objects":[
-        {
-          "name": "key-old",
-          "type": "key",
-          "x_pos": 300,
-          "y_pos": 300
-        }
-      ]
+        "objects": []
     },
     {
         "id": "conservatory",
@@ -216,20 +203,20 @@
         "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
-          "north": null,
-          "east": "guestRoom",
-          "south": "stairs",
-          "west": "masterBedroom"
+            "north": null,
+            "east": "guestRoom",
+            "south": "stairs",
+            "west": "masterBedroom"
         },
-      "objects" : [
-        {
-          "name": "speed_buff",
-          "type": "buff",
-          "x_pos": 400,
-          "y_pos": 200,
-          "effect": "speed"
-        }
-      ]
+        "objects": [
+            {
+                "name": "speed_buff",
+                "type": "buff",
+                "x_pos": 400,
+                "y_pos": 200,
+                "effect": "speed"
+            }
+        ]
     },
     {
         "id": "guestRoom",
@@ -238,238 +225,245 @@
         "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
-          "north": null,
-          "east": null,
-          "south": "balcony",
-          "west": "landing"
+            "north": null,
+            "east": null,
+            "south": "balcony",
+            "west": "landing"
         }
-  },
-  {
+    },
+    {
         "id": "masterBedroom",
         "name": "Master Bedroom",
         "floor": "#A50000",
         "music": "ambient-spooky-1",
         "locked": false,
         "doors": {
-          "north": null,
-          "east" : "landing",
-          "south": "bathroom",
-          "west": null
+            "north": null,
+            "east": "landing",
+            "south": "bathroom",
+            "west": null
         }
-  },
-  {
-      "id": "balcony",
-      "name": "Balcony",
-      "floor": "#A3E0E0",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "guestRoom",
-        "east": null,
-        "south": "nursery",
-        "west": null
-      }
-  },
-  {
-      "id": "bathroom",
-      "name": "Bathroom",
-      "floor": "#8E5342",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "masterBedroom",
-        "east": null,
-        "south": "dressingRoom",
-        "west": null
-      }
-  },
-  {
-      "id": "nursery",
-      "name": "Nursery",
-      "floor": "#E2BD00",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "balcony",
-        "east": null,
-        "south": null,
-        "west": "library"
-      }
-  },
-  {
-      "id": "dressingRoom",
-      "name": "Dressing Room",
-      "floor": "#FF5EE9",
-      "music": "ambient-spooky-1",
-      "locked": true,
-      "doors": {
-        "north": "bathroom",
-        "east": "library",
-        "south": null,
-        "west": null
-      },
-    "objects":[
-      {
-        "name": "coffin",
-        "type": "coffin",
-        "x_pos": 200,
-        "y_pos": 500
-      }
-    ]
-  },
-  {
-      "id": "library",
-      "name": "Library",
-      "floor": "#6B2A00",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": null,
-        "east": "nursery",
-        "south": null,
-        "west": "dressingRoom"
-      }
-  },
-  {
-      "id": "furnace",
-      "name": "Furnace",
-      "floor": "#E56F20",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": null,
-        "east": "b2",
-        "south": "b4",
-        "west": null
-      },
-      "objects": [
-        {
-          "name": "random_fire",
-          "type": "fire",
-          "x_pos": 200,
-          "y_pos": 250
+    },
+    {
+        "id": "balcony",
+        "name": "Balcony",
+        "floor": "#A3E0E0",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "guestRoom",
+            "east": null,
+            "south": "nursery",
+            "west": null
         }
-      ]
-  },
-  {
-      "id": "b2",
-      "name": "Basement",
-      "floor": "#B57A53",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": null,
-        "east": "laundry",
-        "south": "b5",
-        "west": "furnace"
-      }
-  },
-  {
-      "id": "laundry",
-      "name": "Laundry",
-      "floor": "#E0E0E0",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": null,
-        "east": null,
-        "south": "b6",
-        "west": "b2"
-      }
-  },
-  {
-      "id": "b4",
-      "name": "Basement",
-      "floor": "#B57A53",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "furnace",
-        "east": "b5",
-        "south": "b7",
-        "west": null
-      }
-  },
-  {
-      "id": "b5",
-      "name": "Basement",
-      "floor": "#6B6B6B",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "b2",
-        "east": "b6",
-        "south": "b8",
-        "west": "b4"
-      }
-  },
-  {
-      "id": "b6",
-      "name": "Basement",
-      "floor": "#CECECE",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "laundry",
-        "east": null,
-        "south": "b9",
-        "west": "b5"
-      }
-  },
-  {
-      "id": "b7",
-      "name": "Basement Exit",
-      "floor": "#A5A5A5",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "b4",
-        "east": "b8",
-        "south": null,
-        "west": null,
-	"extra": "garden"
-      },
-      "objects": [
-        {
-          "name": "rock_basement",
-          "type": "rock",
-          "x_pos": 500,
-          "y_pos": 500
+    },
+    {
+        "id": "bathroom",
+        "name": "Bathroom",
+        "floor": "#8E5342",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "masterBedroom",
+            "east": null,
+            "south": "dressingRoom",
+            "west": null
+        }
+    },
+    {
+        "id": "nursery",
+        "name": "Nursery",
+        "floor": "#E2BD00",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "balcony",
+            "east": null,
+            "south": null,
+            "west": "library"
+        }
+    },
+    {
+        "id": "dressingRoom",
+        "name": "Dressing Room",
+        "floor": "#FF5EE9",
+        "music": "ambient-spooky-1",
+        "locked": true,
+        "doors": {
+            "north": "bathroom",
+            "east": "library",
+            "south": null,
+            "west": null
         },
-	{
-            "name": "blackhole_normal",
-            "type": "blackhole",
-            "x_pos": 350,
-            "y_pos": 250,
-            "effect": "teleport"
+        "objects": [
+            {
+                "name": "coffin",
+                "type": "coffin",
+                "x_pos": 200,
+                "y_pos": 500
+            }
+        ]
+    },
+    {
+        "id": "library",
+        "name": "Library",
+        "floor": "#6B2A00",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": null,
+            "east": "nursery",
+            "south": null,
+            "west": "dressingRoom"
         }
-      ]
-  },
-  {
-      "id": "b8",
-      "name": "Basement",
-      "floor": "#969696",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "b5",
-        "east": "b9",
-        "south": null,
-        "west": "b7"
-      }
-  },
-  {
-      "id": "b9",
-      "name": "Basement",
-      "floor": "#7F7F7F",
-      "music": "ambient-spooky-1",
-      "locked": false,
-      "doors": {
-        "north": "b6",
-        "east": null,
-        "south": null,
-        "west": "b8"
-      }
-  }
-
+    },
+    {
+        "id": "furnace",
+        "name": "Furnace",
+        "floor": "#E56F20",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": null,
+            "east": "b2",
+            "south": "b4",
+            "west": null
+        },
+        "objects": [
+            {
+                "name": "random_fire",
+                "type": "fire",
+                "x_pos": 200,
+                "y_pos": 250
+            }
+        ]
+    },
+    {
+        "id": "b2",
+        "name": "Basement",
+        "floor": "#B57A53",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": null,
+            "east": "laundry",
+            "south": "b5",
+            "west": "furnace"
+        }
+    },
+    {
+        "id": "laundry",
+        "name": "Laundry",
+        "floor": "#E0E0E0",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": null,
+            "east": null,
+            "south": "b6",
+            "west": "b2"
+        },
+        "objects": [
+            {
+                "name": "key-old",
+                "type": "key",
+                "x_pos": 300,
+                "y_pos": 300
+            }
+        ]
+    },
+    {
+        "id": "b4",
+        "name": "Basement",
+        "floor": "#B57A53",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "furnace",
+            "east": "b5",
+            "south": "b7",
+            "west": null
+        }
+    },
+    {
+        "id": "b5",
+        "name": "Basement",
+        "floor": "#6B6B6B",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "b2",
+            "east": "b6",
+            "south": "b8",
+            "west": "b4"
+        }
+    },
+    {
+        "id": "b6",
+        "name": "Basement",
+        "floor": "#CECECE",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "laundry",
+            "east": null,
+            "south": "b9",
+            "west": "b5"
+        }
+    },
+    {
+        "id": "b7",
+        "name": "Basement Exit",
+        "floor": "#A5A5A5",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "b4",
+            "east": "b8",
+            "south": null,
+            "west": null,
+            "extra": "garden"
+        },
+        "objects": [
+            {
+                "name": "rock_basement",
+                "type": "rock",
+                "x_pos": 500,
+                "y_pos": 500
+            },
+            {
+                "name": "blackhole_normal",
+                "type": "blackhole",
+                "x_pos": 350,
+                "y_pos": 250,
+                "effect": "teleport"
+            }
+        ]
+    },
+    {
+        "id": "b8",
+        "name": "Basement",
+        "floor": "#969696",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "b5",
+            "east": "b9",
+            "south": null,
+            "west": "b7"
+        }
+    },
+    {
+        "id": "b9",
+        "name": "Basement",
+        "floor": "#7F7F7F",
+        "music": "ambient-spooky-1",
+        "locked": false,
+        "doors": {
+            "north": "b6",
+            "east": null,
+            "south": null,
+            "west": "b8"
+        }
+    }
 ]

@@ -1,13 +1,14 @@
 import Object from '/js/src/Object.js'
 
 export default class BlackholeReturn extends Object{
-    constructor(game, player, type, name, x_pos, y_pos, group, enterable, effect){
+    constructor(game, player, type, name, x_pos, y_pos, group, enterable, effect, room){
         console.log("Creating BlackholeReturn")
         super(game, player, type, name, x_pos, y_pos, group);
         // super.setupObject();
         this.oldSpeed = 0;
         this.opened = 0;
         this.effect = effect;
+        this.room = room;
         this.sprite.scale.setTo(2);
         this.enterable = enterable;
         this.name = name;

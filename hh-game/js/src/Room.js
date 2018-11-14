@@ -98,6 +98,12 @@ export default class Room {
             var door = this.doors[i];
             door.alpha = 0;
         }
+        for(var i = 0; i < this.objects.length; i++){
+            if(this.objects[i].type == "monster"){
+                this.objects[i].sprite.body.velocity.x = 0;
+                this.objects[i].sprite.body.velocity.y = 0;
+            }
+        }
         this.things.alpha = 0;
         this.items.alpha = 0;
         this.npcs.alpha = 0;
@@ -117,6 +123,9 @@ export default class Room {
             var door = this.doors[i];
             door.alpha = 1;
         }
+        for(var i = 0; i < this.objects.length; i++){
+            this.objects[i].move = true;
+        }
         if(usedDoor){
             console.log("Moving character: "+usedDoor)
             var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
@@ -133,6 +142,8 @@ export default class Room {
 
     // Creates an object in the room, switch between the object types
     createObject(object){
+        console.log("creating")
+        console.log(object)
         var type = object.type;
         var newObject = null;
         switch(type) {
@@ -149,10 +160,10 @@ export default class Room {
                 newObject = new Chute(this.game, this.player, 'chute', 'chute-normal', object.x_pos, object.y_pos, this.things, true);
                 break;
             case "blackhole":
-                newObject = new Blackhole(this.game, this.player, 'blackhole', 'blackhole_normal', object.x_pos, object.y_pos, this.things, true, object.effect);
+                newObject = new Blackhole(this.game, this.player, 'blackhole', 'blackhole_normal', object.x_pos, object.y_pos, this.things, true, object.effect, this);
                 break;
             case "blackhole_return":
-                newObject = new BlackholeReturn(this.game, this.player, 'blackhole', 'blackhole_return', object.x_pos, object.y_pos, this.things, true, object.effect);
+                newObject = new BlackholeReturn(this.game, this.player, 'blackhole', 'blackhole_return', object.x_pos, object.y_pos, this.things, true, object.effect, this);
                 break;
             case "chinmey":
                 newObject = new Chimney(this.game, this.player, 'chimney', 'chimney-normal', object.x_pos, object.y_pos, this.things, true);
