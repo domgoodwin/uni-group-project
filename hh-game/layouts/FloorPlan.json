@@ -426,12 +426,6 @@
         },
         "objects": [
             {
-                "name": "rock_basement",
-                "type": "rock",
-                "x_pos": 500,
-                "y_pos": 500
-            },
-            {
                 "name": "blackhole_normal",
                 "type": "blackhole",
                 "x_pos": 350,
