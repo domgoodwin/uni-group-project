@@ -28,6 +28,7 @@ export default class Main extends Phaser.State {
         this.roomDisplay = null;
         this.attack = null;
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        window.actionDoor = this.actionDoor.bind(this);
         this.game.musicPlayer = new MusicPlayer(this.game);
 
         this.setupKeyboard();
@@ -120,7 +121,7 @@ export default class Main extends Phaser.State {
             this.game.add.tween(text).to({alpha: 0}, 3500, Phaser.Easing.Linear.None, true);
         }
     }
-
+    
     // Sets the text in the room
     setRoomText(){
         this.roomDisplay.setText(this.currentRoomJson.name);

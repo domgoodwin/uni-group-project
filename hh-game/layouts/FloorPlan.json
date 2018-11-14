@@ -128,8 +128,18 @@
             "north": "study",
             "east": null,
             "south": "livingRoom",
-            "west": null
-        }
+            "west": null,
+	    "extra": "b6"
+        },
+	"objects":[
+	{
+                "name": "blackhole_normal",
+                "type": "blackhole",
+                "x_pos": 350,
+                "y_pos": 250,
+                "effect": "teleport"
+            }
+	]
     },
     {
         "id": "kitchen",
@@ -416,7 +426,8 @@
         "north": "b4",
         "east": "b8",
         "south": null,
-        "west": null
+        "west": null,
+	"extra": "garden"
       },
       "objects": [
         {
@@ -424,6 +435,13 @@
           "type": "rock",
           "x_pos": 500,
           "y_pos": 500
+        },
+	{
+            "name": "blackhole_normal",
+            "type": "blackhole",
+            "x_pos": 350,
+            "y_pos": 250,
+            "effect": "teleport"
         }
       ]
   },

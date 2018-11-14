@@ -2,10 +2,14 @@ import Fire from '/js/src/objects/Fire.js';
 import Key from '/js/src/objects/Key.js';
 //import Npc from '/js/src/objects/Npc.js';
 import Chest from '/js/src/objects/Chest.js';
+import Chute from '/js/src/objects/Chute.js';
+import Blackhole from '/js/src/objects/Blackhole.js';
+import BlackholeReturn from  '/js/src/objects/BlackholeReturn.js';
 import Rock from '/js/src/objects/Rock.js';
 import Circle from '/js/src/objects/Circle.js';
 import Axe from '/js/src/objects/Axe.js';
 import Monster from '/js/src/objects/Monster.js';
+// import Chimney from '/js/src/objects/Chimney.js';
 import Coffin from '/js/src/objects/Coffin.js';
 
 const NORTH_DOOR = [343, 50]
@@ -44,20 +48,23 @@ export default class Room {
     createRoom(usedDoor){
         console.log("Creating room: "+this.room.id+"/"+door);
         for(var door in this.room.doors){
-            // Check if no door destination
-            if (! this.room.doors[door])
-                continue;
-            var x = door == "north" ? NORTH_DOOR[0] : door == "east" ? EAST_DOOR[0] : door == "south" ? SOUTH_DOOR[0] : WEST_DOOR[0];
-            var y = door == "north" ? NORTH_DOOR[1] : door == "east" ? EAST_DOOR[1] : door == "south" ? SOUTH_DOOR[1] : WEST_DOOR[1];
-            var doorImg = door == "north" || door == "south" ? "door-ns" : "door-ew";
-            var newDoor = this.game.add.sprite(x, y, doorImg);
-            newDoor.name = door;
-            // var angle = door == "north" ? 0 : door == "east" ? 90 : door == "south" ? 0: 90;
-            // newDoor.angle = angle;
-            newDoor.scale.setTo(0.04);
-            this.game.physics.enable(newDoor, Phaser.Physics.ARCADE);
-            newDoor.body.immovable = true;
-            this.doors.push(newDoor);
+            if (door != "extra" && door != "return"){
+                // Check if no door destination
+                if (! this.room.doors[door])
+                    continue;
+                var x = door == "north" ? NORTH_DOOR[0] : door == "east" ? EAST_DOOR[0] : door == "south" ? SOUTH_DOOR[0] : WEST_DOOR[0];
+                var y = door == "north" ? NORTH_DOOR[1] : door == "east" ? EAST_DOOR[1] : door == "south" ? SOUTH_DOOR[1] : WEST_DOOR[1];
+                var doorImg = door == "north" || door == "south" ? "door-ns" : "door-ew";
+                var newDoor = this.game.add.sprite(x, y, doorImg);
+                newDoor.name = door;
+                // var angle = door == "north" ? 0 : door == "east" ? 90 : door == "south" ? 0: 90;
+                // newDoor.angle = angle;
+                newDoor.scale.setTo(0.04);
+                this.game.physics.enable(newDoor, Phaser.Physics.ARCADE);
+                newDoor.body.immovable = true;
+                this.doors.push(newDoor);
+            }
+            
         }
         if(this.room.objects){
             for(var i = 0; i < this.room.objects.length; i++) {
@@ -137,6 +144,18 @@ export default class Room {
                 break;
             case "chest":
                 newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true);
+                break;
+            case "chute":
+                newObject = new Chute(this.game, this.player, 'chute', 'chute-normal', object.x_pos, object.y_pos, this.things, true);
+                break;
+            case "blackhole":
+                newObject = new Blackhole(this.game, this.player, 'blackhole', 'blackhole_normal', object.x_pos, object.y_pos, this.things, true, object.effect);
+                break;
+            case "blackhole_return":
+                newObject = new BlackholeReturn(this.game, this.player, 'blackhole', 'blackhole_return', object.x_pos, object.y_pos, this.things, true, object.effect);
+                break;
+            case "chinmey":
+                newObject = new Chimney(this.game, this.player, 'chimney', 'chimney-normal', object.x_pos, object.y_pos, this.things, true);
                 break;
             case "key":
                 newObject = new Key(this.game, this.player, 'key', 'key-old', object.x_pos, object.y_pos, this.items);
