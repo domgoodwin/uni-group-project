@@ -99,7 +99,7 @@ export default class Room {
             door.alpha = 0;
         }
         for(var i = 0; i < this.objects.length; i++){
-            if(this.objects[i].type == "monster"){
+            if(this.objects[i].type == "monster" && this.objects[i].sprite){
                 this.objects[i].sprite.body.velocity.x = 0;
                 this.objects[i].sprite.body.velocity.y = 0;
             }
