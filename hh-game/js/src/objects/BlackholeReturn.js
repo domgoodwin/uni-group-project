@@ -16,7 +16,6 @@ export default class BlackholeReturn extends Object{
         this.tintEffect();
         
         this.action = this.action.bind(this);
-        this.release = this.release.bind(this);
         this.interact = this.interact.bind(this);
         this.tick = this.tick.bind(this);
     }
@@ -51,10 +50,7 @@ export default class BlackholeReturn extends Object{
     }
 
     tick(){
-        if(this.player.state == null && this.opened < this.game.time.now){
-            // console.log("in if: "+this.opened);
-            // this.sprite.frame = 0;
-        }
+
     }
 
     tintEffect(){
@@ -78,12 +74,6 @@ export default class BlackholeReturn extends Object{
         super.interact();
 
         if(this.enterable && key == 'space'){
-            // console.log("in if");
-            this.player.sprite.alpha = 0;
-            this.sprite.frame = 0;
-            this.player.state = this;
-            this.oldSpeed = this.player.speed;
-            this.player.speed = 0;
             room.lastInteraction = this.game.time.now + 2000;
             room.showText("Travelling through time and space...", "top");
 
@@ -91,12 +81,4 @@ export default class BlackholeReturn extends Object{
         }
     }
 
-    release(room){
-        this.player.sprite.alpha = 1;
-        this.player.speed = this.oldSpeed;
-        this.action();
-        this.player.state = null;
-        room.lastInteraction = this.game.time.now + 2000;
-        this.sprite.frame = 1;
-    }
 }
