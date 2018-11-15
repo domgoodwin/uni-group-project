@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>The Game</title>
+    <meta name="generator" content="Serif WebPlus X8">
+    <meta name="viewport" content="width=1001">
+    <link rel="stylesheet" type="text/css" href="wpscripts/wpstyles.css">
+    <style type="text/css">
+      .C-1 { line-height:49.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:700;color:#ffffff;background-color:transparent;text-decoration:none;font-variant:normal;font-size:40.0px;vertical-align:0; }
+      a.C-1:link, a:link .C-1 { color:#ffffff;text-decoration:none; }
+      a.C-1:visited, a:visited .C-1 { color:#ffffff; }
+      a.C-1:hover, a:hover .C-1 { color:#ad97c1;text-decoration:none; }
+      a.C-1:active, a:active .C-1 { color:#ffffff;text-decoration:none; }
+      .C-2 { line-height:18.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#ffffff;background-color:transparent;text-decoration:none;font-variant:normal;font-size:12.0px;vertical-align:0; }
+      .C-3 { line-height:18.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#656f73;background-color:transparent;text-decoration:none;font-variant:normal;font-size:12.0px;vertical-align:0; }
+      .C-4 { line-height:18.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#656f73;background-color:transparent;text-decoration:none;font-variant:normal;font-size:12.0px;vertical-align:0; }
+      a.C-4:link, a:link .C-4 { color:#cacecf;text-decoration:underline; }
+      a.C-4:visited, a:visited .C-4 { color:#ffffff; }
+      a.C-4:hover, a:hover .C-4 { color:#ffffff;text-decoration:none; }
+      a.C-4:active, a:active .C-4 { color:#cacecf;text-decoration:none; }
+      .OBJ-1,.OBJ-1:link,.OBJ-1:visited { background-color:transparent;text-decoration:none;display:block;position:absolute; }
+      .OBJ-1:focus { outline-style:none; }
+      button.OBJ-1 { background-color:transparent;border:none 0px;padding:0;display:inline-block;cursor:pointer; }
+      button.OBJ-1:disabled { pointer-events:none; }
+      .OBJ-1.Inline { display:inline-block;position:relative;line-height:normal; }
+      .OBJ-1 span,.OBJ-1:link span,.OBJ-1:visited span { color:#b9bdbf;font-family:"Trebuchet MS",sans-serif;font-weight:bold;text-decoration:none;text-align:center;text-transform:uppercase;font-style:normal;left:10px;top:9px;width:100px;height:24px;line-height:24px;font-size:18px;display:block;position:absolute;cursor:pointer; }
+      .OBJ-1:hover span { color:#ffffff; }
+      .OBJ-1:active span,a:link.OBJ-1.Activated span,a:link.OBJ-1.Down span,a:visited.OBJ-1.Activated span,a:visited.OBJ-1.Down span,.OBJ-1.Activated span,.OBJ-1.Down span { color:#515c61; }
+      .OBJ-1.Disabled span,a:link.OBJ-1.Disabled span,a:visited.OBJ-1.Disabled span,a:hover.OBJ-1.Disabled span,a:active.OBJ-1.Disabled span { color:#999999; }
+      .OBJ-2 { line-height:40px; }
+      .OBJ-3,.OBJ-3:link,.OBJ-3:visited { background-image:url('wpimages/wpf139cb42_06.png');background-repeat:no-repeat;background-position:0px 0px;text-decoration:none;display:block;position:absolute; }
+      .OBJ-3:hover { background-position:0px -76px; }
+      .OBJ-3:active,a:link.OBJ-3.Activated,a:link.OBJ-3.Down,a:visited.OBJ-3.Activated,a:visited.OBJ-3.Down,.OBJ-3.Activated,.OBJ-3.Down { background-position:0px -38px; }
+      .OBJ-3.Disabled,a:link.OBJ-3.Disabled,a:visited.OBJ-3.Disabled,a:hover.OBJ-3.Disabled,a:active.OBJ-3.Disabled { background-position:0px -114px; }
+      .OBJ-3:focus { outline-style:none; }
+      button.OBJ-3 { background-color:transparent;border:none 0px;padding:0;display:inline-block;cursor:pointer; }
+      button.OBJ-3:disabled { pointer-events:none; }
+      .OBJ-3.Inline { display:inline-block;position:relative;line-height:normal; }
+      .OBJ-3 span,.OBJ-3:link span,.OBJ-3:visited span { color:#ffffff;font-family:"Trebuchet MS",sans-serif;font-weight:bold;text-decoration:none;text-align:center;text-transform:capitalize;font-style:normal;left:13px;top:11px;width:93px;height:16px;line-height:16px;font-size:11px;display:block;position:absolute;cursor:pointer; }
+      .OBJ-3:active span,a:link.OBJ-3.Activated span,a:link.OBJ-3.Down span,a:visited.OBJ-3.Activated span,a:visited.OBJ-3.Down span,.OBJ-3.Activated span,.OBJ-3.Down span { left:14px; }
+      .OBJ-4 { line-height:38px; }
+      .P-1 { text-align:center;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#f1f1f1;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
+      .C-5 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#f1f1f1;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
+      .C-6 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
+      .C-7 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:italic;font-weight:normal;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
+      .P-2 { margin-left:48.0px;text-indent:-15.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
+    </style>
+    <script type="text/javascript" src="wpscripts/jquery.js"></script>
+    <script type="text/javascript" src="wpscripts/jquery.wplightbox.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+      $('.wplightbox').wplightbox(
+      {"loadBtnSrc":"wpimages/lightbox_load.gif","playBtnSrc":"wpimages/lightbox_play.png","playOverBtnSrc":"wpimages/lightbox_play_over.png","pauseBtnSrc":"wpimages/lightbox_pause.png","pauseOverBtnSrc":"wpimages/lightbox_pause_over.png","border_e":"wpimages/lightbox_e_6.png","border_n":"wpimages/lightbox_n_6.png","border_w":"wpimages/lightbox_w_6.png","border_s":"wpimages/lightbox_s_6.png","border_ne":"wpimages/lightbox_ne_6.png","border_se":"wpimages/lightbox_se_6.png","border_nw":"wpimages/lightbox_nw_6.png","border_sw":"wpimages/lightbox_sw_6.png","closeBtnSrc":"wpimages/lightbox_close_2.png","closeOverBtnSrc":"wpimages/lightbox_close_over_2.png","nextBtnSrc":"wpimages/lightbox_next_2.png","nextOverBtnSrc":"wpimages/lightbox_next_over_2.png","prevBtnSrc":"wpimages/lightbox_prev_2.png","prevOverBtnSrc":"wpimages/lightbox_prev_over_2.png","blankSrc":"wpscripts/blank.gif","bBkgrndClickable":true,"strBkgrndCol":"#000000","nBkgrndOpacity":0.5,"strContentCol":"#ffffff","nContentOpacity":0.8,"strCaptionCol":"#555555","nCaptionOpacity":1.0,"nCaptionType":1,"bCaptionCount":true,"strCaptionFontType":"Tahoma,Serif","strCaptionFontCol":"#ffffff","nCaptionFontSz":15,"bShowPlay":true,"bAnimateOpenClose":true,"nPlayPeriod":2000}
+      );
+      $("a.ActiveButton").bind({ mousedown:function(){if ( $(this).attr('disabled') === undefined ) $(this).addClass('Activated');}, mouseleave:function(){ if ( $(this).attr('disabled') === undefined ) $(this).removeClass('Activated');}, mouseup:function(){ if ( $(this).attr('disabled') === undefined ) $(this).removeClass('Activated');}});
+      });
+    </script>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />
+<link rel="stylesheet" href="countdown-style.css" />
+<script src="jquery.countdown.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	var note = $('#note'),
+		ts = new Date(2019,0,13,00,00,00); // 21 April 2015 (months are 0 based, meaning January is 0, Feb 1, and so on)
+		newYear = true;
+	
+	
+	$('#countdown').countdown({
+		timestamp	: ts,
+		callback	: function(days, hours, minutes, seconds){
+			
+			var message = "";
+			
+			message += days + " day" + ( days==1 ? '':'s' ) + ", ";
+			message += hours + " hour" + ( hours==1 ? '':'s' ) + ", ";
+			message += minutes + " minute" + ( minutes==1 ? '':'s' ) + " and ";
+			message += seconds + " second" + ( seconds==1 ? '':'s' ) + " <br />";
+			
+			if(newYear){
+				message += "left until we release the full game!";
+			}
+			note.html(message);
+		}
+	});
+	
+});
+</script>
+<style type="text/css">
+#note{
+	color: #666666;                     /* Caption text colour */
+	font-size: 12px;                    /* Caption font Size */
+    font-family:"Verdana", sans-serif;  /* Caption font type */
+}
+</style>
+  </head>
+  <body style="height:1900px;background:url('wpimages/wpbfe1035b_06.png') repeat-x scroll center bottom, url('wpimages/wped389568_06.png') repeat-x scroll center bottom, url('wpimages/wp6db519cf_06.png') repeat-x scroll center top, url('wpimages/wpb1c02880_06.png') repeat-x scroll center top, url('wpimages/wp4c4060b3_06.png') repeat-x scroll center 72px #ffffff;">
+    <div id="divMain" style="background:transparent;margin-left:auto;margin-right:auto;position:relative;width:1001px;height:1900px;">
+      <div style="position:absolute;left:30px;top:15px;width:336px;height:43px;overflow:hidden;">
+        <h1 class="Heading"><a href="index.html" class="C-1">HAUNTED HOUSE</a></h1>
+      </div>
+      <div style="position:absolute;left:20px;top:1804px;width:231px;height:37px;overflow:hidden;"><p class="Footer"><span class="C-2">Team Relaxed</span></p>
+        <p class="Footer"><span class="C-2">An Aston University Group Project Team</span></p></div>
+      <div style="position:absolute;left:406px;top:1799px;width:166px;height:21px;overflow:hidden;">
+        <p class="Footer-1"><span class="C-3">Aston Univeristy</span></p>
+      </div>
+      <div style="position:absolute;left:818px;top:1804px;width:162px;height:39px;overflow:hidden;">
+        <p class="Footer"><span class="C-2">0121 204 3000</span></p>
+        <p class="Footer"><span class="C-2">team-<wbr>relaxed@outlook.com &nbsp;</span></p>
+      </div>
+      <div style="position:absolute;left:20px;top:1852px;width:279px;height:45px;overflow:hidden;">
+        <p class="Footer"><span class="C-3">2018 © Copyright Team Relaxed | Haunted House</span></p>
+        <p class="Footer"><a data-lightbox="{&quot;galleryId&quot;:&quot;wplightbox&quot;,&quot;width&quot;:600,&quot;height&quot;:600}" class="wplightbox C-4" href="termsandconditions.html">Terms &amp; conditions</a></p>
+      </div>
+      <map id="map1" name="map1">
+        <area shape="poly" coords="8,19,8,11,11,10,10,8,10,10,7,10,7,22,4,22,4,10,1,9,2,8,0,10,3,11,3,23,8,23" href="http://www.facebook.com" target="_blank" alt="">
+        <area shape="poly" coords="8,6,8,4,11,4,11,0,5,0,3,2,3,8,4,6,4,2,5,1,10,1,10,3,7,3,6,4,7,6,8,8" href="http://www.facebook.com" target="_blank" alt="">
+      </map>
+      <img alt="" usemap="#map1" src="wpimages/wpfd854fd1_06.png" style="position:absolute;left:827px;top:1855px;width:11px;height:23px;">
+      <map id="map2" name="map2">
+        <area shape="poly" coords="3,9,2,8,3,8" href="http://www.twitter.com" target="_blank" alt="">
+        <area shape="poly" coords="13,22,18,20,21,18,23,13,25,8,27,4,28,2,25,3,27,1,23,4,25,4,24,8,22,13,21,16,17,19,15,21,10,22,6,22,4,21,9,19,10,17,5,16,7,19,5,20,1,21,6,22,11,23" href="http://www.twitter.com" target="_blank" alt="">
+        <area shape="poly" coords="5,15,7,14,9,13,5,13,3,11,2,9,4,10,7,10,5,8,3,7,2,6,2,3,3,2,2,1,1,3,1,5,2,7,1,9,2,11,4,13,5,14,3,15,5,16" href="http://www.twitter.com" target="_blank" alt="">
+        <area shape="poly" coords="15,7,14,6,15,4,16,2,18,1,21,1,23,2,21,0,17,0,16,1,14,2,13,5,14,7,11,7,10,6,8,5,6,4,4,3,3,3,6,6,8,7,10,7,11,8,15,8" href="http://www.twitter.com" target="_blank" alt="">
+      </map>
+      <img alt="" usemap="#map2" src="wpimages/wpfc37a4e2_06.png" style="position:absolute;left:863px;top:1855px;width:28px;height:23px;">
+      <map id="map3" name="map3">
+        <area shape="poly" coords="4,22,6,22,6,20,7,19,6,18,5,17,5,18,6,19,5,20,5,21,4,22,3,22,2,21,1,22,2,23,4,23" href="#" target="_blank" alt="">
+        <area shape="poly" coords="1,20,1,18,2,17,5,17,5,16,2,16,0,18,0,21" href="#" target="_blank" alt="">
+        <area shape="poly" coords="10,17,9,16,9,15,8,14,7,14,9,16,9,18" href="#" target="_blank" alt="">
+        <area shape="poly" coords="15,22,15,19,14,17,13,15,12,13,9,10,7,11,9,12,12,15,13,17,14,19,14,22,11,22,11,18,10,20,10,23,15,23" href="#" target="_blank" alt="">
+        <area shape="rect" coords="5,9,8,11" href="#" target="_blank" alt="">
+        <area shape="poly" coords="7,13,6,13,5,12,3,12,2,11,1,10,1,9,5,9,5,8,0,8,0,12,2,12,3,13,5,13,6,14" href="#" target="_blank" alt="">
+        <area shape="poly" coords="10,6,9,6,7,5,5,5,6,6,8,6,8,7,10,7" href="#" target="_blank" alt="">
+        <area shape="poly" coords="23,20,22,17,21,14,20,12,18,10,17,8,13,4,12,5,14,6,18,10,19,13,20,15,21,18,22,21,19,22,19,19,18,16,17,14,15,12,13,8,10,7,11,9,13,10,15,12,16,15,17,18,18,21,18,23,23,23" href="#" target="_blank" alt="">
+        <area shape="poly" coords="12,3,11,3,10,2,8,2,8,3,9,3,10,4,12,4" href="#" target="_blank" alt="">
+        <area shape="rect" coords="5,1,9,3" href="#" target="_blank" alt="">
+        <area shape="poly" coords="5,4,1,4,1,1,5,1,5,0,0,0,0,5,5,5" href="#" target="_blank" alt="">
+      </map>
+      <img src="wpimages/wp5b663e16_06.png" alt="" width="23" height="23" usemap="#map3" style="position:absolute;left:915px;top:1855px;width:23px;height:23px;">
+      <div style="position:absolute;left:405px;top:1825px;width:168px;height:59px;overflow:hidden;">
+        <p class="Footer"><span class="C-2">Birmingham</span></p>
+        <p class="Footer"><span class="C-2">B4 7ET</span></p>
+        <p class="Footer"><span class="C-2">United Kingdom</span></p>
+      </div>
+      <img alt="" src="wpimages/wp53fd001a_06.png" style="position:absolute;left:792px;top:1828px;width:18px;height:12px;">
+      <img alt="" src="wpimages/wpa38c3bf0_06.png" style="position:absolute;left:792px;top:1806px;width:17px;height:17px;">
+      <div style="position:absolute;left:347px;top:0px;width:633px;height:64px;">
+        <a href="index.html" id="nav_3_B1" class="OBJ-1 ActiveButton OBJ-2" style="display:block;position:absolute;left:153px;top:12px;width:120px;height:40px;">
+          <span>Home</span>
+        </a>
+        <a href="the-game.html" id="nav_3_B2" class="OBJ-1 ActiveButton OBJ-2" style="display:block;position:absolute;left:273px;top:12px;width:120px;height:40px;">
+          <span>The&nbsp;Game</span>
+        </a>
+        <a href="the-team.html" id="nav_3_B3" class="OBJ-1 ActiveButton OBJ-2" style="display:block;position:absolute;left:393px;top:12px;width:120px;height:40px;">
+          <span>The&nbsp;Team</span>
+        </a>
+        <a href="dev-blog.html" id="nav_3_B4" class="OBJ-1 ActiveButton OBJ-2" style="display:block;position:absolute;left:513px;top:12px;width:120px;height:40px;">
+          <span>Dev&nbsp;Blog</span>
+        </a>
+      </div>
+      <a href="http://relaxed-group-project.s3-website.eu-west-2.amazonaws.com/" target="_blank" id="btn_6" class="OBJ-3 ActiveButton OBJ-4" style="position:absolute;left:440px;top:1706px;width:121px;height:38px;">
+        <span>Play&nbsp;now</span>
+      </a>
+      <div style="position:absolute;left:250px;top:1459px;width:500px;height:120px;">
+        <div id="countdown"></div>
+     <p id="note"></p>
+      </div>
+      <div style="position:absolute;left:89px;top:300px;width:823px;height:98px;overflow:hidden;">
+        <p class="Body P-1"><span class="C-5">Check out how far we’ve come, and see the direction we’re taking the game.</span></p>
+        <p class="Body P-1"><span class="C-5">Alternatively, why not play it and let us know what you think?</span></p>
+      </div>
+      <img alt="The game" src="wpimages/wpcd528733_06.png" style="position:absolute;left:410px;top:224px;width:181px;height:61px;">
+      <img alt="" src="wpimages/wpf05e3498_06.png" style="position:absolute;left:453px;top:128px;width:96px;height:96px;">
+      <img alt="When’s the full game coming? We’re glad you asked…" src="wpimages/wpef5ad3e4_06.png" style="position:absolute;left:160px;top:1366px;width:680px;height:47px;">
+      <div style="position:absolute;left:64px;top:665px;width:668px;height:225px;overflow:hidden;">
+        <p class="Body"><span class="C-6">Find your way through the maze of rooms inside the house to make your escape.</span></p>
+        <p class="Body"><span class="C-6">Set in an eerily familiar haunted mansion, you’ll have to face enemies of all kinds before you find the right door. Along the way you’ll encounter challenges, puzzles and even some mini games. It wont be easy, but we’re counting on you to find the way out.</span></p>
+        <p class="Body"><span class="C-6">Discover the secrets and wonders inside, if you dare.</span></p>
+        <p class="Body"><span class="C-7">Do you have what it takes to survive?</span></p>
+        <p class="Body"><span class="C-6"><br></span></p>
+      </div>
+      <img alt="It’s time to put on your brown pants…" src="wpimages/wp1708413c_06.png" style="position:absolute;left:64px;top:600px;width:481px;height:47px;">
+      <img alt="" src="wpimages/wpff0a6133_06.png" style="position:absolute;left:47px;top:172px;width:113px;height:113px;">
+      <img alt="" src="wpimages/wp128b5f3b_06.png" style="position:absolute;left:846px;top:183px;width:78px;height:94px;">
+      <img alt="" src="wpimages/wp670c8eb2_06.png" style="position:absolute;left:741px;top:618px;width:228px;height:256px;">
+      <img alt="" src="wpimages/wpbabf822f_06.png" style="position:absolute;left:89px;top:917px;width:824px;height:1px;">
+      <div style="position:absolute;left:262px;top:1020px;width:668px;height:256px;overflow:hidden;">
+        <p class="Body"><span class="C-6">We’ve got you covered! We’re still in development, so things can change, but you’re likely to face monsters of all types, including (but not limited to):</span></p>
+        <ul style="list-style-type:disc;margin:0;padding:0;">
+          <li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-6">Ghosts</span></li><li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-6">Mummies</span></li><li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-6">Vampires</span></li><li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-6">Ogres</span></li>
+        </ul>
+        <p class="Body"><span class="C-6">Who knows what will be in the next room… But we do suggest you take your steps carefully.</span></p>
+        <p class="Body"><span class="C-6"><br></span></p>
+      </div>
+      <img alt="Still not scared, huh?" src="wpimages/wp1178830b_06.png" style="position:absolute;left:262px;top:955px;width:269px;height:47px;">
+      <img alt="" src="wpimages/wp28fa1334_06.png" style="position:absolute;left:28px;top:1053px;width:206px;height:164px;">
+      <img alt="" src="wpimages/wpbabf822f_06.png" style="position:absolute;left:89px;top:1327px;width:824px;height:1px;">
+      <img alt="" src="wpimages/wp68013a61_06.png" style="position:absolute;left:542px;top:1682px;width:259px;height:99px;">
+    </div>
+  </body>
+</html>
