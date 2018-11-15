@@ -1,8 +1,8 @@
 import Object from '/js/src/Object.js'
 
 var MONSTER_PURSUIT = 0;
-var MONSTER_IDLE = 1;
-var MONSTER_PATROL = 2;
+var MONSTER_IDLE = 2;
+var MONSTER_PATROL = 1;
 
 export default class Monster extends Object
 {
@@ -16,8 +16,8 @@ export default class Monster extends Object
         this.health = 5;
         this.lastHit = 0;
         this.dead = false;
-        this.state = boss ? 0 : game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
-        console.log("NPC: Random int for State Control is ", this.state);
+        this.state = boss ? 0 : game.rnd.integerInRange(0, 1); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
+        console.log("NPC: Random int for State Control is ", this.state); //For the purpose of the demo I have changed the random number gen to never pick idle
 
         this.damage = this.damage.bind(this);
         this.remove = this.remove.bind(this);
