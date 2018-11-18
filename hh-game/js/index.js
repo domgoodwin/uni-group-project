@@ -30,6 +30,7 @@ class Game extends Phaser.Game {
 
 export function start(in_rooms){
 	game = new Game(in_rooms);
+	return game;
 }
 
 export function setDebug(){
