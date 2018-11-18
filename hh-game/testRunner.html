@@ -12,7 +12,8 @@
     <script>mocha.setup({
         ui: 'bdd',
         ignoreLeaks: true,
-        asyncOnly: true
+        asyncOnly: true,
+        timeout: 5000
       });</script>
     <script type="module" src="js/tests/mainTests.js"></script>
     <script type="module" src="js/tests/roomTests.js"></script>

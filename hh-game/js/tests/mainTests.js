@@ -39,15 +39,16 @@ describe('Game', function(){
   });
   it('should then go to Preload', function(){
     // var promise = until(function () { game.state.current == 'Preload' })
-    var promise = wait(1500);
+    var promise = wait(3000);
     return promise.then(function(){
       chai.expect(game.state.current).to.equal('Preload');
     })
   });
   it('should go to Main on Space press', function(){
     // var promise = until(function () { game.state.current == 'Preload' })
+    var promise = wait(1000);
     game.startGame(game);
-    var promise = wait(1500);
+    var promise = wait(2500);
     return promise.then(function(){
       chai.expect(game.state.current).to.equal('Main');
     })
