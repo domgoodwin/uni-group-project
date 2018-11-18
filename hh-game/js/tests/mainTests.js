@@ -39,7 +39,7 @@ describe('Game', function(){
   });
   it('should then go to Preload', function(){
     // var promise = until(function () { game.state.current == 'Preload' })
-    var promise = wait(500);
+    var promise = wait(1500);
     return promise.then(function(){
       chai.expect(game.state.current).to.equal('Preload');
     })
@@ -47,7 +47,7 @@ describe('Game', function(){
   it('should go to Main on Space press', function(){
     // var promise = until(function () { game.state.current == 'Preload' })
     game.startGame(game);
-    var promise = wait(500);
+    var promise = wait(1500);
     return promise.then(function(){
       chai.expect(game.state.current).to.equal('Main');
     })
@@ -63,6 +63,13 @@ describe('Sprites', function(){
   it('should exist in the game object', function(done){
     console.log(game.player);
     chai.expect(game.player).to.not.be.an('undefined')
+    done();
+  });
+});
+
+describe('Room', function(){
+  it('should be created', function(done){
+    chai.expect(game.room.name).to.equal('Entrance');
     done();
   });
 });
