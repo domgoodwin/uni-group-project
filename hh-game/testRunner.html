@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script src="js/libraries/phaser-2.2.2.js"></script>
+    <script>mocha.setup({
+        ui: 'bdd',
+        ignoreLeaks: true,
+        asyncOnly: true
+      });</script>
+    <script type="module" src="js/tests/mainTests.js"></script>
+    <div class="main-game">
+    <script type="module">
+        // mocha.checkLeaks();    
+        mocha.run();
+    </script>
+    </div>
+    <!-- <script>
+      mocha.run();
+    </script> -->
+  </body>
+</html>

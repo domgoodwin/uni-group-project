@@ -19,10 +19,11 @@
   },
   "devDependencies": {
     "babel-root-slash-import": "^1.1.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "test-until": "^1.1.1"
   },
   "scripts": {
-    "test": "export NODE_PATH='./' && mocha --compilers js:babel-core/register ./js/tests/*.js",
+    "test": "export NODE_PATH='./' && mocha --compilers js:babel-core/register --require babel-polyfill ./js/tests/*.js",
     "browser-test": "browserify test/**/*.js -o tests-bundle.js"
   },
   "browserify": {

@@ -12,7 +12,6 @@ class Game extends Phaser.Game {
 	constructor(in_rooms) {
 
 		super(800, 600, Phaser.AUTO);
-		console.log("inrooms:"+in_rooms);
 		this.in_rooms = in_rooms;
         this.state.add('Boot', Boot, false);
 		this.state.add('Preload', Preload, false);
