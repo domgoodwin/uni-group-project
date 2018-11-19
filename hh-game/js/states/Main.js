@@ -35,6 +35,7 @@ export default class Main extends Phaser.State {
         this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
         this.player = new Player(this.game, this.playArea);
         this.player.spawn();
+        this.game.player = this.player;
         this.game.add.sprite(0, 0, 'room-0');
         this.game.add.text(715, 567, VERSION, {font: "20px Arial"});
         this.speedText = this.game.add.text(25, 65, "S: "+this.player.speed, {font: "20px Arial"});

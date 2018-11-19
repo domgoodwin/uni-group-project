@@ -9,10 +9,10 @@ export default class Boot extends Phaser.State {
 
     preload() {
         this.game.load.image("title-screen-800-600", "img/title-screen-800-600.png");
-        console.log("boot preload complete");
     }
 
     create(){
+        console.log("boot create complete");
         this.game.state.start("Preload", true, false, this.in_rooms);
     }
 }

@@ -138,6 +138,8 @@ export default class Room {
         }
 
         this.game.musicPlayer.playMusicForRoom(this.room);
+        // TODO: Use this in all the object classes instead of passing in the room
+        this.game.room=this;
     }
 
     // Creates an object in the room, switch between the object types

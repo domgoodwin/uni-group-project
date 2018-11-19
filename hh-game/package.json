@@ -1,0 +1,26 @@
+{
+  "name": "uni-group-project",
+  "version": "0.6.0",
+  "description": "Haunted house game built in phaser",
+  "main": "index.html",
+  "directories": {
+    "doc": "../docs"
+  },
+  "dependencies": {
+    "mocha": "^5.2.0",
+    "chai": "^4.2.0"
+  },
+  "scripts": {
+    "server": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domgoodwin/uni-group-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domgoodwin/uni-group-project/issues"
+  },
+  "homepage": "https://github.com/domgoodwin/uni-group-project#readme"
+}

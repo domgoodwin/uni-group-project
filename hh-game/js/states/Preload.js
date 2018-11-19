@@ -1,7 +1,6 @@
 class Preload extends Phaser.State {
 
     init(in_rooms) {
-        console.log("plinit:"+in_rooms);
         this.in_rooms = in_rooms;
     }
 
@@ -53,11 +52,12 @@ class Preload extends Phaser.State {
         this.finishedLoadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Press Space to play", { font: "25px Arial", fill: "#ffffff", align: "center" });
         this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
+        this.game.startGame = function(game) {console.log("preloading"); game.state.start("Main", true, false, this.in_rooms);};
     }
 
     update() {
         if(this.startButton.isDown){
-            this.game.state.start("Main", true, false, this.in_rooms);
+            this.game.startGame(this.game);
         }
     }
 }
