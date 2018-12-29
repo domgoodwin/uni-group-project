@@ -17,6 +17,7 @@ export default class Main extends Phaser.State {
         // this.game.add.plugin(PhaserInput.Plugin);
         console.log("Game starting:")
         // console.log(this.in_rooms);
+        this.generateRooms();
         this.rooms = JSON.parse(this.in_rooms);
         this.game.in_rooms = this.in_rooms;
         this.roomObjects = {};
@@ -160,6 +161,64 @@ export default class Main extends Phaser.State {
             this.room.interact("space");
             this.player.shoot();
         }
+    }
+
+    generateRooms(){
+        if (!this.game.random) {
+            return;
+        }
+        this.in_rooms = null;
+        var genRooms = [];
+
+
+        // essentials 
+        genRooms.push(this.genRoom("entrance", "Entrance", {north: "hallway"}, 0));
+        genRooms.push(this.genRoom("hallway", "Hallway", {north: "stairs", south: "entrance"}, 0));
+        genRooms.push(this.genRoom("stairs", "Stairs", {north: "landing", south: "hallway"}, 0));
+        genRooms.push(this.genRoom("landing", "Landing", {south: "stairs"}, 1));
+        // basement
+        var basementCount
+        while (basementCount < 9) { 
+            var doorCount = Math.floor(Math.random() * 4) + 1;
+            for (var i = 0; i < doorCount; i++){
+                var startPos = Math.floor(Math.random() * 4) + 1;
+            }
+            basementCount += doorCount;
+            genRooms.push(this.genRoom("b"+basementCount, "Basement", ))
+        }
+        
+
+
+        this.in_rooms = JSON.stringify(genRooms);
+    }
+
+    genRoom(id, name, doors, floor){
+        var base = {
+            "id": "entrance",
+            "name": "Entrance",
+            "floor": "#FFFFFF",
+            "music": "ambient-spooky-1",
+            "locked": false,
+            "doors": {
+                "north": null,
+                "east": null,
+                "south": null,
+                "west": null
+            },
+            "objects": []
+        }
+        var mod = JSON.parse(JSON.stringify(base));
+        mod.id = id;
+        mod.name = name;
+        mod.doors = doors;
+        mod.floor = '#'+Math.floor(Math.random()*16777215).toString(16);
+        mod.objects = this.getGenObjects(floor);
+        return mod;
+    }
+
+    getGenObjects(floor){    
+        // floor: -1, 0, 1
+
     }
 
     // Shows debug information if flag is set
