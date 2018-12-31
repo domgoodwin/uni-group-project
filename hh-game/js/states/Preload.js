@@ -84,15 +84,13 @@ class Preload extends Phaser.State {
     }
 
     onHPClick() {
-
         this.game.hp1 = this.game.hp1 ? false : true;
-        var text_hp1 = this.game.hp1 ? "1 HP ON" : "1 HP OFF";
+        var text_hp1 = this.game.hp1 ? "1 HP ON" : "1 HP OFF" ;
         this.buttonTextHP.text = text_hp1;
         console.log("Clicked 1 HP")
     }
 
     on2xMonsterClick() {
-
         this.game.Monsterx2 = this.game.Monsterx2 ? false : true;
         var text_Monsterx2 = this.game.Monsterx2 ? "2x Monster ON" : "2x Monster OFF";
         this.buttonText2xMonster.text = text_Monsterx2;

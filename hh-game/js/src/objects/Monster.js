@@ -116,7 +116,7 @@ export default class Monster extends Object
     damage(){
         if(this.game.time.now > this.lastHit){
             this.lastHit = this.game.time.now + 1000;
-            this.health -= 0;
+            this.health -= 1;
             this.sprite.tint = 0x000000;
             console.log("DAMAGE HIT: " + this.health)       
         }
