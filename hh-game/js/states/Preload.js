@@ -62,17 +62,24 @@ class Preload extends Phaser.State {
         this.button.input.useHandCursor = true;
         this.buttonText = this.game.add.text(595, 65, "Random off", {font: "20px Arial", fill: "#FFFFFF"})
 
-        this.buttonhp = this.game.add.button(580, 100, 'button-large', this.onHPClick, this, 1, 0);
-        this.game.hp1 = false;
-        this.buttonhp.inputEnabled = true;
-        this.buttonhp.input.useHandCursor = true;
-        this.buttonTextHP = this.game.add.text(595, 115, "1 HP OFF", {font: "20px Arial", fill: "#FFFFFF"})
+        this.buttonMode = this.game.add.button(580, 100, 'button-large', this.onModeClick, this, 1, 0);
+        this.game.mode = 0;
+        this.game.click_count = 0;
+        this.buttonMode.inputEnabled = true;
+        this.buttonMode.input.useHandCursor = true;
+        this.buttonTextMode = this.game.add.text(595, 115, "Normal", {font: "20px Arial", fill: "#FFFFFF"})
 
-        this.button2xMonster = this.game.add.button(580, 150, 'button-large', this.on2xMonsterClick, this, 1, 0);
-        this.game.Monsterx2 = false;
-        this.button2xMonster.inputEnabled = true;
-        this.button2xMonster.input.useHandCursor = true;
-        this.buttonText2xMonster = this.game.add.text(595, 165, "2x Monster OFF", {font: "20px Arial", fill: "#FFFFFF"})
+        // this.buttonhp = this.game.add.button(580, 100, 'button-large', this.onHPClick, this, 1, 0);
+        // this.game.hp1 = false;
+        // this.buttonhp.inputEnabled = true;
+        // this.buttonhp.input.useHandCursor = true;
+        // this.buttonTextHP = this.game.add.text(595, 115, "1 HP OFF", {font: "20px Arial", fill: "#FFFFFF"})
+
+        // this.button2xMonster = this.game.add.button(580, 150, 'button-large', this.on2xMonsterClick, this, 1, 0);
+        // this.game.Monsterx2 = false;
+        // this.button2xMonster.inputEnabled = true;
+        // this.button2xMonster.input.useHandCursor = true;
+        // this.buttonText2xMonster = this.game.add.text(595, 165, "2x Monster OFF", {font: "20px Arial", fill: "#FFFFFF"})
     }
 
     onRandomClick() {
@@ -82,19 +89,42 @@ class Preload extends Phaser.State {
         console.log("Clicked Random")
     }
 
-    onHPClick() {
-        this.game.hp1 = this.game.hp1 ? false : true;
-        var text_hp1 = this.game.hp1 ? "1 HP ON" : "1 HP OFF" ;
-        this.buttonTextHP.text = text_hp1;
-        console.log("Clicked 1 HP")
+    onModeClick() {
+        this.game.click_count += 1;
+        var text_mode = ""
+
+        if(this.game.click_count % 3 == 0){
+            text_mode = "Normal";
+            this.game.mode = 0;
+        } else if(this.game.click_count % 3 == 1){
+            text_mode = "Hard";
+            this.game.mode = 1;
+        }
+        else if(this.game.click_count % 3 == 2){
+            text_mode = "1 HP"
+            this.game.mode = 2;
+        }
+        else {
+            console.log("Error")
+        }
+
+        this.buttonTextMode.text = text_mode;
+        console.log("Clicked " + text_mode + " Mode")
     }
 
-    on2xMonsterClick() {
-        this.game.Monsterx2 = this.game.Monsterx2 ? false : true;
-        var text_Monsterx2 = this.game.Monsterx2 ? "2x Monster ON" : "2x Monster OFF";
-        this.buttonText2xMonster.text = text_Monsterx2;
-        console.log("Clicked 2x Monster")
-    }
+    // onHPClick() {
+    //     this.game.hp1 = this.game.hp1 ? false : true;
+    //     var text_hp1 = this.game.hp1 ? "1 HP ON" : "1 HP OFF" ;
+    //     this.buttonTextHP.text = text_hp1;
+    //     console.log("Clicked 1 HP")
+    // }
+
+    // on2xMonsterClick() {
+    //     this.game.Monsterx2 = this.game.Monsterx2 ? false : true;
+    //     var text_Monsterx2 = this.game.Monsterx2 ? "2x Monster ON" : "2x Monster OFF";
+    //     this.buttonText2xMonster.text = text_Monsterx2;
+    //     console.log("Clicked 2x Monster")
+    // }
 
     update() {
         if(this.startButton.isDown){
