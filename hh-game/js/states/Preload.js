@@ -55,18 +55,47 @@ class Preload extends Phaser.State {
         this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
         this.game.startGame = function(game) {console.log("preloading"); game.state.start("Main", true, false, this.in_rooms);};
+        
         this.button = this.game.add.button(580, 50, 'button-large', this.onRandomClick, this, 1, 0);
         this.game.random = false;
         this.button.inputEnabled = true;
         this.button.input.useHandCursor = true;
         this.buttonText = this.game.add.text(595, 65, "Random off", {font: "20px Arial", fill: "#FFFFFF"})
+
+        this.buttonhp = this.game.add.button(580, 100, 'button-large', this.onHPClick, this, 1, 0);
+        this.game.hp1 = false;
+        this.buttonhp.inputEnabled = true;
+        this.buttonhp.input.useHandCursor = true;
+        this.buttonTextHP = this.game.add.text(595, 115, "1 HP OFF", {font: "20px Arial", fill: "#FFFFFF"})
+
+        this.button2xMonster = this.game.add.button(580, 150, 'button-large', this.on2xMonsterClick, this, 1, 0);
+        this.game.Monsterx2 = false;
+        this.button2xMonster.inputEnabled = true;
+        this.button2xMonster.input.useHandCursor = true;
+        this.buttonText2xMonster = this.game.add.text(595, 165, "2x Monster OFF", {font: "20px Arial", fill: "#FFFFFF"})
     }
 
     onRandomClick() {
         this.game.random = this.game.random ? false : true;
         var text = this.game.random ? "Random on" : "Random off";
         this.buttonText.text = text;
-        console.log("Clicked")
+        console.log("Clicked Random")
+    }
+
+    onHPClick() {
+
+        this.game.hp1 = this.game.hp1 ? false : true;
+        var text_hp1 = this.game.hp1 ? "1 HP ON" : "1 HP OFF";
+        this.buttonTextHP.text = text_hp1;
+        console.log("Clicked 1 HP")
+    }
+
+    on2xMonsterClick() {
+
+        this.game.Monsterx2 = this.game.Monsterx2 ? false : true;
+        var text_Monsterx2 = this.game.Monsterx2 ? "2x Monster ON" : "2x Monster OFF";
+        this.buttonText2xMonster.text = text_Monsterx2;
+        console.log("Clicked 2x Monster")
     }
 
     update() {
