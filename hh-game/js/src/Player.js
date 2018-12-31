@@ -1,12 +1,12 @@
 import Projectile from '/js/src/objects/Projectile.js'
 
 export default class{
-    constructor(game, playArea){
+    constructor(game, playArea, health, speed){
         this.game = game;
         this.sprite = null;
-        this.speed = 4;
+        this.speed = speed;
         this.playArea = playArea;
-        this.health = 5;
+        this.health = health;
         this.lastShot = 0;
         this.lastDamage = 0;
         this.lastPickup = 0;

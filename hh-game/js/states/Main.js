@@ -34,7 +34,15 @@ export default class Main extends Phaser.State {
 
         this.setupKeyboard();
         this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
-        this.player = new Player(this.game, this.playArea);
+
+        if (this.game.hp1) {
+            console.log("hp is 1 " + this.game.hp1);
+            this.player = new Player(this.game, this.playArea, 1, 5);
+        } else {
+            console.log("hp is not 1 " + this.game.hp1);
+            this.player = new Player(this.game, this.playArea, 5, 5);
+        }
+        
         this.player.spawn();
         this.game.player = this.player;
         this.game.add.sprite(0, 0, 'room-0');
