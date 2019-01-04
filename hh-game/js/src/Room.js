@@ -149,10 +149,6 @@ export default class Room {
         var type = object.type;
         var newObject = null;
 
-        // if (this.game.mode == 1){
-        //     var newObject2 = null;
-        // }
-
         switch(type) {
             case "fire":
                 newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos, this.things);
@@ -199,12 +195,7 @@ export default class Room {
                 }
                 break;
             case "boss":
-                if (this.game.mode == 1) {
                     newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
-                    var newObject2 = new Monster(this.game, this.player, 'monster', object.name, 220, 220, this.npcs, 370, true);
-                } else {
-                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
-                }
                 break;
             case "coffin":
                 newObject = new Coffin(this.game, this.player, 'coffin', 'coffin', object.x_pos, object.y_pos, this.things, this);
@@ -224,14 +215,6 @@ export default class Room {
         console.log(this.objects);
         this.objects.push(newObject);
 
-        // if(this.game.mode == 1 && newObject2 == null){
-        //     console.log("Object2: "+ type + " not found")
-        //     return;
-        // } 
-    
-        // if (this.game.mode == 1){
-        //     this.objects.push(newObject2);
-        // }
     }
 
     // Shows text in the screen somwewhere and then fades
