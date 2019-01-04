@@ -36,7 +36,7 @@ export default class Main extends Phaser.State {
         this.playArea = new Phaser.Rectangle(140, 140, 520, 400);
 
         if (this.game.mode == 2 || this.game.mode == 1) {
-            this.player = new Player(this.game, this.playArea, 1, 5);
+            this.player = new Player(this.game, this.playArea, 100, 5);
         } else {
             this.player = new Player(this.game, this.playArea, 5, 5);
         }
