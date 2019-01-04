@@ -35,7 +35,7 @@ export default class Monster extends Object
         var dx = dir.x * 0.32 * this.speed;
         var dy = dir.y * 0.32 * this.speed;
 
-        if(playArea.contains(this.sprite.x + dx, this.sprite.y + dy))
+        if(playArea != null && playArea.contains(this.sprite.x + dx, this.sprite.y + dy))
         {
             this.sprite.body.velocity.x = dx;
             this.sprite.body.velocity.y = dy;

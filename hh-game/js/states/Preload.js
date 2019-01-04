@@ -37,7 +37,7 @@ class Preload extends Phaser.State {
         this.game.load.spritesheet('blackhole', 'img/circle.png', 100, 100); 
         this.game.load.spritesheet('circle', 'img/circle.png', 100, 100);    
         this.game.load.spritesheet('axe', 'img/pickaxe_axe.png', 32, 64);
-        this.game.load.spritesheet('coffin', 'img/coffin.png', 74, 64);
+        this.game.load.spritesheet('coffin', 'img/coffin.png', 75, 67);
         this.game.load.image('hole', 'img/hole.png');
 
         // NPCs
@@ -45,6 +45,7 @@ class Preload extends Phaser.State {
         this.game.load.spritesheet('mummy', 'img/npc_mummy.png', 37, 45, 18);
         this.game.load.image('monster', 'img/monster.png');
         this.game.load.spritesheet('ghost', 'img/ghost.png', 49,57);
+
     }
 
     create() {

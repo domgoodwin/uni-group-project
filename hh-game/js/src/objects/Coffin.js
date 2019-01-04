@@ -23,7 +23,10 @@ export default class Coffin extends Object{
             this.sprite.animations.play('open', 1.2, false);
 
             this.isOpen = true;
-            this.spawnGhost();
+
+            //One off timed event
+            //first parameter is duration of wait before event, the second parameter, is triggered.
+            this.game.time.events.add(3600, this.spawnGhost, this);
         }
     }
 
