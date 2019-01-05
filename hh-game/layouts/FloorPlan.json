@@ -349,7 +349,27 @@
             "east": "laundry",
             "south": "b5",
             "west": "furnace"
-        }
+        }, 
+        "objects": [
+            {
+                "name": "special_chest",
+                "type": "chest_special",
+                "x_pos": 200,
+                "y_pos": 500
+            }, 
+            {
+                "name": "special_chest",
+                "type": "chest_special",
+                "x_pos": 300,
+                "y_pos": 500
+            },
+            {
+                "name": "special_chest",
+                "type": "chest_special",
+                "x_pos": 400,
+                "y_pos": 500
+            }
+        ]
     },
     {
         "id": "laundry",

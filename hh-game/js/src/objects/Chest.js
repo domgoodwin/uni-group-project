@@ -1,7 +1,7 @@
 import Object from '/js/src/Object.js'
 
 export default class Chest extends Object{
-    constructor(game, player, type, name, x_pos, y_pos, group, enterable){
+    constructor(game, player, type, name, x_pos, y_pos, group, enterable, special){
         console.log("Creating Chest")
         super(game, player, type, name, x_pos, y_pos, group);
         super.setupObject();
@@ -9,6 +9,7 @@ export default class Chest extends Object{
         this.opened = 0;
         this.sprite.scale.setTo(2);
         this.enterable = enterable;
+        this.special = special;
         this.action = this.action.bind(this);
         this.release = this.release.bind(this);
         this.interact = this.interact.bind(this);
