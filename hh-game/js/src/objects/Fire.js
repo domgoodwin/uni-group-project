@@ -16,11 +16,10 @@ export default class Fire extends Object{
     destroy(){
         console.log("Collision on fire");
         this.player.damage(1);
-        // fire-filter
     }
 
     remove(){
-        super.remove();
+        // super.remove();
         console.log("Destroying fire");
         this.sprite.animations.destroy();
         this.sprite.destroy(true);

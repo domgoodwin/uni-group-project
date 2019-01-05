@@ -28,7 +28,6 @@ export default class Coffin extends Object{
     }
 
     spawnGhost(){
-        //Spawn Ghost(game, player, type, name, x_pos, y_pos, group
         this.room.createObject({"type":"boss", "x_pos": this.sprite.world.x, "y_pos": this.sprite.world.y});
     }
 

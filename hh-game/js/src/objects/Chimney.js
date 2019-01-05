@@ -2,7 +2,7 @@ import Object from '/js/src/Object.js'
 
 export default class Chimney extends Object{
     constructor(game, player, type, name, x_pos, y_pos, group, enterable){
-        console.log("Creating Chimney")
+        console.log("Creating blackhole")
         super(game, player, type, name, x_pos, y_pos, group);
         super.setupObject();
         this.oldSpeed = 0;
@@ -16,14 +16,12 @@ export default class Chimney extends Object{
     }
 
     destroy(){
-        console.log("Collision on fire");
+        console.log("Collision on chimney");
         this.player.damage(1);
-        // fire-filter
     }
 
     remove(){
-        super.remove();
-        console.log("Destroying fire");
+        console.log("Destroying chimney");
         this.sprite.animations.destroy();
         this.sprite.destroy(true);
         this.sprite = null;

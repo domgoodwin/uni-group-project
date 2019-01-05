@@ -27,14 +27,12 @@ export default class Blackhole extends Object{
     }
 
     destroy(){
-        console.log("Collision on fire");
+        console.log("Collision on blackhole");
         this.player.damage(1);
-        // fire-filter
     }
 
     remove(){
-        super.remove();
-        console.log("Destroying fire");
+        console.log("Destroying blackhole");
         this.sprite.animations.destroy();
         this.sprite.destroy(true);
         this.sprite = null;
