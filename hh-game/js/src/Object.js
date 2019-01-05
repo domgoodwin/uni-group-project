@@ -16,7 +16,6 @@ export default class Object {
     }
 
     setupObject(){
-        // this.sprite = this.game.add.sprite(this.x_pos, this.y_pos, this.type);
         this.sprite = this.group.create(this.x_pos, this.y_pos, this.type);
         // sets anchor to centre for collisions
         this.game.physics.arcade.enable(this.sprite);
@@ -25,7 +24,6 @@ export default class Object {
         // Setup sprite animations
 
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-        // this.sprite.body.immovable = true;
     }
 
     move() {
