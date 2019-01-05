@@ -160,7 +160,7 @@ export default class Room {
                 newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true, false);
                 break;
             case "chest_special":
-                newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true, true);
+                newObject = new Chest(this.game, this.player, 'chest', 'special_chest', object.x_pos, object.y_pos, this.things, true, true);
                 break;
             case "chute":
                 newObject = new Chute(this.game, this.player, 'chute', 'chute-normal', object.x_pos, object.y_pos, this.things, true);
