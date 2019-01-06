@@ -98,6 +98,10 @@ export default class Main extends Phaser.State {
             return;
         }
 
+        if(this.room.locked){
+            return;
+        }
+
         this.currentRoomJson = nextRoom;
         this.setRoomText(this.currentRoomJson.name);
         this.roomObjects[this.room.id] = this.room;

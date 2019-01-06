@@ -32,6 +32,7 @@ export default class Room {
         this.lastInteraction = 0;
         this.displayedText = 0;
         this.textToShow = "";
+        this.locked = false;
 
         this.createRoom = this.createRoom.bind(this);
         this.checkUpdate = this.checkUpdate.bind(this);
@@ -40,6 +41,7 @@ export default class Room {
         this.interact = this.interact.bind(this);
         this.render = this.render.bind(this);
         this.showText = this.showText.bind(this);
+        this.lockDoors = this.lockDoors.bind(this);
 
         this.createRoom(door);
     }
@@ -241,6 +243,14 @@ export default class Room {
         if(this.player.state != null && key == "space" && this.lastInteraction < this.game.time.now){
             console.log("trying to release: " + this.player.state)
             this.player.state.release(this);
+        }
+    }
+
+    lockDoors(){
+        this.locked = true;
+        for(var i = 0; i < this.doors.length; i++){
+            var door = this.doors[i];
+            door.alpha = 0;
         }
     }
 
