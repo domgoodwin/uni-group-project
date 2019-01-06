@@ -85,7 +85,8 @@ class Preload extends Phaser.State {
         if(this.game.click_count % 3 == 0){
             text_mode = "Normal";
             this.game.mode = 0;
-        } else if(this.game.click_count % 3 == 1){
+        } 
+        else if(this.game.click_count % 3 == 1){
             text_mode = "Hard";
             this.game.mode = 1;
         }
