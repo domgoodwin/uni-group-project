@@ -194,14 +194,14 @@ export default class Room {
                 break;
             case "monster":
                 if (this.game.mode == 1) {
-                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false, true);
-                    newObject2 = new Monster(this.game, this.player, 'monster', object.name, 175, 175, this.npcs, 150, false, true);
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                    newObject2 = new Monster(this.game, this.player, 'monster', object.name, 175, 175, this.npcs, 150, false);
                 } else {
-                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false, false);
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
                 }
                 break;
             case "boss":
-                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true, false);
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
                 break;
             case "coffin":
                 newObject = new Coffin(this.game, this.player, 'coffin', 'coffin', object.x_pos, object.y_pos, this.things, this);
