@@ -13,7 +13,7 @@ import Monster from '/js/src/objects/Monster.js';
 import Coffin from '/js/src/objects/Coffin.js';
 
 const NORTH_DOOR = [343, 50]
-const EAST_DOOR = [660, 225]
+const EAST_DOOR = [670, 225]
 const SOUTH_DOOR = [343, 522]
 const WEST_DOOR = [100, 225]
 export default class Room {
@@ -128,7 +128,7 @@ export default class Room {
         }
         if(usedDoor){
             console.log("Moving character: "+usedDoor)
-            var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 10;
+            var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 20;
             var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 90 : EAST_DOOR[1];
             this.player.sprite.x = x;
             this.player.sprite.y = y; 
