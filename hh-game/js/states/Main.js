@@ -182,6 +182,7 @@ export default class Main extends Phaser.State {
             var doorCount = Math.floor(Math.random() * 4) + 1;
             for (var i = 0; i < doorCount; i++){
                 var startPos = Math.floor(Math.random() * 4) + 1;
+                
             }
             basementCount += doorCount;
             genRooms.push(this.genRoom("b"+basementCount, "Basement", ))
