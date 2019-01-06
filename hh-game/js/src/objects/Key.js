@@ -11,7 +11,6 @@ export default class Key extends Object{
 
     action(){
         this.player.pickupItem(this);
-        // this.player.inventory.push("key");
         this.group.remove(this.sprite);
     }
 }

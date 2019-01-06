@@ -56,19 +56,51 @@ class Preload extends Phaser.State {
         this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
         this.game.startGame = function(game) {console.log("preloading"); game.state.start("Main", true, false, this.in_rooms);};
+        
         this.button = this.game.add.button(580, 50, 'button-large', this.onRandomClick, this, 1, 0);
         this.game.random = false;
         this.button.inputEnabled = true;
         this.button.input.useHandCursor = true;
         this.buttonText = this.game.add.text(595, 65, "Random off", {font: "20px Arial", fill: "#FFFFFF"})
+
+        this.buttonMode = this.game.add.button(580, 100, 'button-large', this.onModeClick, this, 1, 0);
+        this.game.mode = 0;
+        this.game.click_count = 0;
+        this.buttonMode.inputEnabled = true;
+        this.buttonMode.input.useHandCursor = true;
+        this.buttonTextMode = this.game.add.text(595, 115, "Normal", {font: "20px Arial", fill: "#FFFFFF"})
     }
 
     onRandomClick() {
         this.game.random = this.game.random ? false : true;
         var text = this.game.random ? "Random on" : "Random off";
         this.buttonText.text = text;
-        console.log("Clicked")
+        console.log("Clicked Random")
     }
+
+    onModeClick() {
+        this.game.click_count += 1;
+        var text_mode = ""
+
+        if(this.game.click_count % 3 == 0){
+            text_mode = "Normal";
+            this.game.mode = 0;
+        } else if(this.game.click_count % 3 == 1){
+            text_mode = "Hard";
+            this.game.mode = 1;
+        }
+        else if(this.game.click_count % 3 == 2){
+            text_mode = "1 HP"
+            this.game.mode = 2;
+        }
+        else {
+            console.log("Error")
+        }
+
+        this.buttonTextMode.text = text_mode;
+        console.log("Clicked " + text_mode + " Mode")
+    }
+
 
     update() {
         if(this.startButton.isDown){

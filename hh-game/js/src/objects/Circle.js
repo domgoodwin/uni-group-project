@@ -2,7 +2,7 @@ import Object from '/js/src/Object.js'
 
 export default class Fire extends Object{
     constructor(game, player, type, name, x_pos, y_pos, group, effect){
-        console.log("Creating Fire")
+        console.log("Creating circle")
         super(game, player, type, name, x_pos, y_pos, group);
         this.effect = effect;
         this.addAnimations();
@@ -46,7 +46,7 @@ export default class Fire extends Object{
 
     remove(){
         super.remove();
-        console.log("Destroying fire");
+        console.log("Destroying circle");
         this.sprite.animations.destroy();
         this.sprite.destroy(true);
         this.sprite = null;

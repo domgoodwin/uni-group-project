@@ -456,7 +456,15 @@
                 "x_pos": 350,
                 "y_pos": 250,
                 "effect": "teleport"
+            },
+    
+            {
+                "name": "special_chest",
+                "type": "chest_special",
+                "x_pos": 200,
+                "y_pos": 175
             }
+           
         ]
     },
     {

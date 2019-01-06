@@ -150,6 +150,7 @@ export default class Room {
         console.log(object)
         var type = object.type;
         var newObject = null;
+
         switch(type) {
             case "fire":
                 newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos, this.things);
@@ -158,7 +159,10 @@ export default class Room {
                 newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos, this.npcs);
                 break;
             case "chest":
-                newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true);
+                newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true, false);
+                break;
+            case "chest_special":
+                newObject = new Chest(this.game, this.player, 'chest', 'special_chest', object.x_pos, object.y_pos, this.things, true, true);
                 break;
             case "chute":
                 newObject = new Chute(this.game, this.player, 'chute', 'chute-normal', object.x_pos, object.y_pos, this.things, true);
@@ -188,10 +192,15 @@ export default class Room {
                 newObject = new Axe(this.game, this.player, 'axe', 'axe', object.x_pos, object.y_pos, this.items, this, false);
                 break;
             case "monster":
-                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                if (this.game.mode == 1) {
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                    var newObject2 = new Monster(this.game, this.player, 'monster', object.name, 175, 175, this.npcs, 150, false);
+                } else {
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                }
                 break;
             case "boss":
-                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
                 break;
             case "coffin":
                 newObject = new Coffin(this.game, this.player, 'coffin', 'coffin', object.x_pos, object.y_pos, this.things, this);
@@ -202,12 +211,15 @@ export default class Room {
             default:
                 newObject = null;
         }
-        if(newObject == null){
-            console.log("Object: "+type + " not found")
+
+        if(newObject == null) {
+            console.log("Object: "+ type + " not found")
             return;
         } 
+
         console.log(this.objects);
         this.objects.push(newObject);
+
     }
 
     // Shows text in the screen somwewhere and then fades

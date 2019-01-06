@@ -5,7 +5,6 @@ export default class Rock extends Object{
         console.log("Creating Rock")
         console.log(room)
         super(game, player, type, name, x_pos, y_pos, group);
-        // this.sprite.scale.setTo(0.5);
         this.room = room;
         this.sprite.scale.setTo(0.5);
         this.action = this.action.bind(this);
@@ -30,7 +29,6 @@ export default class Rock extends Object{
 
     }
 
-    // On collision with Rock Action is called
     // Checks if player can destroy
     action(){
         if(this.player.inventory.includes("pickaxe")){
