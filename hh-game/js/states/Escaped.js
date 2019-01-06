@@ -6,7 +6,7 @@ class Escaped extends Phaser.State {
         this.game.add.text(this.game.world.centerX, this.game.world.centerY-100, "Congratulations!", {font: "20px Arial"}); 
         this.game.add.text(this.game.world.centerX, this.game.world.centerY, "You digged a tunnel and escaped!", {font: "20px Arial"}); 
         this.game.add.text(this.game.world.centerX, this.game.world.centerY+100, "Score: "+score, {font: "20px Arial"}); 
-        this.finishedLoadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Press Space to play again", { font: "25px Arial", fill: "#ffffff", align: "center" });
+        this.finishedLoadingText = this.game.add.text(this.game.world.centerX-100, this.game.world.centerY+200, "Press Space to play again", { font: "25px Arial", fill: "#ffffff", align: "center" });
         this.restartButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
     }
