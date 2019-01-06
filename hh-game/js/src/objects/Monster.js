@@ -16,7 +16,8 @@ export default class Monster extends Object
         this.health = 5;
         this.lastHit = 0;
         this.dead = false;
-        this.double_damage = double_damage;
+        this.dmg = double_damage;
+        console.log('double_damage dmg ' + this.double_damage);
         this.state = boss ? 0 : game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
         console.log("NPC: Random int for State Control is ", this.state);
 
@@ -101,13 +102,13 @@ export default class Monster extends Object
     action()
     {
         console.log("NPC: Player collision with Monster");
-        if (this.double_damage){
-            console.log('dcjdc' + this.double_damage);
+        if (this.dmg){
+            console.log('dcjdc' + this.dmg);
             this.player.damage(1);
             this.player.damage(1);
         }
         else {
-            console.log('false dmg' + this.double_damage);
+            console.log('false dmg ' + this.dmg);
             this.player.damage(1);
         }
         
