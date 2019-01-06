@@ -17,7 +17,8 @@ export default class Main extends Phaser.State {
         // this.game.add.plugin(PhaserInput.Plugin);
         console.log("Game starting:")
         // console.log(this.in_rooms);
-        this.rooms = JSON.parse(this.in_rooms);
+        this.generateRooms(this.in_rooms);
+        //this.rooms = JSON.parse(this.in_rooms);
         this.game.in_rooms = this.in_rooms;
         this.roomObjects = {};
         this.debug = false;
@@ -97,6 +98,10 @@ export default class Main extends Phaser.State {
             return;
         }
 
+        if(this.room.locked){
+            return;
+        }
+
         this.currentRoomJson = nextRoom;
         this.setRoomText(this.currentRoomJson.name);
         this.roomObjects[this.room.id] = this.room;
@@ -160,6 +165,89 @@ export default class Main extends Phaser.State {
             this.room.interact("space");
             this.player.shoot();
         }
+    }
+
+    generateRooms(in_rooms){
+        this.rooms = JSON.parse(in_rooms)
+        if (!this.game.random) {
+            return;
+        }
+
+        // eseential rooms
+        // 
+
+        // move essential items
+        // items: key-old, chest, pickaxe, str_buff, rock_basement, speed_buff, 
+        // don't move or clash with: dressingRoom/coffin, blackhole_normal(basement exit only),
+        for (var i = 0; i < this.rooms.length; i++) { 
+            this.rooms.floor = '#'+Math.floor(Math.random()*16777215).toString(16); 
+            var curRoom = this.rooms[i]
+            if(curRoom.objects){
+                for (var j = 0; j < curRoom.objects.length; j++){
+                    var curItem = curRoom.objects[j]
+                    switch (curItem.name) {
+                        case "key-old":
+                            this.moveObject(i, curItem, -1);
+                            break;
+                        case "pickaxe":
+                            this.moveObject(i, curItem, 1);
+                            break;
+                        case "str_buff":
+                            this.moveObject(i, curItem, 1);
+                            break;
+                        case "speed_buff":
+                            this.moveObject(i, curItem, 0);
+                            break;
+                        case "random_fire":
+                            this.moveObject(i, curItem, 0);
+                            break;
+                        // case "rock_basement":
+                        //     this.moveObject(i, curItem, 1);
+                        //     break;
+                        default:
+                            break
+                    }
+                }
+            }
+        }
+        // place fire in random rooms
+
+        this.in_rooms = JSON.stringify(this.rooms);
+        // console.log(this.rooms)
+        // console.log(this.in_rooms)
+    }
+
+    moveObject(oldIndex, curItem, criteria){
+        // critera: -1 (basement only), 0 (anywhere), 1 (not basement), 2 (top floor only)
+        console.log("Old "+curItem.name+" room"+this.rooms[oldIndex].name)
+        var possibilities = []
+        var start = 0;
+        for (var i = 0; i < this.rooms.length; i++) { 
+            var room = this.rooms[i]
+            if (criteria == -1 && room.level == -1){
+                possibilities.push(room);
+            }
+            else if (criteria == 0){
+                possibilities.push(room);
+            }
+            else if (criteria == 1 && room.level > -1){
+                possibilities.push(room);
+            }
+            else if (criteria == 1 && room.level == 1){
+                possibilities.push(room);
+            }
+        }
+        if(!possibilities.length > 0) return
+        var index = Math.floor(Math.random() * possibilities.length) + 0;
+        console.log("debug"+index)
+        console.log(possibilities)
+        console.log("New "+curItem.name+" room"+possibilities[index].name)
+        possibilities[index].objects = possibilities[index].objects ? possibilities[index].objects : [];
+        possibilities[index].objects.push(curItem);
+        var posIndex = this.rooms.indexOf(possibilities[index]);
+        if (posIndex !== -1) this.rooms[posIndex].objects = possibilities[index].objects;
+        var itemIndex = this.rooms[oldIndex].objects.indexOf(curItem);
+        if (itemIndex !== -1) this.rooms[oldIndex].objects.splice(itemIndex, 1);
     }
 
     // Shows debug information if flag is set

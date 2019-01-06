@@ -31,7 +31,9 @@ class Preload extends Phaser.State {
         this.game.load.spritesheet('chest', 'img/chest.png', 32, 32);
         this.game.load.spritesheet('chute', 'img/chute.png');
         // this.game.load.spritesheet('chimney', 'img/chute.png');
-        this.game.load.image('door-ew', 'img/wood-ew.png');        
+        this.game.load.image('door-ew', 'img/wood-ew.png');       
+        //this.game.load.image('button-large', 'img/button-large.png');     
+        this.game.load.spritesheet('button-large', 'img/button-large.png', 175, 55);    
         this.game.load.script('fire-filter', 'https://cdn.rawgit.com/photonstorm/phaser-ce/master/filters/Fire.js');
         this.game.load.spritesheet('key', 'img/key.png', 40, 12);
         this.game.load.spritesheet('blackhole', 'img/circle.png', 100, 100); 
@@ -54,6 +56,18 @@ class Preload extends Phaser.State {
         this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
         this.game.startGame = function(game) {console.log("preloading"); game.state.start("Main", true, false, this.in_rooms);};
+        this.button = this.game.add.button(580, 50, 'button-large', this.onRandomClick, this, 1, 0);
+        this.game.random = false;
+        this.button.inputEnabled = true;
+        this.button.input.useHandCursor = true;
+        this.buttonText = this.game.add.text(595, 65, "Random off", {font: "20px Arial", fill: "#FFFFFF"})
+    }
+
+    onRandomClick() {
+        this.game.random = this.game.random ? false : true;
+        var text = this.game.random ? "Random on" : "Random off";
+        this.buttonText.text = text;
+        console.log("Clicked")
     }
 
     update() {
