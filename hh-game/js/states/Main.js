@@ -241,13 +241,13 @@ export default class Main extends Phaser.State {
             if (criteria == -1 && room.level == -1){
                 possibilities.push(room);
             }
-            else if (criteria == 0){
+            else if (criteria == 0 && room.id != "dressingRoom"){
                 possibilities.push(room);
             }
-            else if (criteria == 1 && room.level > -1){
+            else if (criteria == 1 && room.level > -1 && room.id != "dressingRoom"){
                 possibilities.push(room);
             }
-            else if (criteria == 1 && room.level == 1){
+            else if (criteria == 1 && room.level == 1 && room.id != "dressingRoom"){
                 possibilities.push(room);
             }
         }
