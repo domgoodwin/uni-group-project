@@ -12,6 +12,7 @@ class Preload extends Phaser.State {
 
         // Room
         this.game.load.image('room-0', 'img/room-1.png');
+        this.game.load.image('border', 'img/border-screen.png');
 
         // Player
         this.game.load.spritesheet('player', 'img/player.png', 48, 48);
@@ -63,12 +64,12 @@ class Preload extends Phaser.State {
         this.button.input.useHandCursor = true;
         this.buttonText = this.game.add.text(595, 65, "Random off", {font: "20px Arial", fill: "#FFFFFF"})
 
-        this.buttonMode = this.game.add.button(580, 100, 'button-large', this.onModeClick, this, 1, 0);
+        this.buttonMode = this.game.add.button(580, 110, 'button-large', this.onModeClick, this, 1, 0);
         this.game.mode = 0;
         this.game.click_count = 0;
         this.buttonMode.inputEnabled = true;
         this.buttonMode.input.useHandCursor = true;
-        this.buttonTextMode = this.game.add.text(595, 115, "Normal", {font: "20px Arial", fill: "#FFFFFF"})
+        this.buttonTextMode = this.game.add.text(595, 125, "Normal", {font: "20px Arial", fill: "#FFFFFF"})
     }
 
     onRandomClick() {
