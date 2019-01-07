@@ -130,8 +130,8 @@ export default class Room {
         }
         if(usedDoor){
             console.log("Moving character: "+usedDoor)
-            var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 20;
-            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 90 : EAST_DOOR[1];
+            var x = usedDoor == "north" ? SOUTH_DOOR[0] + 50: usedDoor == "east" ? WEST_DOOR[0] + 75 : usedDoor == "south" ? NORTH_DOOR[0] + 50 : EAST_DOOR[0] - 50;
+            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] + 75: usedDoor == "south" ? NORTH_DOOR[1] + 90 : EAST_DOOR[1] + 75;
             this.player.sprite.x = x;
             this.player.sprite.y = y; 
         } else {
