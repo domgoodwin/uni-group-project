@@ -16,7 +16,6 @@ export default class Monster extends Object
         this.health = 5;
         this.lastHit = 0;
         this.dead = false;
-        console.log('double_damage dmg ' + this.double_damage);
         this.state = boss ? 0 : game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
         console.log("NPC: Random int for State Control is ", this.state);
 
