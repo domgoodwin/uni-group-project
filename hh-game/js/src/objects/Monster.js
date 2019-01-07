@@ -100,7 +100,15 @@ export default class Monster extends Object
     action()
     {
         console.log("NPC: Player collision with Monster");
-        this.player.damage(1);
+        if (this.game.mode == 1){
+            console.log('Double Damage');
+            this.player.damage(2);
+        }
+        else {
+            console.log('Normal Damage ');
+            this.player.damage(1);
+        }
+        
     }
 
     remove()

@@ -150,6 +150,7 @@ export default class Room {
         console.log(object)
         var type = object.type;
         var newObject = null;
+        var newObject2 = null;
 
         switch(type) {
             case "fire":
@@ -194,7 +195,7 @@ export default class Room {
             case "monster":
                 if (this.game.mode == 1) {
                     newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
-                    var newObject2 = new Monster(this.game, this.player, 'monster', object.name, 175, 175, this.npcs, 150, false);
+                    newObject2 = new Monster(this.game, this.player, 'monster', object.name, 175, 175, this.npcs, 150, false);
                 } else {
                     newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
                 }
@@ -213,12 +214,19 @@ export default class Room {
         }
 
         if(newObject == null) {
-            console.log("Object: "+ type + " not found")
+            console.log("Object: "+ type + " not found");
             return;
         } 
 
         console.log(this.objects);
         this.objects.push(newObject);
+
+        if(newObject2 == null) {
+            return;
+        } 
+    
+        this.objects.push(newObject2);
+    
 
     }
 
