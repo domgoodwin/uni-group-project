@@ -4,7 +4,7 @@ import Player from '/js/src/Player.js';
 import Room from '/js/src/Room.js';
 import MusicPlayer from '/js/src/MusicPlayer.js';
 
-const VERSION = "0.40";
+const VERSION = "1.00";
 
 export default class Main extends Phaser.State {
 
