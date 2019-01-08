@@ -5,6 +5,7 @@ class Preload extends Phaser.State {
     }
 
     preload() {
+        this.in_rooms = this.original_rooms;
         // Render loading screen
         this.loadingScreenImage = this.game.add.sprite(this.game.world.centreX, this.game.world.centreY, "title-screen-800-600");
         this.loadingScreenImage.anchor.setTo(0);
