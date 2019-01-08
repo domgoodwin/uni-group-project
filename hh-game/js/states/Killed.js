@@ -8,7 +8,7 @@ class Killed extends Phaser.State {
         text.anchor.set(0.5);
         text.stroke = "#000000";
         text.strokeThickness = 8;
-        var text2 = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "You fell into a hidden abyss! Game Over!", {font: "20px Verdana", fill: "#ffffff", align: "center"});  
+        var text2 = this.game.add.text(this.game.world.centerX, this.game.world.centerY+100, "You fell into a hidden abyss!", {font: "20px Verdana", fill: "#ffffff", align: "center"});  
         text2.anchor.set(0.5);
         text2.stroke = "#000000";
         text2.strokeThickness = 8;
