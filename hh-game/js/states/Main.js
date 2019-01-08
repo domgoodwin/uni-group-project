@@ -13,11 +13,12 @@ export default class Main extends Phaser.State {
     }
 
     create() {
+        
         this.game.global.startTime = this.game.time.now;
         // this.game.add.plugin(PhaserInput.Plugin);
         console.log("Game starting:")
         // console.log(this.in_rooms);
-        this.generateRooms(this.in_rooms);
+        this.generateRooms(this.game.in_rooms);
         //this.rooms = JSON.parse(this.in_rooms);
         this.game.in_rooms = this.in_rooms;
         this.roomObjects = {};
