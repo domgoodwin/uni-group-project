@@ -50,6 +50,8 @@ class Preload extends Phaser.State {
         this.game.load.image('monster', 'img/monster.png');
         this.game.load.spritesheet('ghost', 'img/ghost.png', 49,57);
 
+        this.game.random = false;
+        this.game.click_count = 0;
     }
 
     create() {
