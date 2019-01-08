@@ -236,7 +236,7 @@ export default class Room {
         if(pos == "top"){
             top = -200;
         }
-        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY+top, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
+        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY+top, textToDisplay, { font: "25px Verdana", fill: "#ffffff", align: "center" });
         text.anchor.set(0.5);
         text.stroke = "#000000";
         text.strokeThickness = 8;

@@ -44,13 +44,14 @@ export default class Main extends Phaser.State {
         this.player.spawn();
         this.game.player = this.player;
         this.game.add.sprite(0, 0, 'room-0');
-        this.game.add.text(715, 567, VERSION, {font: "20px Arial"});
-        this.speedText = this.game.add.text(25, 65, "S: "+this.player.speed, {font: "20px Arial"});
-        this.displayText = this.game.add.text(25, 115, "H: "+this.player.health, {font: "20px Arial"});
-        this.invText = this.game.add.text(25, 165, this.player.inventoryDisplay, {font: "20px Arial"});
+        this.game.add.text(715, 563, VERSION, {font: "20px Verdana"});
+        this.speedText = this.game.add.text(20, 65, "S: "+this.player.speed, {font: "20px Verdana"});
+        this.displayText = this.game.add.text(20, 115, "H: "+this.player.health, {font: "20px Verdana"});
+        this.inv = this.game.add.text(20, 150, "inv", {font: "20px Verdana"});
+        this.invText = this.game.add.text(20, 170, this.player.inventoryDisplay, {font: "20px Verdana"});
         this.currentRoomJson = this.rooms[0];
         this.room = new Room(this.game, this.currentRoomJson, this.player, null);
-        this.roomDisplay = this.game.add.text(560, 15, this.currentRoomJson.name, {font: "20px Arial"});
+        this.roomDisplay = this.game.add.text(560, 10, this.currentRoomJson.name, {font: "20px Verdana"});
         this.setRoomText(this.currentRoomJson.name);
         this.game.physics.arcade.enable(this.playArea);
     }
@@ -126,7 +127,7 @@ export default class Main extends Phaser.State {
         this.room.showText(this.currentRoomJson.name);
 
         if(this.currentRoomJson.name === 'Library'){
-            var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "18px Arial", fill: "#ffffff", align: "center" });
+            var text = this.game.add.text(175, 500, "You hear books talking to you...", { font: "18px Verdana", fill: "#ffffff", align: "center" });
             text.anchor.set(0.15);
 
             // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
@@ -134,7 +135,7 @@ export default class Main extends Phaser.State {
         }
 
         if(this.currentRoomJson.name === 'Basement Exit'){
-            var text = this.game.add.text(175, 500, "Enter the chest if you dare...", { font: "18px Arial", fill: "#ffffff", align: "center" });
+            var text = this.game.add.text(175, 500, "Enter the chest if you dare...", { font: "18px Verdana", fill: "#ffffff", align: "center" });
             text.anchor.set(0.15);
 
             // this.game.add.tween(text).to({y: 0}, 1500, Phaser.Easing.Linear.None, true);    //this to move the text to the top and fades
@@ -146,7 +147,7 @@ export default class Main extends Phaser.State {
     setRoomText(){
         this.roomDisplay.setText(this.currentRoomJson.name);
         this.roomDisplay.fontSize = 25;
-        this.roomDisplay.font = "Arial"
+        this.roomDisplay.font = "Verdana"
 
         this.displayText.setText("H: "+this.player.health);
         this.invText.setText(this.player.inventoryDisplay);

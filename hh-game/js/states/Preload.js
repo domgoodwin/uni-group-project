@@ -8,7 +8,7 @@ class Preload extends Phaser.State {
         // Render loading screen
         this.loadingScreenImage = this.game.add.sprite(this.game.world.centreX, this.game.world.centreY, "title-screen-800-600");
         this.loadingScreenImage.anchor.setTo(0);
-        this.loadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Loading...", { font: "25px Arial", fill: "#ffffff", align: "center" });
+        this.loadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Loading...", { font: "25px Verdana", fill: "#ffffff", align: "center" });
 
         // Room
         this.game.load.image('room-0', 'img/room-1.png');
@@ -53,7 +53,7 @@ class Preload extends Phaser.State {
 
     create() {
         this.loadingText.destroy();
-        this.finishedLoadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Press Space to play", { font: "25px Arial", fill: "#ffffff", align: "center" });
+        this.finishedLoadingText = this.game.add.text(this.game.world.centerX+100, this.game.world.centerY+200, "Press Space to play", { font: "25px Verdana", fill: "#ffffff", align: "center" });
         this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
         this.game.startGame = function(game) {console.log("preloading"); game.state.start("Main", true, false, this.in_rooms);};
@@ -62,14 +62,14 @@ class Preload extends Phaser.State {
         this.game.random = false;
         this.button.inputEnabled = true;
         this.button.input.useHandCursor = true;
-        this.buttonText = this.game.add.text(595, 65, "Random off", {font: "20px Arial", fill: "#FFFFFF"})
+        this.buttonText = this.game.add.text(595, 65, "Random off", {font: "20px Verdana", fill: "#FFFFFF"})
 
         this.buttonMode = this.game.add.button(580, 110, 'button-large', this.onModeClick, this, 1, 0);
         this.game.mode = 0;
         this.game.click_count = 0;
         this.buttonMode.inputEnabled = true;
         this.buttonMode.input.useHandCursor = true;
-        this.buttonTextMode = this.game.add.text(595, 125, "Normal", {font: "20px Arial", fill: "#FFFFFF"})
+        this.buttonTextMode = this.game.add.text(595, 125, "Normal", {font: "20px Verdana", fill: "#FFFFFF"})
     }
 
     onRandomClick() {
