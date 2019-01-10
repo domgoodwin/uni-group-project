@@ -3,9 +3,8 @@ node_modules
 /.vs/config/applicationhost.config
 /.vs/ProjectSettings.json
 /.vs/slnx.sqlite
-<<<<<<< Updated upstream
-=======
 /.vs/slnx.sqlite-journal
 /.vs/VSWorkspaceState.json
 .vs
->>>>>>> Stashed changes
+/.vs/slnx.sqlite-journal
+/.vs/VSWorkspaceState.json

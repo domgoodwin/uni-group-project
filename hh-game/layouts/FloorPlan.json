@@ -165,7 +165,7 @@
         "id": "study",
         "name": "Study",
         "floor": "#CC5F7C",
-        "music": "ambient-spooky-2",
+        "music": "ambient-spooky-1",
         "locked": false,
         "level": 0,
         "doors": {
@@ -301,7 +301,7 @@
         "id": "dressingRoom",
         "name": "Dressing Room",
         "floor": "#FF5EE9",
-        "music": "ambient-spooky-1",
+        "music": "ambient-spooky-2",
         "locked": true,
         "level": 1,
         "doors": {

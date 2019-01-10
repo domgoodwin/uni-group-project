@@ -1,0 +1,24 @@
+﻿body {margin:0;padding:0;word-wrap:break-word;}
+img {border:none;}
+input {border:1px solid black;border-radius:2px;padding:0;}
+input[type=image] { border: none; }
+textarea {border:1px solid black;padding:0;}
+* {box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-ms-box-sizing:content-box;}
+a:link {color:#d68f63;text-decoration:underline;}
+a:active {color:#d68f63;text-decoration:underline;}
+a:hover {color:#515c61;text-decoration:underline;}
+a:visited {color:#d68f63;text-decoration:underline;}
+.DefaultParagraph { text-align:left;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#000000;background-color:transparent;font-variant:normal;font-size:16.0px;vertical-align:0; }
+.Body { text-align:left;margin:0px 0px 12px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
+.Body-2 { text-align:left;margin:0px 0px 12px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#ffffff;background-color:transparent;font-variant:normal;font-size:13.0px;vertical-align:0; }
+.Body4 { text-align:left;margin:0px 0px 12px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
+.Footer { text-align:left;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#ffffff;background-color:transparent;font-variant:normal;font-size:12.0px;vertical-align:0; }
+.Footer-1 { text-align:left;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#656f73;background-color:transparent;font-variant:normal;font-size:12.0px;vertical-align:0; }
+.Heading { text-align:left;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:700;color:#ffffff;background-color:transparent;font-variant:normal;font-size:31.0px;vertical-align:0; }
+.Heading-2 { text-align:left;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#ffffff;background-color:transparent;font-variant:normal;font-size:20.0px;vertical-align:0; }
+.Heading-3 { text-align:center;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#696969;background-color:transparent;font-variant:normal;font-size:33.0px;vertical-align:0; }
+.Heading-33 { text-align:center;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#696969;background-color:transparent;font-variant:normal;font-size:33.0px;vertical-align:0; }
+.Heading-4 { text-align:left;margin:0px 0px 13px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#696969;background-color:transparent;font-variant:normal;font-size:24.0px;vertical-align:0; }
+.Label { text-align:center;margin:0px 0px 6px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:700;color:#4d4d4d;background-color:transparent;font-variant:normal;font-size:15.0px;vertical-align:0; }
+.Normal { text-align:left;margin:0px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#000000;background-color:transparent;font-variant:normal;font-size:16.0px;vertical-align:0; }
+.Quote { text-align:center;margin:0px 0px 12px;text-indent:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:italic;font-weight:normal;color:#8d7b9d;background-color:transparent;font-variant:normal;font-size:20.0px;vertical-align:0; }
