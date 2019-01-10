@@ -32,6 +32,7 @@ export default class Room {
         this.lastInteraction = 0;
         this.displayedText = 0;
         this.textToShow = "";
+        this.locked = false;
 
         this.createRoom = this.createRoom.bind(this);
         this.checkUpdate = this.checkUpdate.bind(this);
@@ -40,6 +41,7 @@ export default class Room {
         this.interact = this.interact.bind(this);
         this.render = this.render.bind(this);
         this.showText = this.showText.bind(this);
+        this.lockDoors = this.lockDoors.bind(this);
 
         this.createRoom(door);
     }
@@ -128,8 +130,8 @@ export default class Room {
         }
         if(usedDoor){
             console.log("Moving character: "+usedDoor)
-            var x = usedDoor == "north" ? SOUTH_DOOR[0] : usedDoor == "east" ? WEST_DOOR[0] + 100 : usedDoor == "south" ? NORTH_DOOR[0] : EAST_DOOR[0] - 20;
-            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] : usedDoor == "south" ? NORTH_DOOR[1] + 90 : EAST_DOOR[1];
+            var x = usedDoor == "north" ? SOUTH_DOOR[0] + 50: usedDoor == "east" ? WEST_DOOR[0] + 75 : usedDoor == "south" ? NORTH_DOOR[0] + 50 : EAST_DOOR[0] - 50;
+            var y = usedDoor == "north" ? SOUTH_DOOR[1] - 10 : usedDoor == "east" ? WEST_DOOR[1] + 75: usedDoor == "south" ? NORTH_DOOR[1] + 90 : EAST_DOOR[1] + 75;
             this.player.sprite.x = x;
             this.player.sprite.y = y; 
         } else {
@@ -138,6 +140,8 @@ export default class Room {
         }
 
         this.game.musicPlayer.playMusicForRoom(this.room);
+        // TODO: Use this in all the object classes instead of passing in the room
+        this.game.room=this;
     }
 
     // Creates an object in the room, switch between the object types
@@ -146,6 +150,8 @@ export default class Room {
         console.log(object)
         var type = object.type;
         var newObject = null;
+        var newObject2 = null;
+
         switch(type) {
             case "fire":
                 newObject = new Fire(this.game, this.player, 'fire', 'fire-middle', object.x_pos, object.y_pos, this.things);
@@ -154,7 +160,10 @@ export default class Room {
                 newObject = new Npc(this.game, this.player, 'mummy', 'mummy-middle', object.x_pos, object.y_pos, this.npcs);
                 break;
             case "chest":
-                newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true);
+                newObject = new Chest(this.game, this.player, 'chest', 'chest-normal', object.x_pos, object.y_pos, this.things, true, false);
+                break;
+            case "chest_special":
+                newObject = new Chest(this.game, this.player, 'chest', 'special_chest', object.x_pos, object.y_pos, this.things, true, true);
                 break;
             case "chute":
                 newObject = new Chute(this.game, this.player, 'chute', 'chute-normal', object.x_pos, object.y_pos, this.things, true);
@@ -184,10 +193,15 @@ export default class Room {
                 newObject = new Axe(this.game, this.player, 'axe', 'axe', object.x_pos, object.y_pos, this.items, this, false);
                 break;
             case "monster":
-                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                if (this.game.mode == 1) {
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                    newObject2 = new Monster(this.game, this.player, 'monster', object.name, 175, 175, this.npcs, 150, false);
+                } else {
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 300, false);
+                }
                 break;
             case "boss":
-                newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
+                    newObject = new Monster(this.game, this.player, 'monster', object.name, object.x_pos, object.y_pos, this.npcs, 370, true);
                 break;
             case "coffin":
                 newObject = new Coffin(this.game, this.player, 'coffin', 'coffin', object.x_pos, object.y_pos, this.things, this);
@@ -198,12 +212,22 @@ export default class Room {
             default:
                 newObject = null;
         }
-        if(newObject == null){
-            console.log("Object: "+type + " not found")
+
+        if(newObject == null) {
+            console.log("Object: "+ type + " not found");
             return;
         } 
+
         console.log(this.objects);
         this.objects.push(newObject);
+
+        if(newObject2 == null) {
+            return;
+        } 
+    
+        this.objects.push(newObject2);
+    
+
     }
 
     // Shows text in the screen somwewhere and then fades
@@ -212,7 +236,7 @@ export default class Room {
         if(pos == "top"){
             top = -200;
         }
-        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY+top, textToDisplay, { font: "25px Arial", fill: "#ffffff", align: "center" });
+        var text = this.game.add.text(this.game.world.centerX, this.game.world.centerY+top, textToDisplay, { font: "25px Verdana", fill: "#ffffff", align: "center" });
         text.anchor.set(0.5);
         text.stroke = "#000000";
         text.strokeThickness = 8;
@@ -239,6 +263,14 @@ export default class Room {
         if(this.player.state != null && key == "space" && this.lastInteraction < this.game.time.now){
             console.log("trying to release: " + this.player.state)
             this.player.state.release(this);
+        }
+    }
+
+    lockDoors(){
+        this.locked = true;
+        for(var i = 0; i < this.doors.length; i++){
+            var door = this.doors[i];
+            door.alpha = 0;
         }
     }
 

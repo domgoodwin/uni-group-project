@@ -19,6 +19,10 @@ export default class Monster extends Object
         this.state = boss ? 0 : game.rnd.integerInRange(0, 2); // Random between 0 and 2 to choose between MONSTER_PURSUIT, MONSTER_IDLE, MONSTER_PATROL
         console.log("NPC: Random int for State Control is ", this.state);
 
+        if (this.isBoss){
+            this.game.room.lockDoors();
+        }
+
         this.damage = this.damage.bind(this);
         this.remove = this.remove.bind(this);
 
@@ -35,7 +39,7 @@ export default class Monster extends Object
         var dx = dir.x * 0.32 * this.speed;
         var dy = dir.y * 0.32 * this.speed;
 
-        if(playArea.contains(this.sprite.x + dx, this.sprite.y + dy))
+        if(playArea != null && playArea.contains(this.sprite.x + dx, this.sprite.y + dy))
         {
             this.sprite.body.velocity.x = dx;
             this.sprite.body.velocity.y = dy;
@@ -96,7 +100,15 @@ export default class Monster extends Object
     action()
     {
         console.log("NPC: Player collision with Monster");
-        this.player.damage(1);
+        if (this.game.mode == 1){
+            console.log('Double Damage');
+            this.player.damage(2);
+        }
+        else {
+            console.log('Normal Damage ');
+            this.player.damage(1);
+        }
+        
     }
 
     remove()

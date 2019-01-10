@@ -5,7 +5,6 @@ export default class Projectile extends Object{
         y_pos = y_pos - 20;
         console.log("Creating Projectile")
         super(game, player, type, name, x_pos, y_pos, group);
-        // this.sprite.scale.setTo(0.5);
         this.playArea = playArea;
         this.dir = dir;
         this.speed = 4;
@@ -19,7 +18,6 @@ export default class Projectile extends Object{
     
 
     tick(){
-        // console.log("tick"+this.dir)
         switch(this.dir) {
             case "up":
                 this.sprite.y -= this.speed;

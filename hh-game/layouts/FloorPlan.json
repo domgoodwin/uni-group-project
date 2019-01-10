@@ -5,6 +5,7 @@
         "floor": "#FFFFFF",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": "hall",
             "east": null,
@@ -26,6 +27,7 @@
         "floor": "#23480f",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": "stairs",
             "east": "livingRoom",
@@ -53,6 +55,7 @@
         "floor": "#8B4513",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": "landing",
             "east": null,
@@ -74,6 +77,7 @@
         "floor": "#800000",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": "gamesRoom",
             "east": null,
@@ -95,6 +99,7 @@
         "floor": "#9E3F00",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": "kitchen",
             "east": "hall",
@@ -124,6 +129,7 @@
         "floor": "#00B521",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": "study",
             "east": null,
@@ -131,9 +137,7 @@
             "west": null,
             "extra": "b6"
         },
-        "objects": [
-
-        ]
+        "objects": []
     },
     {
         "id": "kitchen",
@@ -141,6 +145,7 @@
         "floor": "#DDDDDD",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": "conservatory",
             "east": null,
@@ -162,6 +167,7 @@
         "floor": "#CC5F7C",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": null,
             "east": null,
@@ -176,6 +182,7 @@
         "floor": "#95E2E2",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": null,
             "east": "garden",
@@ -189,6 +196,7 @@
         "floor": "#7FEF00",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 0,
         "doors": {
             "north": null,
             "east": "study",
@@ -202,6 +210,7 @@
         "floor": "#555555",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 1,
         "doors": {
             "north": null,
             "east": "guestRoom",
@@ -224,6 +233,7 @@
         "floor": "#D191FF",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 1,
         "doors": {
             "north": null,
             "east": null,
@@ -237,6 +247,7 @@
         "floor": "#A50000",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 1,
         "doors": {
             "north": null,
             "east": "landing",
@@ -250,6 +261,7 @@
         "floor": "#A3E0E0",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 1,
         "doors": {
             "north": "guestRoom",
             "east": null,
@@ -263,6 +275,7 @@
         "floor": "#8E5342",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 1,
         "doors": {
             "north": "masterBedroom",
             "east": null,
@@ -276,6 +289,7 @@
         "floor": "#E2BD00",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 1,
         "doors": {
             "north": "balcony",
             "east": null,
@@ -289,6 +303,7 @@
         "floor": "#FF5EE9",
         "music": "ambient-spooky-2",
         "locked": true,
+        "level": 1,
         "doors": {
             "north": "bathroom",
             "east": "library",
@@ -310,6 +325,7 @@
         "floor": "#6B2A00",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": 1,
         "doors": {
             "north": null,
             "east": "nursery",
@@ -323,6 +339,7 @@
         "floor": "#E56F20",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": null,
             "east": "b2",
@@ -344,6 +361,7 @@
         "floor": "#B57A53",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": null,
             "east": "laundry",
@@ -357,6 +375,7 @@
         "floor": "#E0E0E0",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": null,
             "east": null,
@@ -378,6 +397,7 @@
         "floor": "#B57A53",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": "furnace",
             "east": "b5",
@@ -391,6 +411,7 @@
         "floor": "#6B6B6B",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": "b2",
             "east": "b6",
@@ -404,6 +425,7 @@
         "floor": "#CECECE",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": "laundry",
             "east": null,
@@ -417,6 +439,7 @@
         "floor": "#A5A5A5",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": "b4",
             "east": "b8",
@@ -431,6 +454,12 @@
                 "x_pos": 350,
                 "y_pos": 250,
                 "effect": "teleport"
+            },
+            {
+                "name": "special_chest",
+                "type": "chest_special",
+                "x_pos": 200,
+                "y_pos": 175
             }
         ]
     },
@@ -440,6 +469,7 @@
         "floor": "#969696",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": "b5",
             "east": "b9",
@@ -453,6 +483,7 @@
         "floor": "#7F7F7F",
         "music": "ambient-spooky-1",
         "locked": false,
+        "level": -1,
         "doors": {
             "north": "b6",
             "east": null,

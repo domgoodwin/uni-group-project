@@ -1,7 +1,7 @@
 import Object from '/js/src/Object.js'
 
 export default class Chest extends Object{
-    constructor(game, player, type, name, x_pos, y_pos, group, enterable){
+    constructor(game, player, type, name, x_pos, y_pos, group, enterable, special){
         console.log("Creating Chest")
         super(game, player, type, name, x_pos, y_pos, group);
         super.setupObject();
@@ -9,25 +9,35 @@ export default class Chest extends Object{
         this.opened = 0;
         this.sprite.scale.setTo(2);
         this.enterable = enterable;
+        this.special = special;
         this.action = this.action.bind(this);
         this.release = this.release.bind(this);
         this.interact = this.interact.bind(this);
         this.tick = this.tick.bind(this);
+        this.chest_type = null;
+
+        if(this.special)
+        {
+            this.chest_type = Math.floor((Math.random() * 10) + 1);
+        }
+        console.log("chest type = " + this.chest_type);
     }
 
+
     destroy(){
-        console.log("Collision on fire");
-        this.player.damage(1);
-        // fire-filter
+        console.log("Destroying Chest");
+        this.sprite.alpha = 1;
+        this.sprite.animations.destroy();
+        this.sprite.destroy();
     }
 
     remove(){
-        super.remove();
-        console.log("Destroying fire");
+        // super.remove();
+        console.log("Destroying chest");
+        this.sprite.alpha = 0;
         this.sprite.animations.destroy();
         this.sprite.destroy(true);
         this.sprite = null;
-        console.log(this.sprite);
     }
 
     action(){
@@ -59,7 +69,27 @@ export default class Chest extends Object{
             this.oldSpeed = this.player.speed;
             this.player.speed = 0;
             room.lastInteraction = this.game.time.now + 2000;
-            room.showText("You're trapped! Try to escape [SPACE]")
+
+            if(!this.special){
+                room.showText("You're trapped! Try to escape [SPACE]");
+            }
+            else {
+                console.log("chest type: " + this.chest_type);
+                if(this.chest_type == 2 || this.chest_type == 6 || this.chest_type == 8)
+                {
+                    console.log("Player is killed");
+                    this.game.state.start("Killed", true, false, this.game.in_rooms);
+                }
+                else if(this.chest_type == 1 || this.chest_type == 3)
+                {
+                    console.log("Player Escaped");
+                    this.game.state.start("Escaped", true, false, this.game.in_rooms);
+                }
+                else
+                {
+                    room.showText("You're trapped! Try to escape [SPACE]");
+                }
+            }
         }
     }
 
@@ -69,7 +99,15 @@ export default class Chest extends Object{
         this.action();
         this.player.state = null;
         room.lastInteraction = this.game.time.now + 2000;
-        room.showText("You have bested me once again!")
-        this.sprite.frame = 1;
+        
+        if(this.special)
+        {
+            room.showText("Nothing happened.")
+        }
+        else 
+        {
+            room.showText("You have bested me once again!")
+            this.sprite.frame = 1;
+        }
     }
 }

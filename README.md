@@ -4,7 +4,7 @@ Haunted House: The Game is a browser based adventure horror game that places the
 
 ## Links
 
-[Dev Branch](http://relaxed-group-project-dev.s3-website.eu-west-2.amazonaws.com/)
+[Dev Branch](http://relaxed-group-project-dev.s3-website.eu-west-2.amazonaws.com/)  
 [Master Branch](http://relaxed-group-project.s3-website.eu-west-2.amazonaws.com/)
 
 ## Getting Started
@@ -13,59 +13,65 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-A web browser capable of utilising the HTML Canvas element:
+- npm installed (for testing only)
+- A web browser capable of utilising the HTML Canvas element:
 
-| Browser        | Version Required |
-| :------------- |:----------------:|
-| Chrome         | 4.0 |
-| Firefox        | 2.0 |
-| Edge           | 9.0 |
-| Opera          | 9.0 |
-| Safari         | 3.1 |
+    | Browser        | Version Required |
+    | :------------- |:----------------:|
+    | Chrome         | 4.0 |
+    | Firefox        | 2.0 |
+    | Edge           | 9.0 |
+    | Opera          | 9.0 |
+    | Safari         | 3.1 |
 
-A text editor of your choice
+    A text editor of your choice
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development environment up and running
 
-Say what the step will be
-
+**For setting up dev enviroment**
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+cd hh-game
+npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+**For installing the web server**
+```
+npm install http-server -g
+```
+
+**For running the site**
+```
+cd hh-game
+http-server
+```
+Navigate to *http://localhost:8080*
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Mocha and Chai tests ran via a html test runner
+
+```
+cd hh-game
+http-server
+```
+Navigate to *http://localhost:8080/testRunner.html*
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Tests cover:
+- Main: 
+    - Basic game object creation
+    - Main state loads successfully
+- Sprites:
+    - Basic player creation
+- Rooms:
+    - Basic room is created
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Automatically deployed to AWS S3 bucket based on merge into dev and/or master branch 
 
 ## Built With
 
@@ -86,19 +92,14 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Group 5 / Team Relaxed**  - [Team Website](www.google.co.uk)
+* **Group 5 / Team Relaxed**  - [Team Website]()
 
-See the full list of individual [contributors](https://github.com/your/project/contributors) who participated in this project.
+See the full list of individual [contributors](www.domgoodw.in/uni-group-project)(https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
 This project is covered under the educational and fair-usage licenses applicable to university produced project work.
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
 ## Overview
 1. Page is rendered in the `index.html` page

@@ -4,15 +4,33 @@
     <link rel="shortcut icon" href="img/favicon.ico">
 	<meta charset="UTF-8" />
 	<title>Haunted House: The Game</title>
-    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <script src="js/libraries/phaser-2.2.2.js"></script>
     <script src="js/libraries/jquery-3.3.1.min.js"></script>
-
     <style type="text/css">
         body {
             margin: 0;
         }
         .main-game {
             display: block;
+            margin: 20px;
+            float: left;
+            margin-top: 5px;
+        }
+        .desc {
+            float: right; 
+            word-wrap: break-word; 
+            width: 350px;
+            margin: 20px;
+            margin-top: 5px;
+            border: 2px solid black;
+            padding: 2px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .buttons{
+            display: none;
+        }
+        #game {
+            border: 5px solid black;
         }
     </style>
 </head>
@@ -35,19 +53,29 @@ $.get('layouts/FloorPlan.json', function(data) {
 
 
     </script>
+    <div id="game">
+        <!-- game goes here -->
+    </div>
 </div>
-
-<div style="float: right; word-wrap: break-word; width: 300px">
-<h1>Relax, it's just a house</h1>
+<div class="buttons">
+<input id="btnDebug" type="button" value="debug" />
+<input id="btnReload" value="Reload" onClick="window.location.reload()">
+</div>
+<div class="desc">
+<h1 >Relax, it's just a house</h1>
 <h2>A snakes and ladders inspired, horror house escape game</h2>
 <h3>Controls:</h3>
 <p>Arrow keys for movement, space for ACTION</p>
+<p>Reccomended zoom (for 1920x1080) is 130%. Zoom to fit to screen.</p>
 <h3>Credits:</h3>
 <p>Produced for Aston University Group Project module by:
 <br>Alistair, Amy, Colm, Chloe, Dom, Henry, Tyler and Vishal<p>
 <h3>Music Credits:</h3>
 <p>Moon Shadow Grin by PorchCat
 <br>Ghosts in the wind by Citizen_X0</p>
+<h3>Links:</h3>
+<p><a href="http://domgoodw.in/uni-group-project/">Development blog</a></p>
+<p><a href="https://github.com/domgoodwin/uni-group-project/">Source code</a></p>
 </div>
 </body>
 </html>
