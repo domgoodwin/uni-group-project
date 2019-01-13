@@ -31,12 +31,10 @@
       .OBJ-2 { line-height:40px; }
       .C-5 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#f1f1f1;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
       .P-1 { text-align:center;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#f1f1f1;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
-      .C-6 { line-height:29.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:700;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:24.0px;vertical-align:0; }
-      .C-7 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
-      .P-2 { margin-left:48.0px;margin-bottom:0.0px;text-indent:-12.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
-      .P-3 { margin-bottom:0.0px;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
-      .C-8 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:italic;font-weight:normal;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
-      .C-9 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:700;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
+      .C-6 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:normal;font-weight:normal;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
+      .C-7 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:italic;font-weight:normal;color:#858585;background-color:transparent;text-decoration:none;font-variant:normal;font-size:17.3px;vertical-align:0; }
+      .P-2 { text-align:center;line-height:1px;font-family:"Trebuchet MS", sans-serif;font-style:italic;font-weight:normal;color:#858585;background-color:transparent;font-variant:normal;font-size:17.0px;vertical-align:0; }
+      .C-8 { line-height:23.00px;font-family:"Trebuchet MS", sans-serif;font-style:italic;font-weight:normal;color:#858585;background-color:transparent;text-decoration:underline;font-variant:normal;font-size:17.3px;vertical-align:0; }
     </style>
     <script type="text/javascript" src="wpscripts/jquery.js"></script>
     <script type="text/javascript" src="wpscripts/jquery.wplightbox.js"></script>
@@ -48,22 +46,53 @@
       $("a.ActiveButton").bind({ mousedown:function(){if ( $(this).attr('disabled') === undefined ) $(this).addClass('Activated');}, mouseleave:function(){ if ( $(this).attr('disabled') === undefined ) $(this).removeClass('Activated');}, mouseup:function(){ if ( $(this).attr('disabled') === undefined ) $(this).removeClass('Activated');}});
       });
     </script>
+    <link rel="stylesheet" href="smk-accordion.css" />
+<script type="text/javascript" src="smk-accordion.js"></script>
+<script type="text/javascript">
+   jQuery(document).ready(function($){
+        $(".accordion").smk_Accordion({
+            showIcon: true,              // Show plus or minus icon
+            animation: true,             // Animation on or off, use false for off
+            closeAble: true,             // Click to close, true or false
+            slideSpeed: 200              // Animation speed in milliseconds
+        });
+    });
+</script>
+
+<style type="text/css">
+.smk_accordion .accordion_in { border: 1px solid #CCC;}    /* Accordion border size and colour */
+
+.smk_accordion .accordion_in .acc_head {
+  background: #FDFDFD;                                     /* Accordion title background colour */
+  color: #7B7E85;                                          /* Title text colour */
+  font-size: 16px;                                         /* Title font size */
+  font-family: "Trebuchet MS", Helvetica, sans-serif;      /* Title font family */
+}
+.smk_accordion .accordion_in .acc_content {
+  background: #F9F9F9;                                     /* Accordion open background colour */
+  color: #7B7E85;                                          /* Open panel font colour */
+  font-family: "Trebuchet MS", Helvetica, sans-serif;      /* Open panel font family */
+}
+.smk_accordion .accordion_in.acc_active > .acc_head {
+  background: #F9F9F9;                                     /* Open title background colour */
+}
+</style>
   </head>
-  <body style="height:2980px;background:url('wpimages/wp6db519cf_06.png') repeat-x scroll center top, url('wpimages/wpbfe1035b_06.png') repeat-x scroll center bottom, url('wpimages/wpb1c02880_06.png') repeat-x scroll center top, url('wpimages/wpb1f4b9cf_06.png') repeat-x scroll center 72px #ffffff;">
-    <div id="divMain" style="background:transparent;margin-left:auto;margin-right:auto;position:relative;width:1000px;height:2980px;">
+  <body style="height:2410px;background:url('wpimages/wp6db519cf_06.png') repeat-x scroll center top, url('wpimages/wpbfe1035b_06.png') repeat-x scroll center bottom, url('wpimages/wpb1c02880_06.png') repeat-x scroll center top, url('wpimages/wpb1f4b9cf_06.png') repeat-x scroll center 72px #ffffff;">
+    <div id="divMain" style="background:transparent;margin-left:auto;margin-right:auto;position:relative;width:1000px;height:2410px;">
       <div style="position:absolute;left:30px;top:15px;width:336px;height:43px;overflow:hidden;">
         <h1 class="Heading"><a href="index.html" class="C-1">HAUNTED HOUSE</a></h1>
       </div>
-      <div style="position:absolute;left:20px;top:2884px;width:231px;height:37px;overflow:hidden;"><p class="Footer"><span class="C-2">Team Relaxed</span></p>
+      <div style="position:absolute;left:20px;top:2314px;width:231px;height:37px;overflow:hidden;"><p class="Footer"><span class="C-2">Team Relaxed</span></p>
         <p class="Footer"><span class="C-2">An Aston University Group Project Team</span></p></div>
-      <div style="position:absolute;left:406px;top:2879px;width:166px;height:21px;overflow:hidden;">
+      <div style="position:absolute;left:406px;top:2309px;width:166px;height:21px;overflow:hidden;">
         <p class="Footer-1"><span class="C-3">Aston Univeristy</span></p>
       </div>
-      <div style="position:absolute;left:818px;top:2884px;width:162px;height:39px;overflow:hidden;">
+      <div style="position:absolute;left:818px;top:2314px;width:162px;height:39px;overflow:hidden;">
         <p class="Footer"><span class="C-2">0121 204 3000</span></p>
         <p class="Footer"><span class="C-2">team-<wbr>relaxed@outlook.com &nbsp;</span></p>
       </div>
-      <div style="position:absolute;left:20px;top:2932px;width:279px;height:45px;overflow:hidden;">
+      <div style="position:absolute;left:20px;top:2363px;width:279px;height:45px;overflow:hidden;">
         <p class="Footer"><span class="C-3">2018 © Copyright Team Relaxed | Haunted House</span></p>
         <p class="Footer"><a data-lightbox="{&quot;galleryId&quot;:&quot;wplightbox&quot;,&quot;width&quot;:600,&quot;height&quot;:600}" class="wplightbox C-4" href="termsandconditions.html">Terms &amp; conditions</a></p>
       </div>
@@ -71,14 +100,14 @@
         <area shape="poly" coords="8,19,8,11,11,10,10,8,10,10,7,10,7,22,4,22,4,10,1,9,2,8,0,10,3,11,3,23,8,23" href="http://www.facebook.com" target="_blank" alt="">
         <area shape="poly" coords="8,6,8,4,11,4,11,0,5,0,3,2,3,8,4,6,4,2,5,1,10,1,10,3,7,3,6,4,7,6,8,8" href="http://www.facebook.com" target="_blank" alt="">
       </map>
-      <img alt="" usemap="#map1" src="wpimages/wpfd854fd1_06.png" style="position:absolute;left:827px;top:2935px;width:11px;height:23px;">
+      <img alt="" usemap="#map1" src="wpimages/wpfd854fd1_06.png" style="position:absolute;left:827px;top:2366px;width:11px;height:23px;">
       <map id="map2" name="map2">
         <area shape="poly" coords="3,9,2,8,3,8" href="http://www.twitter.com" target="_blank" alt="">
         <area shape="poly" coords="13,22,18,20,21,18,23,13,25,8,27,4,28,2,25,3,27,1,23,4,25,4,24,8,22,13,21,16,17,19,15,21,10,22,6,22,4,21,9,19,10,17,5,16,7,19,5,20,1,21,6,22,11,23" href="http://www.twitter.com" target="_blank" alt="">
         <area shape="poly" coords="5,15,7,14,9,13,5,13,3,11,2,9,4,10,7,10,5,8,3,7,2,6,2,3,3,2,2,1,1,3,1,5,2,7,1,9,2,11,4,13,5,14,3,15,5,16" href="http://www.twitter.com" target="_blank" alt="">
         <area shape="poly" coords="15,7,14,6,15,4,16,2,18,1,21,1,23,2,21,0,17,0,16,1,14,2,13,5,14,7,11,7,10,6,8,5,6,4,4,3,3,3,6,6,8,7,10,7,11,8,15,8" href="http://www.twitter.com" target="_blank" alt="">
       </map>
-      <img alt="" usemap="#map2" src="wpimages/wpfc37a4e2_06.png" style="position:absolute;left:863px;top:2935px;width:28px;height:23px;">
+      <img alt="" usemap="#map2" src="wpimages/wpfc37a4e2_06.png" style="position:absolute;left:863px;top:2366px;width:28px;height:23px;">
       <map id="map3" name="map3">
         <area shape="poly" coords="4,22,6,22,6,20,7,19,6,18,5,17,5,18,6,19,5,20,5,21,4,22,3,22,2,21,1,22,2,23,4,23" href="#" target="_blank" alt="">
         <area shape="poly" coords="1,20,1,18,2,17,5,17,5,16,2,16,0,18,0,21" href="#" target="_blank" alt="">
@@ -92,14 +121,14 @@
         <area shape="rect" coords="5,1,9,3" href="#" target="_blank" alt="">
         <area shape="poly" coords="5,4,1,4,1,1,5,1,5,0,0,0,0,5,5,5" href="#" target="_blank" alt="">
       </map>
-      <img src="wpimages/wp5b663e16_06.png" alt="" width="23" height="23" usemap="#map3" style="position:absolute;left:915px;top:2935px;width:23px;height:23px;">
-      <div style="position:absolute;left:405px;top:2905px;width:168px;height:59px;overflow:hidden;">
+      <img src="wpimages/wp5b663e16_06.png" alt="" width="23" height="23" usemap="#map3" style="position:absolute;left:915px;top:2365px;width:23px;height:23px;">
+      <div style="position:absolute;left:405px;top:2335px;width:168px;height:59px;overflow:hidden;">
         <p class="Footer"><span class="C-2">Birmingham</span></p>
         <p class="Footer"><span class="C-2">B4 7ET</span></p>
         <p class="Footer"><span class="C-2">United Kingdom</span></p>
       </div>
-      <img alt="" src="wpimages/wp53fd001a_06.png" style="position:absolute;left:792px;top:2908px;width:18px;height:12px;">
-      <img alt="" src="wpimages/wpa38c3bf0_06.png" style="position:absolute;left:792px;top:2886px;width:17px;height:17px;">
+      <img alt="" src="wpimages/wp53fd001a_06.png" style="position:absolute;left:792px;top:2338px;width:18px;height:12px;">
+      <img alt="" src="wpimages/wpa38c3bf0_06.png" style="position:absolute;left:792px;top:2316px;width:17px;height:17px;">
       <div style="position:absolute;left:347px;top:0px;width:633px;height:64px;">
         <a href="index.html" id="nav_3_B1" class="OBJ-1 ActiveButton OBJ-2" style="display:block;position:absolute;left:153px;top:12px;width:120px;height:40px;">
           <span>Home</span>
@@ -114,50 +143,341 @@
           <span>Dev&nbsp;Blog</span>
         </a>
       </div>
-      <img alt="" src="wpimages/wpbabf822f_06.png" style="position:absolute;left:88px;top:1892px;width:824px;height:1px;">
       <div style="position:absolute;left:88px;top:303px;width:823px;height:98px;overflow:hidden;">
-        <h3 class="Heading-3"><span class="C-5">Keep up to date with the latest developments. </span></h3><p class="Body P-1"><span class="C-5">Thanks for showing an interest in our exciting new game! Whilst the release date is not far off, we want to keep you all up to date with the latest news regarding our game.</span></p>
+        <h3 class="Heading-3"><span class="C-5">Keep up to date with the latest developments. </span></h3><p class="Body P-1"><span class="C-5">Thanks for showing an interest in our exciting new game! Whilst we have now completed development of the game, you can still read about our journey; from inception to final release.</span></p>
       </div>
       <img alt="Development Blog" src="wpimages/wp4d2d2397_06.png" style="position:absolute;left:331px;top:227px;width:339px;height:61px;">
       <img alt="" src="wpimages/wp7977fc88_06.png" style="position:absolute;left:452px;top:134px;width:96px;height:96px;">
-      <div style="position:absolute;left:60px;top:1937px;width:881px;height:882px;overflow:hidden;">
-        <p class="Body"><span class="C-6">Post #1</span></p>
-        <p class="Body"><span class="C-6">Teamwork makes the dream work </span></p>
-        <p class="Body"><span class="C-6">19 / 10 / 2018</span></p>
-        <p class="Body"><span class="C-7">As I am sure you can all imagine, when we were assigned our team we were all a little apprehensive as to how the project would go as we had never met each other before let alone worked with each other. The first thing we did as a team was got to know a little bit about each other; what our hobbies are, what kind of role we are in and just general info about each other. We all found this experience revitalising as it gave us all confidence that we would be a great team. I must say, we are a super friendly bunch! In this blog, I will be discussing the journey we have been on so far. &nbsp;</span></p>
-        <p class="Body"><span class="C-7">After our first session, we all felt overwhelmed by the amount of different tasks that we had to complete for each submission. In an attempt to organise ourselves we set up various different organisational tools and a unified place to store all of our work. Through little discussion, we quickly all agreed to use Trello, Github, Slack and Google Drive. We have incorporated the Trello task board into our weekly meetings to ensure everyone is on track with their tasks. &nbsp;We all have found Trello extremely useful as a task management tool for a number of different reasons: </span></p>
-        <ol style="list-style-type:decimal;margin:0;padding:0;">
-          <li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-7">Tasks are able to be assigned out to individuals</span></li><li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-7">Tasks can easily be updated</span></li><li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-7">Email Notifications when a task assigned to you is approaching its deadline</span></li><li class="Body P-2" style="text-indent:0;margin-left:48.0px;"><span class="C-7">It’s FREE!</span></li>
-        </ol>
-        <p class="Body P-3"><span class="C-7"><br></span></p>
-        <p class="Body"><span class="C-7">As we are a team of eight; 6 developers, 2 business analysts we have split the workload accordingly. Myself and Amy have taken on the responsibility of project documentation and all non-<wbr>techy tasks whilst Dom, Henry, Vishal, Colm, Allister and Tyler have all been working on the game. </span></p>
-        <p class="Body"><span class="C-7">One of our first submissions was to complete a Project Plan, at this moment in time we are currently in line with where expected to be at the beginning of the project. As we have to submit our MVP &nbsp;on Thursday 15th November we have had to strictly adhere to our plan in order to ensure all tasks have been completed. </span></p>
-        <p class="Body"><span class="C-7">Our developers have done a pretty good job of sticking to our plan and it has paid off as we have been able to add additional features into our game for the MVP than we initially planned during our pitch. This has made the MVP even more user friendly as there are less bugs in the game. From the progress that we have made so far, I think our game will be a great success and the audience is in for a thrill of their lives. </span></p>
-        <p class="Body"><span class="C-8">Thanks for reading! </span></p>
-        <p class="Body"><span class="C-9">-<wbr> Chloe</span></p>
-        <p class="Body"><span class="C-7"><br></span></p>
-      </div>
-      <div style="position:absolute;left:58px;top:896px;width:885px;height:540px;overflow:hidden;">
-        <p class="Body"><span class="C-6">Post #2</span></p>
-        <p class="Body"><span class="C-6">Issues, resolutions and teamwork</span></p>
-        <p class="Body"><span class="C-6">02 / 11 / 2018</span></p>
-        <p class="Body"><span class="C-7">As I’m sure you are all aware, working as a team isn’t always smooth sailing especially when issues arise. In today’s blog I am going to discuss a number of issues we have faced throughout our haunted house mission and how we (team Relaxed) have overcome them.</span></p>
-        <p class="Body"><span class="C-7">Our first stumbling block arised pretty early on in this project, this was at submission two. Submission two included a video pitch, which describes what software we intend to produce during the project. This of course involved a number of decisions being made by the group, including game features and software choices. Issue one originated from a discussion to decide the best software for this task. The idea for a text based game was put forward by one team member which instantly caused a divide in opinions of the team. As agreed we approached this in a productive manner allowing each team member to put their idea forward eventually resulting in a final vote. A vote was cast and the decision was made to create the front end display using Javascript, Angular, Phaser and HTML 5. This will link to the backend using a Restful API and the back end of the game will be created using Spring (Java API) and Java. Given the outcome of this issue, and how quickly we were able to overcome this, we recognize the advantage of this approach and have applied this throughout the project.</span></p>
-        <p class="Body"><span class="C-7">Another common issue which has flagged up throughout, as expected, are bugs in the code. An example of a bug which was present in our hack, but was later resolved, was the sprite not disappearing after being ‘picked up’ by the user. (See below)</span></p>
-      </div>
-      <img alt="" src="wpimages/wpbabf822f_06.png" style="position:absolute;left:88px;top:848px;width:824px;height:1px;">
-      <div style="position:absolute;left:472px;top:1447px;width:478px;height:405px;overflow:hidden;">
-        <p class="Body"><span class="C-7">The example here shows the player and a pick axe. The pick axe should be attached to the player once they walk over it. The bug however recognises the player has picked up the pick axe, giving them the ability to use it, but the sprite in this case does not move. This has now been resolved. Our approach to bugs includes raising a ticket on our teams trello board, marking this task as a bug and tracking the progress until resolved. I’ve found this is extremely productive and it allows other teams members to pitch in by helping resolve one another's issues. </span></p>
-        <p class="Body"><span class="C-7">The bond we have as a team, and the approaches we have in place to deal with issues, gives me confidence that we are able to overcome any hurdles we may face.</span></p>
-        <p class="Body"><span class="C-7">Thank you for reading and I shall see you again next week (if we ever manage to escape!)</span></p>
-        <p class="Body"><span class="C-9">-<wbr> Amy</span></p>
-      </div>
+      <img alt="" src="wpimages/wpbabf822f_06.png" style="position:absolute;left:88px;top:798px;width:824px;height:1px;">
       <img alt="So, what have we been doing?" src="wpimages/wpf2afdfa8_06.png" style="position:absolute;left:61px;top:593px;width:383px;height:47px;">
-      <div style="position:absolute;left:61px;top:652px;width:608px;height:159px;overflow:hidden;">
-        <p class="Body"><span class="C-7">It’s been a very busy, but enjoyable few months working on Haunted House. On this page you’ll find our development blog posts; they’ll detail what we’ve been doing, how we’ve been working and what exiting new features we’ve been adding and tweaking with the game (of course we’ll talk about other bits too, so why not have a quick read below?).</span></p>
+      <div style="position:absolute;left:61px;top:652px;width:645px;height:128px;overflow:hidden;">
+        <p class="Body"><span class="C-6">It’s been a very busy, but enjoyable few months working on Haunted House. On this page you’ll find our development blog posts; they’ll detail what we’ve been doing, how we’ve been working and how Haunted House: The Game came to be. </span></p>
+        <p class="Body"><span class="C-6">Of course we’ll talk about other bits too, so why not have a <span class="C-7">quick</span> read below?</span></p>
       </div>
-      <img alt="" src="wpimages/wpe86470aa_06.png" style="position:absolute;left:748px;top:641px;width:167px;height:167px;">
-      <img alt="" src="wpimages/wpc5dcb9be_06.png" style="position:absolute;left:60px;top:1461px;width:375px;height:333px;">
+      <img alt="" src="wpimages/wp66a30fd1_06.png" style="position:absolute;left:748px;top:641px;width:127px;height:127px;">
+      <div style="position:absolute;left:60px;top:874px;width:879px;height:422px;">
+        <!-- Accordion begin -->
+<div class="accordion">
+
+<!-- Post 10 -->
+<div class="accordion_in  acc_active">
+  <div class="acc_head">Post #10 - 13/01/2019 - We have lift-off!</div>
+    <div class="acc_content">
+
+		<p>Post #10</p>
+		
+		<p>We have lift-off</p>
+		
+		<p>13/01/2019</p>
+		
+		<p>And we are live!</p>
+		
+		<p>We have just released the final version of the game into production today, so you can go and play it at this link <a href="http://relaxed-group-project.s3-website.eu-west-2.amazonaws.com/">here</a>.</p>
+		
+		<p>Be sure to let us know what you think, and let us know your best high scores!</p>
+		
+		<p>It has been a real exciting journey taking our initial ideas all the way through from inception to a feature-full final version of the game; one that we are all very proud of. We hope you enjoy it as much as we have enjoyed making it.</p>
+		
+		<p>We have come a long way together as a team since we first started working together back in September of 2018. We started off a bit rough around the edges, not being fully aware of how everyone was feeling with the rest of the team; I believe this is just something that we all overlooked. Looking at us know, working together, working as one unit, to collaboratively meet all our deadlines and milestones is something to definitely be proud of.</p>
+		
+		<p>Along the way we have learnt to trust, depend and help each other, leaning on eachother's skills and developing our own skills further. Those with a technical background have been able to involve themselves with more project management type tasks, and the less technical members of the team have been able to pick up the occassional development task as well; giving us perspective from all angles, creating more rounded individuals.</p>
+		
+		<p>This is likely to be our last and final blog post, so thank you all for following us on this journey! It has been a real pleasure. We really hope you enjoy playing our game!</p>
+		
+		<p>From all of us here at Team Relaxed - Thank you and goodbye.</p>
+		
+		<p>- Henry</p>
+
+  </div>
+</div>
+
+<!-- Post 9 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #9 - 12/01/2019 - Progress is key</div>
+    <div class="acc_content">
+
+		<p>Post #9</p>
+
+		<p>Progress is Key</p>
+		
+		<p>12/01/2019</p>
+		
+		<p>I am writing this final blog as our journey comes to an end and our game is released into the wild. Today’s blog will discuss the journey we (team Relaxed) have been on to make your haunted house mission possible.</p>
+		
+		<p>This task begun with assigning roles depending on both skill and personal preference. Our team is built up of both technical and non-technical resources meaning task allocation was much easier. The more technical resources role (the developers) was to bring the mission to life and make your experience (the user) as fun as possible. The non-technical resources took charge of the project plan and any other documentation that was required. The non-technical resources had the responsibility of making sure the team was on track throughout and ensuring we would be able to meet the expected go live date. </p>
+		
+		<p>Constant progression has been key in this task which in my opinion hasn’t been an issue and is what I believe has helped us achieve success. Each team member has known their role and has worked through their assigned tasks as expected. This has involved following the project plan and has resulted in little/no push backs of the deadlines we had set. Regular catch ups and progress updates has helped us in knowing who is working on what and has also gave any struggling team members a chance to ask for help which has allowed for others to step in and offer some support. </p>
+		
+		<p>Our project plan highlighted the key milestones we needed to reach and the sub-task that were to be completed to reach that milestone. This has provided us with a strict guide and has enforced constant progression which has led us to the end goal. </p>
+		
+		<p>This task has been great fun given we have had the ability to watch our game grow and become more and more impressive as time has progressed (shout-out to Dom our lead developer). </p>
+		
+		<p>Sated in my earlier blog “The bond we have as a team, and the approaches we have in place to deal with issues, gives me confidence that we are able to overcome any hurdles we may face” was indeed the case as it is the team moral and close bond we have which has helped up progress and complete this task with a game we are extremely proud of. </p>
+		
+		<p>Thank you for reading and I hope you enjoy the game! </p>
+		
+		<p>- Amy</p>
+
+  </div>
+</div>
+
+<!-- Post 8 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #8 - 07/01/2019 - Testing, Testing, 123...</div>
+    <div class="acc_content">
+
+		<p>Post #8</p>
+		
+		<p>Testing, Testing, 123…</p>
+		
+		<p>07/01/2019</p>
+		
+		<p>As a team we have set our bar for quality very high. We do not want to release code into production, that users will end up using, that is riddled with bugs and glitches; no matter how big or how small. A game with higher quality will provide more fun and enjoyment for players and will make them want to come back and play again, and hopefully tell their friends and family to try it out as well. This would boost the player count, and in a real-world scenario would boost the value of the game to investors, backers and advertisers.</p>
+		
+		<p>Therefore, in order to keep the quality bar high, we have routinely implemented our expansive and vigorous testing strategy. In addition to testing conducted automatically on builds and releases, as well as the automated unit tests created by our developers to check elements of the code, we have our regression testing pack and user acceptance testing procedures. Both of these suites of tests help us to not only check that the game continues to work correctly, but to ensure that no new additions go untested, as our testing packs are in a state of constant growth.</p>
+		
+		<p>As we are fast approaching our final release, we are in the process of undertaking and implementing our testing strategy for possibly the last time, and therefore we want to make sure that the game has as many bugs in it as possible. Coming from a software development background we fully accept that no code is ever bug free, however we aim to spot and fix as many as we can find. This combined with our version control, peer reviewing, collaboration, and coding practices will hopefully result in a minimal amount of bugs being released into live; especially those that seriously impede the performance and playability of the game.</p>
+		
+		<p>Each member of the team is now hard at work running through all our test scripts and scenarios, ensuring everything is A-Okay. Any bugs or issues that are found are documented on our Trello board, prioritised and then picked-up by a developer to implement a fix, if that is required. So far we have found 0 game-breaking bugs in our final release code – definitely something we can be proud of.</p>
+		
+		<p>So then in summary myself and the rest of the team are very happy with the quality of work we have produced, and we are comfortable to be able to state that there are no game-breaking bugs being released in the final version; something that not many games developers are able to save – see Battlefield’s release history for starters…</p>
+		
+		<p>We’ll be keeping up with the great work to make sure that when we release the final version on the 13th of January 2019, that we are just as certain of the game's quality then, as we are now.</p>
+		
+		<p>Till then, keep playing and we hope, as always, that you continue to enjoy and play our game.</p>
+		
+		<p>- Henry</p>
+
+  </div>
+</div>
+
+<!-- Post 7 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #7 - 02/01/2019 - Happy New Year!</div>
+    <div class="acc_content">
+ 
+		<p>Post #7</p>
+		
+		<p>Happy New Year!</p>
+		
+		<p>02/01/2019</p>
+		
+		<p>Just a quick post to wish all our followers, readers and players a very Happy New Year!</p>
+		
+		<p>We are still hard at work on the game, adding some of the last few features in, ready for the final release in 2 weeks time.</p>
+		
+		<p>We have a lot of testing to do, mostly manual, to make sure that we are happy with the quality of the game before we release it to you. Our extensive testing approach has helped us to minimise the number of bugs released into production ten-fold, and this is not something we are going to stop doing now; we will continue to strive for high quality releases.</p>
+			
+		<p>From all of us here at Team Relaxed - We wish you all the very best for 2019!</p>
+		
+		<p>P.S. Make sure you keep playing and practicing, it's perfect for a nice, quiet and relaxing New Year's day ;)
+		
+		<p>- Henry</p>
+
+  </div>
+</div>
+
+<!-- Post 6 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #6 - 28/12/2018 - A Last Push</div>
+    <div class="acc_content">
+ 
+    	<p>Post #6</p>
+ 
+		<p>A Last Push</p>
+
+		<p>28/12/2018</p>
+
+		<p>It has been a very busy time and we have been anything but Relaxed (Pardon the pun ;) ). Features have been continually added throughout since releasing the MVP. The team has been working hard to put together a full game we can be proud of and I must say that we have succeeded. Features such as random room generator have been added to the game to give it a replay ability factor. Sadly, we have been dealing with time constraints and that is what we will be talking about today. As a team before Christmas we had to realign our team plan as we all had too many commitments outside of the project. We looked at our to do list and re-assigned items between the team, including our documentation that still needed to be completed. Having considered individual availability we had to re-prioritise priority of tickets to those we needed to complete, tasks we want to complete and task that will be added to the backlog to be completed after the January deadline. Once we had done the reassignments it was all about making sure the team met their deadlines.</p>
+
+		<p>Everyone worked hard and we pulled together a game we are very proud to be releasing on January 13th, 2019. We hope you enjoy!</p>
+
+		<p>- Colm</p>
+
+  </div>
+</div>
+
+<!-- Post 5 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #5 - 16/12/2018 - It's beginning to feel a lot like Christmas</div>
+    <div class="acc_content">
+ 
+		<p>Post #5</p>
+		
+		<p>It’s begining to feel a lot like Christmas</p>
+		
+		<p>16/12/2018</p>
+		
+		<p>It’s full speed ahead for us for the next 4 weeks with the final release deadline set for the 13th of January. But, as we all know, between now and then we have Christmas and the New Year.</p>
+		
+		<p>For most of us this is the first time in our software development careers where we have been in-charge of / in-control of a large-scale project and the management of said project, especially over the Christmas and New Year period.</p>
+		
+		<p>At the beginning of the month, we setup our final Sprint, set to take us into early January, as per usual we pulled work in from the backlog, placing items into the “To do” section of our trello board, for members of the team to pick up and start working on.</p>
+		
+		<p>Then, collectively, the work we brought into the final sprint would be released and form a part of the final version of the game; this all sounded great at the time. </p>
+		
+		<p>However, as time drew closer to Christmas, we realised that we had bitten off more than we could chew. We had set ourselves too much work to do, and not factored into the fact that a lot of members of the team would be completely unavailable for x number of days over the next few weeks; and rightly so for that matter, everyone deserves some time to spend with their friends and family.</p>
+		
+		<p>This meant that we had work in the Sprint to do, that we knew would not all get done, so, we therefore had to prioritise. A few days ago we set-up another team call where we went through and reviewed what we had planned for this sprint. Based upon priority, who was around, and the time it would take to implement and quality of work, we decided what we could drop out of the sprint and back onto the backlog; fully knowing that anything dropped back onto the backlog at this point in time was highly unlikely to be picked up before the final deadline, effectively meaning it would never be done - at least as not part of this university module.</p>
+		
+		<p>This lead to some tough calls being made, and we ended up dropping out some of the “could” and “should” features, as detailed in our MoSCoW analysis; undertaken at the beginning of the project.</p>
+		
+		<p>Whilst we had dropped out some of the features that we would have loved to implement, it did take off a lot of pressure of the team. Giving everyone more flexibility with their time, and allowed us to undertake the work we had kept in as part of the Sprint and complete it to a much higher standard - something that we did not want to compromise upon.</p>
+		
+		<p>In the end, I believe that this was the best, and really, only option that we had. Had we chosen to leave everything in the Sprint it would have most likely ended in a disaster, causing stress and last minute panicking - something that we really wanted to avoid, the last thing any wants is to fragment the team at the last minute.</p>
+		
+		<p>With that being said, we still have some exciting new features coming up, and some new additions too, so please keep racking up your high scores!</p>
+		See you in the next blog.
+		
+		<p>Oh, and we hope you all have a wonderful festive period!</p>
+		
+		<p>- Henry</p>
+
+  </div>
+</div>
+
+<!-- Post 4 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #4 - 24/11/2018 - Different Modes</div>
+    <div class="acc_content">
+ 
+      <p>Post #4</p>
+
+      <p>Different Modes</p>
+
+      <p>24/11/2018</p>
+
+	  <p>A key feature we wanted for the game was allowing for users to want to replay the game again and again. At the MVP stage this started as us speed running (trying to complete the game in the shortest time possible) the game against each other, aided by the points feature which is based on the seconds since you started the game.</p>
+
+	  <p>Overtime this became repetitive and we realised all of the personal bests people set would be invalid if we made any significant changes to the game. This led us to add in challenges, difficulties and random mode. Challenge mode currently includes 1HP mode. This sets the players health to 1 and requires a perfect run through to finish.</p>
+
+	  <p>Difficulties include normal and hard. Hard mode doubles the damage taken and some of the monsters in the game are doubled to increase the challenge.</p>
+
+	  <p>Random mode switches up the positions in the game of all of the items to make it feel different each time.</p>
+
+	  <p>Random mode was a difficult thing to add and a lot of the time spent was on the design and how to make sure it worked. Some of the ideas looked at included random whole room locations, multiples of each item and then random and fully generated houses however each of these caused problem; the main issue being how to guarantee the user can win the game.</p>
+	  <p>The final method decided on was to randomise item locations in set, accessible locations. This meant things like the speed buff could be moved anywhere and it’s position is completely random, things like the strength buff and pickaxe could be anywhere not in the basement and the key would move only in the basement. This means the game has random locations and feels different but the key story points are still the same.</p>
+
+	  <p>- Dom</p>
+
+  </div>
+</div>
+
+<!-- Post 3 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #3 - 16/11/2018 - Team Building</div>
+    <div class="acc_content">
+
+ 		<p>Post #3</p>
+
+		<p>Team Building</p>
+
+		<p>16/11/2018</p>
+		
+		<p>After our first call with Dr Evans, it became apparent that we weren't all on the same page, and we didn't all feel the same regarding our work and collaboration. This was something that obviously needed addressing, which we, as a team, took under our wings.</p>
+		
+		<p>Having a good relationship with all members of the team not only allows for a better and more productive working environment, but also places an emphasis on good collaboration taking place; something that we definitely all want.</p>
+		
+		<p>In order to improve the team dynamic we continued to do weather checks on our weekly calls, where we would go around and ask each member of the team to tell us how they are feeling about the project and workload in the form of a weather forecast. This was a fun and casual way for the team to express their feelings in a controlled way, and helped us to all understand how we, as a team, were feeling. From this we could see what we could do to improve the "weather", or, take a look at what we've done well and should continue to do for a sunny weather forecast.</p>
+		
+		<p>We put aside 5 minutes at the beginning of the call to have a more personal catch-up with everyone, see what the team has been getting up to the week previous, and if they did anything fun or enjoyable that they'd like to share with the rest of the team. This allowed us to get to know everyone on a more personal level, which made it much easier to work together and collaborate on the project work.</p>
+		
+		<p>At the end of the call, we spent the final 5 minutes all doing speed-runs of the game, to see who could complete the game the fastest and achieve the highest score out of the team responsible for making the game. This provided a competitive yet fun way to bring the call to an end, and too helped to boost interactions within the team during the call, thus boosting the morale as a whole.</p>
+		
+		<p>We are now a much stronger team, and are working together much more closely, hopping on-and-off calls together, utilising group chats better, all with the aim of helping each other to produce the highest quality work and code that we, as a team, are capable of.</p>
+		
+		<p>This is definitely something that we are going to continue doing, especially as we are able to look back and see how far we've come, and having experienced both "stormy" weather and now "sunny" weather, I think we can all agree we want to keep it all nice and sunny!</p>
+		
+		<p>We hope you're continuing to play and enjoy the game, and we have some new and exciting features coming soon.</p>
+		
+		<p>- Henry</p>
+
+  </div>
+</div>
+
+<!-- Post 2 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #2 - 02/11/2018 - Issues, resolutions and teamwork</div>
+    <div class="acc_content">
+
+      <p>Post #2</p>
+      
+      <p>Issues, resolutions and teamwork</p>
+      
+      <p>02 / 11 / 2018</p>
+      
+      <p>As I’m sure you are all aware, working as a team isn’t always smooth sailing especially when issues arise. In today’s blog I am going to discuss a number of issues we have faced throughout our haunted house mission and how we (team Relaxed) have overcome them.</p>
+      
+      <p>Our first stumbling block arised pretty early on in this project, this was at submission two. Submission two included a video pitch, which describes what software we intend to produce during the project. This of course involved a number of decisions being made by the group, including game features and software choices. Issue one originated from a discussion to decide the best software for this task. The idea for a text based game was put forward by one team member which instantly caused a divide in opinions of the team. As agreed we approached this in a productive manner allowing each team member to put their idea forward eventually resulting in a final vote. A vote was cast and the decision was made to create the front end display using Javascript, Angular, Phaser and HTML 5. This will link to the backend using a Restful API and the back end of the game will be created using Spring (Java API) and Java. Given the outcome of this issue, and how quickly we were able to overcome this, we recognize the advantage of this approach and have applied this throughout the project.</p>
+      
+      <p>Another common issue which has flagged up throughout, as expected, are bugs in the code. An example of a bug which was present in our hack, but was later resolved, was the sprite not disappearing after being ‘picked up’ by the user.</p>
+
+      <p>The example here shows the player and a pick axe. The pick axe should be attached to the player once they walk over it. The bug however recognises the player has picked up the pick axe, giving them the ability to use it, but the sprite in this case does not move. This has now been resolved. Our approach to bugs includes raising a ticket on our teams trello board, marking this task as a bug and tracking the progress until resolved. I’ve found this is extremely productive and it allows other teams members to pitch in by helping resolve one another's issues.</p>
+
+      <p>The bond we have as a team, and the approaches we have in place to deal with issues, gives me confidence that we are able to overcome any hurdles we may face.</p>
+      
+      <p>Thank you for reading and I shall see you again next week (if we ever manage to escape!)</p>
+      
+      <p>- Amy</p>
+      
+  </div>
+</div>
+
+
+<!-- Post 1 -->
+<div class="accordion_in">
+  <div class="acc_head">Post #1 - 19/10/2018 - Teamwork makes the dream work</div>
+    <div class="acc_content">
+
+      <p>Post #1</p>
+
+	  <p>Teamwork makes the dream work</p>
+
+	  <p>19 / 10 / 2018</p>
+
+	  <p>As I am sure you can all imagine, when we were assigned our team we were all a little apprehensive as to how the project would go as we had never met each other before let alone worked with each other. The first thing we did as a team was got to know a little bit about each other; what our hobbies are, what kind of role we are in and just general info about each other. We all found this experience revitalising as it gave us all confidence that we would be a great team. I must say, we are a super friendly bunch! In this blog, I will be discussing the journey we have been on so far.</p>
+
+	  <p>After our first session, we all felt overwhelmed by the amount of different tasks that we had to complete for each submission. In an attempt to organise ourselves we set up various different organisational tools and a unified place to store all of our work. Through little discussion, we quickly all agreed to use Trello, Github, Slack and Google Drive. We have incorporated the Trello task board into our weekly meetings to ensure everyone is on track with their tasks.  We all have found Trello extremely useful as a task management tool for a number of different reasons:</p>
+
+	  <ol>
+	  	<li>Tasks are able to be assigned out to individuals</li>
+	  	<li>Tasks can easily be updated</li>
+	  	<li>Email Notifications when a task assigned to you is approaching its deadline</li>
+	  	<li>It’s FREE!</li>
+	  </ol>
+
+	  <p>As we are a team of eight; 6 developers, 2 business analysts we have split the workload accordingly. Myself and Amy have taken on the responsibility of project documentation and all non-techy tasks whilst Dom, Henry, Vishal, Colm, Allister and Tyler have all been working on the game.</p>
+
+	  <p>One of our first submissions was to complete a Project Plan, at this moment in time we are currently in line with where expected to be at the beginning of the project. As we have to submit our MVP  on Thursday 15th November we have had to strictly adhere to our plan in order to ensure all tasks have been completed.</p>
+
+	  <p>Our developers have done a pretty good job of sticking to our plan and it has paid off as we have been able to add additional features into our game for the MVP than we initially planned during our pitch. This has made the MVP even more user friendly as there are less bugs in the game. From the progress that we have made so far, I think our game will be a great success and the audience is in for a thrill of their lives.</p>
+
+	  <p>Thanks for reading!</p>
+
+	  <p>- Chloe</p>
+
+  </div>
+</div>
+
+</div>
+<!-- Accordion end -->
+      </div>
+      <div style="position:absolute;left:60px;top:826px;width:879px;height:35px;overflow:hidden;">
+        <p class="Body"><span class="C-6">Click any blog post title below to expand and view the full post.</span></p>
+      </div>
+      <div style="position:absolute;left:211px;top:1318px;width:578px;height:493px;overflow:hidden;">
+        <p class="Body P-2"><span class="C-7">Oh, hello?</span></p>
+        <p class="Body P-2"><span class="C-7">If you can read this it means you haven’t got any of our blog posts open.</span></p>
+        <p class="Body P-2"><span class="C-7">Click any of the above posts to open them up in full.</span></p>
+        <p class="Body P-2"><span class="C-7">Have a read… We’re not <span class="C-8">that</span> boring…</span></p>
+        <p class="Body P-2"><span class="C-7"><br></span></p>
+        <p class="Body P-2"><span class="C-7"><br></span></p>
+        <p class="Body P-2"><span class="C-7">Yep, we’re still here, and you still haven’t opened a blog post yet.</span></p>
+        <p class="Body P-2"><span class="C-7"><br></span></p>
+        <p class="Body P-2"><span class="C-7"><br></span></p>
+        <p class="Body P-2"><span class="C-7"><br></span></p>
+        <p class="Body P-2"><span class="C-7">What are you waiting for… Go on, have a quick read.</span></p>
+      </div>
     </div>
   </body>
 </html>
